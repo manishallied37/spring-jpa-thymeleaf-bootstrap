@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:fragment="head">
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!--<META HTTP-EQUIV="Access-Control-Allow-Origin" CONTENT="http://localhost:8080/adminPage/json-users">-->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css"/>
+
+
+    <link th:rel="stylesheet" rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css"/>
+
+
+    <link th:rel="stylesheet" rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    
+    <link rel="stylesheet"
+		th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Theme style -->
+	<link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}">
+	<!-- IonIcons -->
+	<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Select2 -->
+	<link rel="stylesheet" th:href="@{plugins/select2/css/select2.min.css}">
+	<!-- Bootstrap4 -->
+	<link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+	<!-- Bootstrap4 Duallistbox -->
+	<link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
+	<!-- BS Stepper -->
+	<link rel="stylesheet" th:href="@{plugins/bs-stepper/css/bs-stepper.min.css}">
+	<!-- dropzonejs -->
+	<link rel="stylesheet" th:href="@{plugins/dropzone/min/dropzone.min.css}">
+	<!-- Toastr -->
+	<link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}">
+    
+    
+</head>
+<body>
+
+
+
+</body>
+</html>

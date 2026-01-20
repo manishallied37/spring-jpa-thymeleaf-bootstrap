@@ -1,0 +1,31 @@
+<th:block th:fragment="childMenu(children)">
+    <li class="nav-item"
+        th:each="child : ${children}"
+        th:classappend="${child.children.size() > 0} ? 'has-treeview' : ''">
+
+        <a class="nav-link"
+           th:href="${child.children.size() > 0} ? '#' : @{${child.route}}"
+           th:classappend="
+             ${child.children.size() == 0
+               and #httpServletRequest.requestURI == child.route}
+             ? ' active' : ''
+           ">
+
+            <i class="nav-icon text-danger"
+               th:classappend="${child.icon}"></i>
+
+            <p>
+                <th:block th:text="${child.title}"></th:block>
+                <i class="fas fa-angle-right right"
+                   th:if="${child.children.size() > 0}"></i>
+            </p>
+        </a>
+
+        <!-- IMPORTANT: ul is INSIDE li -->
+        <ul class="nav nav-treeview"
+            th:if="${child.children.size() > 0}"
+            th:insert="fragments/sidebar-menu :: childMenu(${child.children})">
+        </ul>
+
+    </li>
+</th:block>

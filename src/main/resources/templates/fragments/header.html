@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!--<head th:replace="fragments/head :: head">-->
+
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css"/>
+
+
+    <link th:rel="stylesheet" rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    
+    <link rel="stylesheet"
+		th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Theme style -->
+	<link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}">
+	<!-- IonIcons -->
+	<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Select2 -->
+	<link rel="stylesheet" th:href="@{plugins/select2/css/select2.min.css}">
+	<!-- Bootstrap4 -->
+	<link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+	<!-- Bootstrap4 Duallistbox -->
+	<link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
+	<!-- BS Stepper -->
+	<link rel="stylesheet" th:href="@{plugins/bs-stepper/css/bs-stepper.min.css}">
+	<!-- dropzonejs -->
+	<link rel="stylesheet" th:href="@{plugins/dropzone/min/dropzone.min.css}">
+	<!-- Toastr -->
+	<link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}">
+	
+</head>
+<body>
+    <nav th:fragment="nav" id="navbar-home" class="navbar navbar-expand-sm navbar-light  fixed-top" style="background-color: white;">
+        <a class="navbar-brand"  th:href="@{/index}" href="index"><img th:src="@{/images/2.jpg}" id="navbar-logo" style="height: 40px;width: 160px;"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}" href="/index">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">Strategic Partners</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Introduction}" href="/Introduction">Explore APIs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact us</a>
+                </li>
+            </ul>
+
+
+            <ul class="navbar-nav ml-auto" id="users-nav-item" sec:authorize="isAuthenticated()">
+
+                <li class="nav-item d-flex">
+				    <span class="shopping-cart align-self-center mx-2"
+				          sec:authorize="hasRole('ROLE_USER')">
+				
+				        <a th:href="@{apicart}"
+				           style="background-color: transparent !important;"
+				           title="Go to API Cart">
+				
+				            <i class="fa fa-shopping-cart"
+				               id="shopping-cart-icon"
+				               aria-hidden="true"
+				               style="background-color: transparent !important"></i>
+				        </a>
+				
+				    </span>
+				</li>
+            </ul>
+
+            <div th:replace="fragments/auth-nav :: authNav"></div>
+            
+        </div>
+  
+    </nav>
+
+
+    <div th:replace="fragments/jsScripts :: scripts"></div>
+    
+
+
+    
+    
+    <!-- REQUIRED SCRIPTS -->
+	<!-- jQuery -->
+	<script th:src="@{plugins/jquery/jquery.min.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- overlayScrollbars -->
+	<script th:src="@{plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{static/dist/js/adminlte.js}"></script>
+	<!-- Bootstrap Switch -->
+	<script th:src="@{plugins/bootstrap-switch/js/bootstrap-switch.min.js}"></script>
+	<!-- BS-Stepper -->
+	<script th:src="@{plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+	<!-- dropzonejs -->
+	<script th:src="@{plugins/dropzone/min/dropzone.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{dist/js/adminlte.min.js}"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script th:src="@{dist/js/demo.js}"></script>
+
+	<!-- PAGE PLUGINS -->
+	<!-- jQuery Mapael -->
+	<script th:src="@{plugins/jquery-mousewheel/jquery.mousewheel.js}"></script>
+	<script th:src="@{plugins/raphael/raphael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/jquery.mapael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/maps/usa_states.min.js}"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</body>
+</html>

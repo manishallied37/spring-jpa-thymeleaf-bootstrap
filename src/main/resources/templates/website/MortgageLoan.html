@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Theme style -->
+	<link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}">
+	<!-- IonIcons -->
+	<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Select2 -->
+	<link rel="stylesheet" th:href="@{plugins/select2/css/select2.min.css}">
+	<!-- Bootstrap4 -->
+	<link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+	<!-- Bootstrap4 Duallistbox -->
+	<link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
+	<!-- BS Stepper -->
+	<link rel="stylesheet" th:href="@{plugins/bs-stepper/css/bs-stepper.min.css}">
+	<!-- dropzonejs -->
+	<link rel="stylesheet" th:href="@{plugins/dropzone/min/dropzone.min.css}">
+	<!-- Toastr -->
+	<link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}">
+
+
+	<style>
+		#load {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url(images/loader.gif) center no-repeat #fff;
+			opacity: 1;
+
+		}
+		.nav-sidebar .nav-treeview > .nav-item > .nav-link {
+		    background-color: transparent !important;
+		    color: #777 !important;
+		}
+	</style>
+
+</head>
+
+<body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+	<div id="load"></div>
+
+	<!-- HOME SECTION -->
+	<div class="wrapper">
+
+
+		<!-- Navbar -->
+		<nav class="main-header navbar navbar-expand navbar-light" style="background:rgb(255, 255, 255);">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+				</li>
+
+			</ul>
+
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+
+				<!-- Notifications Dropdown Menu -->
+
+				<li class="nav-item">
+					<a class="nav-link" data-widget="fullscreen" href="#" role="button">
+						<i class="fas fa-expand-arrows-alt"></i>
+					</a>
+				</li>
+
+			</ul>
+		</nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-light-primary elevation-4">
+			<!-- Brand Logo -->
+			<a href="#" class="brand-link">
+				<img th:src="@{images/2.jpg}" id="navbar-logo" alt="" class="brand-image  " style="width: 210px;">
+				<!--<span class="brand-text font-weight-dark ">ALLIED GLOBETECH</span>-->
+			</a>
+
+			<!-- Sidebar -->
+			<div class="sidebar">
+
+
+
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+
+					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column text-white rolelist"
+					    data-widget="treeview" role="menu" data-accordion="false">
+					
+						<li class="nav-item text-bold"
+						    th:each="menu : ${navMenus}"
+						    th:classappend="
+						        ${menu.children.size() > 0} ? 'has-treeview' : ''
+						    ">
+
+							<a class="nav-link"
+							   th:href="${menu.children.size() > 0} ? '#' : @{${menu.route}}">
+				
+				                <i class="nav-icon text-navy"
+				                   th:classappend="${menu.icon}"></i>
+				
+				                <p>
+				                    <i class="fas fa-angle-right right"
+				                       th:if="${menu.children.size() > 0}"></i>
+				                    <th:block th:text="${menu.title}"></th:block>
+				                </p>
+				            </a>
+				
+				            <ul class="nav nav-treeview"
+							    th:if="${menu.children.size() > 0}"
+							    th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
+							</ul>
+				
+				        </li>
+					</ul>
+
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>Mortgage Loan</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right"> 
+								<li class="breadcrumb-item"><a th:href="@{mainPage}"> 
+								<i class="fas fa-arrow-left mr-1"></i>Back to Main Page</a></li>
+								<li class="breadcrumb-item"><a th:href="@{LoansAndCards}">Loans And Cards</a></li>
+								<li class="breadcrumb-item"><a th:href="@{LCLoans}">Loans</a></li>
+								<li class="breadcrumb-item active">Mortgage Loan</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row ">
+						<div class="col-md-12">
+							<div class="card card-primary card-outline">
+								<div class="card-body">
+
+									<p>These are the set of APIs related to the mortgage loan products of the bank
+
+									</p>
+
+									<div class="row">
+										<div class="col-12">
+											<div class="card">
+
+												<!-- /.card-header -->
+												<div class="card-body table-responsive p-0">
+													<table class="table table-hover ">
+														<thead>
+															<tr>
+																<th>Product API</th>
+																<th>Description</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>CKYC</td>
+																<td>These are the set of apis to get the customer
+																	details
+																	like Name, Address , PAN etc, Also it will fetch
+																	data
+																	from CERSAI(if available).
+																</td>
+															</tr>
+															<tr>
+																<td>VAHAN</td>
+																<td>This api is used to confirm vehicle imformation for
+																	hypothecation purposes
+																</td>
+															</tr>
+															<tr>
+																<td>Create / Update PropertyAPIInformation </td>
+																<td>This API is to create and update information of
+																	property
+																	API
+																</td>
+															</tr>
+															<tr>
+																<td>Get Closest Property List API </td>
+																<td>This API is used to Get closest Property list
+																	details
+																</td>
+															</tr>
+															<tr>
+																<td>Get Geocoding API </td>
+																<td>This API is used to Get Geocoding details
+																</td>
+															</tr>
+															<tr>
+																<td>Insurance Premium </td>
+																<td>This API is capable to calculate Insurance Premium
+																	based
+																	on the request packet.
+																</td>
+															</tr>
+															<tr>
+																<td>E-Forex </td>
+																<td>This API is used to fetch e-forex details
+																</td>
+															</tr>
+															<tr>
+																<td>Retailer details </td>
+																<td>These are the set of APIs for fetching complete
+																	details
+																	of the retailer
+																</td>
+															</tr>
+															<tr>
+																<td>CRM-Customer Relationship Management </td>
+																<td>These are the set of APIs related to generate token
+																	and
+																	maintain CRM
+																</td>
+															</tr>
+															<tr>
+																<td>Fraud verification </td>
+																<td>These are the set of APIs related to CMM datails
+																</td>
+															</tr>
+															<tr>
+																<td>Mortgage Bre </td>
+																<td>This API is a business role engine where after
+																	passing
+																	data application will give u result in form of
+																	particular case.
+																</td>
+															</tr>
+															<tr>
+																<td>CRM reverse feed </td>
+																<td>This API is an internal service for lead push and
+																	for
+																	fetching the status.
+																</td>
+															</tr>
+															<tr>
+																<td>SAS VIYA </td>
+																<td>This api is used to fetch bureau check for requested
+																	customers.
+																</td>
+															</tr>
+															<tr>
+																<td>Credit Vidya upload Service </td>
+																<td>This API is an internal service which is used in
+																	iLens
+																	application
+																</td>
+															</tr>
+															<tr>
+																<td>Credit Vidya resubmission Service </td>
+																<td>This API is an internal service which is used in
+																	iLens
+																	application
+																</td>
+															</tr>
+															<tr>
+																<td>E-sign documents </td>
+																<td>These are the set of APIs related to e-signing of
+																	documents
+																</td>
+															</tr>
+															<tr>
+																<td>KARZA CRILC </td>
+																<td>This API is used to get the crilc details in iLens
+																	application
+																</td>
+															</tr>
+															<tr>
+																<td>Reverse API for FinnOne loan </td>
+																<td>This API is used to receive LAN no and Agreement ID
+																	from
+																	FinnOne post successful loan push
+																</td>
+															</tr>
+															<tr>
+																<td>Enach Reverse feed </td>
+																<td>This API is used to Update the status for eNach and
+																	eSecurity
+																</td>
+															</tr>
+															<tr>
+																<td>Namaste Credit Callback </td>
+																<td>This API is used to update Namaste credit report
+																</td>
+															</tr>
+															<tr>
+																<td>Your approval </td>
+																<td>This API is used to display pending approval counts
+																	from
+																	various applications.
+																</td>
+															</tr>
+															<tr>
+																<td>Call Center Api </td>
+																<td>This API is used to display loan details of the
+																	customer.
+																</td>
+															</tr>
+															<tr>
+																<td>Biometric details </td>
+																<td>These are the set of APIs to take biometric details
+																	of
+																	the customers
+																</td>
+															</tr>
+															<tr>
+																<td>Customer Loan Portfolio Management Report </td>
+																<td>These are the set of APIs related for fetching
+																	Return on
+																	Equity
+																</td>
+															</tr>
+															<tr>
+																<td>Finnone_GetLoanDetails_ILENS</td>
+																<td>This API is used to fetch the loan details based on
+																	the
+																	application number
+																</td>
+															</tr>
+															<tr>
+																<td>Biometric Status check </td>
+																<td>These are the set of APIs related to get the
+																	biometric
+																	status details of the customers
+																</td>
+															</tr>
+															<tr>
+																<td>GetStatusPosidex </td>
+																<td>This API is used to fetch the status of application
+																</td>
+															</tr>
+															<tr>
+																<td>Logical Access Management </td>
+																<td>These are the set of APIs related to register user
+																</td>
+															</tr>
+															<tr>
+																<td>BureauOne </td>
+																<td>This api is used to bureau check functionality for
+																	individual applicants.
+																</td>
+															</tr>
+															<tr>
+																<td>getAccounts_CKYC </td>
+																<td>This api define the customer relationship with
+																	ICICI.
+																	Hierarchical grouping is done based on Account Type.
+																</td>
+															</tr>
+															<tr>
+																<td>CIBIL Commericals </td>
+																<td>These are the set of APIs for fetching bureau
+																	details of
+																	corporate customers
+																</td>
+															</tr>
+															<tr>
+																<td>CPCS </td>
+																<td>This api is used to fetch relationship ROE.
+																</td>
+															</tr>
+															<tr>
+																<td>FusionHCM</td>
+																<td>This api is used to fetch Employee Details.
+																</td>
+															</tr>
+															<tr>
+																<td>Income/ITR verification </td>
+																<td>These are the set of APIs related to income and ITR
+																	details
+																</td>
+															</tr>
+															<tr>
+																<td>Finfort_Reverse_OrderStatus </td>
+																<td>This api is used to receive documents from finfort
+																	for
+																	tax&gst and CAM,Order status and raw data.
+																</td>
+															</tr>
+
+
+														</tbody>
+													</table>
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<div>
+				<div>
+					<footer class="main-footer">
+						<div class="col-md-4" style="float:left;"> © 2021-2022 All rights reserved.</div>
+						<div class="col-md-4" style="float:left;text-align:center;"> <img class="img-fluid"
+								th:src="@{/images/flag.png}" alt="Proudly Made In India" width="50" height="40">
+							&nbsp; Proudly Made In India</div>
+						<div class="float-right d-none d-sm-inline-block">
+							<!--<img class="img-fluid" th:src="@{/images/alliedlogo.jpeg}"  alt="Photo" width="60" height="60"> -->Designed
+							& Developed by <img class="img-fluid" width="100" height="100"
+								th:src="@{/images/AlliedGlobetech.png}" alt="Allied GlobeTech">
+						</div>
+					</footer>
+				</div>
+			</div>
+
+		</footer>
+	</div>
+	<!-- ./wrapper -->
+
+
+
+
+	<!-- REQUIRED SCRIPTS -->
+	<!-- jQuery -->
+	<script th:src="@{plugins/jquery/jquery.min.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- overlayScrollbars -->
+	<script th:src="@{plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{static/dist/js/adminlte.js}"></script>
+	<!-- Bootstrap Switch -->
+	<script th:src="@{plugins/bootstrap-switch/js/bootstrap-switch.min.js}"></script>
+	<!-- BS-Stepper -->
+	<script th:src="@{plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+	<!-- dropzonejs -->
+	<script th:src="@{plugins/dropzone/min/dropzone.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{dist/js/adminlte.min.js}"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script th:src="@{dist/js/demo.js}"></script>
+
+	<!-- PAGE PLUGINS -->
+	<!-- jQuery Mapael -->
+	<script th:src="@{plugins/jquery-mousewheel/jquery.mousewheel.js}"></script>
+	<script th:src="@{plugins/raphael/raphael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/jquery.mapael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/maps/usa_states.min.js}"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+	<!-- Developer Script -->
+	<script th:src="@{dist/js/Common.js}"></script>
+
+
+</body>
+
+</html>

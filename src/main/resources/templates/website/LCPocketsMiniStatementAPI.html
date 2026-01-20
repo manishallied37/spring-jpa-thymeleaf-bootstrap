@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Theme style -->
+	<link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}">
+	<!-- IonIcons -->
+	<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Select2 -->
+	<link rel="stylesheet" th:href="@{plugins/select2/css/select2.min.css}">
+	<!-- Bootstrap4 -->
+	<link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+	<!-- Bootstrap4 Duallistbox -->
+	<link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
+	<!-- BS Stepper -->
+	<link rel="stylesheet" th:href="@{plugins/bs-stepper/css/bs-stepper.min.css}">
+	<!-- dropzonejs -->
+	<link rel="stylesheet" th:href="@{plugins/dropzone/min/dropzone.min.css}">
+	<!-- Toastr -->
+	<link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}">
+
+
+	<style>
+		#load {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url(images/loader.gif) center no-repeat #fff;
+			opacity: 1;
+
+		}
+		.nav-sidebar .nav-treeview > .nav-item > .nav-link {
+		    background-color: transparent !important;
+		    color: #777 !important;
+		}
+	</style>
+
+</head>
+
+<body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+	<div id="load"></div>
+
+	<!-- HOME SECTION -->
+	<div class="wrapper">
+
+
+		<!-- Navbar -->
+		<nav class="main-header navbar navbar-expand navbar-light" style="background:rgb(255, 255, 255);">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+				</li>
+
+			</ul>
+
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+
+				<!-- Notifications Dropdown Menu -->
+
+				<li class="nav-item">
+					<a class="nav-link" data-widget="fullscreen" href="#" role="button">
+						<i class="fas fa-expand-arrows-alt"></i>
+					</a>
+				</li>
+
+			</ul>
+		</nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-light-primary elevation-4">
+			<!-- Brand Logo -->
+			<a href="#" class="brand-link">
+				<img th:src="@{images/2.jpg}" id="navbar-logo" alt="" class="brand-image  " style="width: 210px;">
+				<!--<span class="brand-text font-weight-dark ">ALLIED GLOBETECH</span>-->
+			</a>
+
+			<!-- Sidebar -->
+			<div class="sidebar">
+
+
+
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+
+					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column text-white rolelist"
+					    data-widget="treeview" role="menu" data-accordion="false">
+					
+						<li class="nav-item text-bold"
+						    th:each="menu : ${navMenus}"
+						    th:classappend="
+						        ${menu.children.size() > 0} ? 'has-treeview' : ''
+						    ">
+
+							<a class="nav-link"
+							   th:href="${menu.children.size() > 0} ? '#' : @{${menu.route}}">
+				
+				                <i class="nav-icon text-navy"
+				                   th:classappend="${menu.icon}"></i>
+				
+				                <p>
+				                    <i class="fas fa-angle-right right"
+				                       th:if="${menu.children.size() > 0}"></i>
+				                    <th:block th:text="${menu.title}"></th:block>
+				                </p>
+				            </a>
+				
+				            <ul class="nav nav-treeview"
+							    th:if="${menu.children.size() > 0}"
+							    th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
+							</ul>
+				
+				        </li>
+					</ul>
+
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
+
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>Mini Statement API</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right"> 
+								<li class="breadcrumb-item"><a th:href="@{mainPage}"> 
+								<i class="fas fa-arrow-left mr-1"></i>Back to Main Page</a></li>
+								<li class="breadcrumb-item"><a th:href="@{LoansAndCards}">Loans And Cards</a></li>
+								<li class="breadcrumb-item"><a th:href="@{Pockets}">Pockets</a></li>
+								<li class="breadcrumb-item active">Mini Statement API</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row ">
+						<div class="col-md-12">
+							<div class="card card-primary card-outline">
+								<div class="card-body">
+
+									<p>This API will return list of last transactions.</p>
+
+									<div class="row">
+										<div class="col-8 col-ms-6">
+											<div class="card card-primary card-outline card-outline-tabs">
+												<div class="card-header p-0 border-bottom-0">
+													<ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+														<li class="nav-item">
+															<a class="nav-link active" id="custom-tabs-four-home-tab"
+																data-toggle="pill" href="#custom-tabs-four-home"
+																role="tab" aria-controls="custom-tabs-four-home"
+																aria-selected="true">Input
+																Parameters</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link" id="custom-tabs-four-profile-tab"
+																data-toggle="pill" href="#custom-tabs-four-profile"
+																role="tab" aria-controls="custom-tabs-four-profile"
+																aria-selected="false">Output
+																Parameters</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link" id="custom-tabs-four-messages-tab"
+																data-toggle="pill" href="#custom-tabs-four-messages"
+																role="tab" aria-controls="custom-tabs-four-messages"
+																aria-selected="false">Possible
+																Errors</a>
+														</li>
+
+													</ul>
+												</div>
+												<div class="card-body">
+													<div class="tab-content" id="custom-tabs-four-tabContent">
+														<div class="tab-pane fade show active"
+															id="custom-tabs-four-home" role="tabpanel"
+															aria-labelledby="custom-tabs-four-home-tab">
+															<div class="card">
+																<div class="card-header">
+
+																	<!-- /.card-header -->
+																	<div class="card-body p-0">
+																		<table class="table">
+																			<thead>
+																				<tr>
+																					<th>Name</th>
+																					<th>Type</th>
+																					<th>Description</th>
+																					<th>Mandatory</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr>
+																					<td>MOBILE</td>
+																					<td>Number</td>
+																					<td>A valid 10 digit mobile number.
+																					</td>
+																					<td>Y</td>
+																				</tr>
+																				<tr>
+																					<td>CHANNEL</td>
+																					<td>String</td>
+																					<td>Respective channel code.</td>
+																					<td>Y</td>
+																				</tr>
+																				<tr>
+																					<td>RRN</td>
+																					<td>Alphanumeric</td>
+																					<td>unique reference number Example:
+																						PKT0000017 First three
+																						characters of the reference
+																						number should be channel code..
+																					</td>
+																					<td>Y</td>
+																				</tr>
+
+
+
+																			</tbody>
+																		</table>
+																	</div>
+																	<!-- /.card-body -->
+																</div>
+																<!-- /.card -->
+
+															</div>
+															<!-- /.col -->
+														</div>
+														<div class="tab-pane fade" id="custom-tabs-four-profile"
+															role="tabpanel"
+															aria-labelledby="custom-tabs-four-profile-tab">
+
+															<div class="card">
+																<div class="card-header">
+
+																	<!-- /.card-header -->
+																	<div class="card-body p-0">
+																		<table class="table">
+																			<thead>
+																				<tr>
+																					<th>Name</th>
+																					<th>Type</th>
+																					<th>Description</th>
+
+																				</tr>
+																			</thead>
+																			<tbody>
+
+																				<tr>
+																					<td>MESSAGE</td>
+																					<td>String</td>
+																					<td>Description message</td>
+																				</tr>
+																				<tr>
+																					<td>RESPONSE</td>
+																					<td>Number</td>
+																					<td>Response code</td>
+																				</tr>
+																				<tr>
+																					<td>CHANNEL</td>
+																					<td>String</td>
+																					<td>Respective channel code</td>
+																				</tr>
+																				<tr>
+																					<td>RRN</td>
+																					<td>Alphanumeric</td>
+																					<td>unique reference number Example:
+																						PKT0000017 First three
+																						characters of the reference
+																						number should be channel code.
+																					</td>
+																				</tr>
+
+																			</tbody>
+																		</table>
+																	</div>
+																	<!-- /.card-body -->
+																</div>
+																<!-- /.card -->
+
+															</div>
+															<!-- /.col -->
+														</div>
+														<div class="tab-pane fade" id="custom-tabs-four-messages"
+															role="tabpanel"
+															aria-labelledby="custom-tabs-four-messages-tab">
+															<div class="card">
+																<div class="card-header">
+
+																	<!-- /.card-header -->
+																	<div class="card-body p-0">
+																		<table class="table">
+																			<thead>
+																				<tr>
+																					<th>Error Code</th>
+																					<th>Error Name</th>
+																					<th>Error Logs</th>
+
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr>
+																					<td>400P</td>
+																					<td>Incorrect Precision/Scale</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>400F</td>
+																					<td>Invalid Format Of Data</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>400N</td>
+																					<td>Field Value Is Not Required</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>400P</td>
+																					<td>Incorrect Precision/Scale</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>400T</td>
+																					<td>Invalid Format Of Date</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>400L</td>
+																					<td>Field Length Is More Than
+																						Expected
+																					</td>
+																					<td></td>
+																				</tr>
+
+																				<tr>
+																					<td>400I</td>
+																					<td>Invalid Data Is Entered</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>400M</td>
+																					<td>Mandatory Field Is Missing</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>400C</td>
+																					<td>Conditional Mandatory Field Is
+																						Missing
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>400D</td>
+																					<td>Field Value Can'T Be Duplicate
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>200</td>
+																					<td>Ok</td>
+																					<td>The Request Has Succeeded</td>
+																				</tr>
+																				<tr>
+																					<td>950</td>
+																					<td>No Response From Backend Within
+																						Specific
+																						Time Period. Timed Out</td>
+																					<td>Backend Issue Communicate Them
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>951</td>
+																					<td>Blank Response From Backend</td>
+																					<td>Backend Issue Communicate Them
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>952</td>
+																					<td>Due To Incorrect Request Iso
+																						Message
+																						Or
+																						If The Proccode Or Ip Is Not
+																						Registered
+																					</td>
+																					<td>Frontend Issue Communicate Them
+																					</td>
+																				</tr>
+
+																				<tr>
+																					<td>953</td>
+																					<td>Iso Response Parsing Failure,Due
+																						To
+																						Incorrect Response Iso Message
+																						Format
+																					</td>
+																					<td>Backend Issue Communicate Them
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>954</td>
+																					<td>Back End Down So Could Not
+																						Connect
+																					</td>
+																					<td>Backend Issue Communicate Them
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>955</td>
+																					<td>Internal Iai Timeout Due To
+																						Issue In
+																						Any
+																						Of Its Services</td>
+																					<td>Esb Issue Involve Development
+																						Team
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>956</td>
+																					<td>Request Xml Validation Failure
+																					</td>
+																					<td>Frontend Issue Communicate Them
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>957</td>
+																					<td>Response Xml Validation Failure
+																					</td>
+																					<td>Backend Issue Communicate Them
+																					</td>
+																				</tr>
+
+																				<tr>
+																					<td>958</td>
+																					<td>Due To Incorrect Response From
+																						Backend.
+																						Http Error</td>
+																					<td>Backend Issue Communicate Them
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>959</td>
+																					<td>No Response From Backend Within
+																						Specific
+																						Time Period. Zero Bytes Received
+																						From
+																						Back End</td>
+																					<td>Backend Issue Communicate Them
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>960</td>
+																					<td>Error In Configuration File Due
+																						To
+																						Incorrect Format/Iso Request
+																						Parsing
+																						Failure</td>
+																					<td>Esb Issue</td>
+																				</tr>
+																				<tr>
+																					<td>961</td>
+																					<td>Not Applicable Now</td>
+																					<td>Esb Issue</td>
+																				</tr>
+																				<tr>
+																					<td>962</td>
+																					<td>Proccode Application Name Or
+																						Information
+																						Not Entered In Config File</td>
+																					<td>Esb Issue</td>
+																				</tr>
+																				<tr>
+																					<td>963</td>
+																					<td>Incomplete Message Received From
+																						Back
+																						End</td>
+																					<td>Backend Issue</td>
+																				</tr>
+																				<tr>
+																					<td>964</td>
+																					<td>Not Applicable Now</td>
+																					<td>Esb Issue</td>
+																				</tr>
+																				<tr>
+																					<td>965</td>
+																					<td>Due To Incorrect Messagetype &
+																						Proccode
+																						Value In The Request/Response
+																						Packet
+																					</td>
+																					<td>Frontend/Backend Issue</td>
+																				</tr>
+																				<tr>
+																					<td>966</td>
+																					<td>Iso Parsing Template Is Not
+																						Deployed
+																						In
+																						Eai Configuration Db</td>
+																					<td>Eai Issue Frontend/Backend Issue
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>967</td>
+																					<td>Received From Base24 When
+																						Frontend
+																						Sends
+																						An Invalid Key In The Request
+																						Message
+																					</td>
+																					<td>Base24 Or Esb Issue</td>
+																				</tr>
+																				<tr>
+																					<td>970</td>
+																					<td>Message Size Validation Failed
+																					</td>
+																					<td>Base24 Or Esb Issue</td>
+																				</tr>
+																				<tr>
+																					<td>0</td>
+																					<td>Financial Transaction Has Been
+																						Approved
+																						(Dcc Should Go Ahead And
+																						Complete
+																						The
+																						Transaction)</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>111</td>
+																					<td>Invalid Scheme Type</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>114</td>
+																					<td>Invalid Account Number (Dcc
+																						Should
+																						Reject The Transaction)</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>115</td>
+																					<td>First Two Digits Of Processing
+																						Code
+																						Or
+																						Function Code Is Invalid Dcc
+																						Should
+																						Reject The Transaction</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>116</td>
+																					<td>Insufficient Funds (Dcc Should
+																						Reject
+																						The Transaction)</td>
+																					<td></td>
+																				</tr>
+
+																				<tr>
+																					<td>119</td>
+																					<td>Transaction Not Permitted To
+																						Card
+																						Holder
+																						(Dcc Should Reject The
+																						Transaction)
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>121</td>
+																					<td>Withdrawal Amount Limit Exceeded
+																						(Dcc
+																						Should Reject The Transaction)
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>163</td>
+																					<td>Invalid Cheque Status</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>180</td>
+																					<td>Transfer Limit Exceeded (Dcc
+																						Should
+																						Reject The Transaction)</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>181</td>
+																					<td>Cheques Are In Different Books
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>182</td>
+																					<td>Not All Cheques Could Be Stopped
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>183</td>
+																					<td>Cheque Not Issued To This
+																						Account
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>184</td>
+																					<td>Requested Block Operation Failed
+																						Since
+																						Account Is Closed/Frozen</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>185</td>
+																					<td>Invalid Currency/Transaction
+																						Amount
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>186</td>
+																					<td>Block Does Not Exist</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>187</td>
+																					<td>Cheque Stopped</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>188</td>
+																					<td>Invalid Rate Currency
+																						Combination
+
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>189</td>
+																					<td>Cheque Book Already Issued</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>190</td>
+																					<td>Dd Already Paid</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>800</td>
+																					<td>Network Message Was Accepted
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>902</td>
+																					<td>Invalid Transaction (Invalid
+																						Function
+																						Code Within Network Management
+																						Messages)
+																						(Dcc Should Reject The
+																						Transaction)
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>904</td>
+																					<td>Format Error (Any Format Related
+																						Errors
+																						Etc) (Dcc Should Reject The
+																						Transaction)
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>906</td>
+																					<td>Cut-Over In Progress (When
+																						Stand-In
+																						Server Is Handing Over Control
+																						To
+																						Finacle</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>907</td>
+																					<td>Card Issuer Inoperative (When
+																						Bancsconnect Cannot Contact
+																						Finacle
+																						And
+																						Cannot Do Stand-In Processing )
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>909</td>
+																					<td>System Malfunction (Sent By
+																						Bancsconnect
+																						For Errors Like Database
+																						Corrupted)
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>911</td>
+																					<td>Card Issuer Timed Out
+																						(Bancsconnect
+																						Contacts Finacle And Finacle
+																						Times
+																						Out
+																						And Bancsconnect Cannot Do
+																						Stand-In
+																						Processing)</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>913</td>
+																					<td>Duplicate Transmission</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>8005</td>
+																					<td>Missing Required Field</td>
+																					<td>Mandatory Field Is Missing.</td>
+																				</tr>
+																				<tr>
+																					<td>400</td>
+																					<td>Invalid Data. The Response Will
+																						Contain
+																						Details Of What Is Invalid. If
+																						Json
+																						Format Is Invalid, Then No
+																						Details.
+																					</td>
+																					<td></td>
+																				</tr>
+
+																				<tr>
+																					<td>401</td>
+																					<td>Unauthorized</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>404</td>
+																					<td>{"Code":1012,"Message":"Entity
+																						Not
+																						Found"}</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>500</td>
+																					<td>Internal Server Error</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>403</td>
+																					<td>{"Code":1023,"Message":"Videokyc
+																						With
+																						Given Trcakingid Is Already
+																						Exist"}
+																						If
+																						Kyc Status Is Other Than Open &
+																						Unable
+																						1040 – Videokyc Is Agent
+																						Assigned
+																						1041 –
+																						Videokyc Is Successful 1042 –
+																						Videokyc
+																						Is Rejected 1043 – Videokyc Is
+																						Auditor
+																						Ready 1044 – Videokyc Is Agent
+																						Assigned
+																						1045 – Videokyc Is Approved 1046
+																						–
+																						Videokyc Is Not Approved</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>8000</td>
+																					<td>Invalid Encrypted Request</td>
+																					<td>Decryption Failure</td>
+																				</tr>
+																				<tr>
+																					<td>8012</td>
+																					<td>Backend Connection Timeout</td>
+																					<td>When Connection Gets Timeout
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>8013</td>
+																					<td>Backend Read Timeout</td>
+																					<td>Timed Out For Reading The
+																						Response
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>8014</td>
+																					<td>Backend Bad Url</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>8016</td>
+																					<td>Decryption Failure</td>
+																					<td>Request Is Not Encrypted
+																						Properly
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>8019</td>
+																					<td>Respose Encryption Failure</td>
+																					<td>Response Cannot Be Encrypted
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>429</td>
+																					<td>Too Many Requests</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>8001</td>
+																					<td>Json Is Empty</td>
+																					<td>Json Schema Request Empty</td>
+																				</tr>
+																				<tr>
+																					<td>8002</td>
+																					<td>Invalid Json</td>
+																					<td>Json Is Not Valid.</td>
+																				</tr>
+																				<tr>
+																					<td>8003</td>
+																					<td>Data Size Limit Exceeded</td>
+																					<td>Field Is Not In The Format
+																						Mentioned.
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>8004</td>
+																					<td>Missing Required Field Data</td>
+																					<td>Mandatory Field Data Is Missing.
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>8006</td>
+																					<td>Invalid Field Length</td>
+																					<td>Length Of Field Exceeds Defined
+																						Length.
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>8007</td>
+																					<td>Invalid Json,Open Curly Brace
+																						Missing.
+																					</td>
+																					<td>Open Brace Missing In Json.</td>
+																				</tr>
+																				<tr>
+																					<td>8008</td>
+																					<td>Invalid Json,End Curly Brace
+																						Missing.
+																					</td>
+																					<td>Closing Brace Missing In Json.
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>8009</td>
+																					<td>Internal Server Error</td>
+																					<td>White Space Characters.</td>
+																				</tr>
+																				<tr>
+																					<td>8010</td>
+																					<td>Internal Service Failure</td>
+																					<td>Routing Failure.</td>
+																				</tr>
+																				<tr>
+																					<td>8011</td>
+																					<td>Backend Host Not Found</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>104</td>
+																					<td>Invalid Data</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>105</td>
+																					<td>Invalid Transaction Id</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>106</td>
+																					<td>Invalid Transaction Amount</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>107</td>
+																					<td>Mid Is Mandatory</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>108</td>
+																					<td>Tid Is Mandatory</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>109</td>
+																					<td>Invalid Mid And Tid Combination
+																					</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>110</td>
+																					<td>Invalid Mid</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>112</td>
+																					<td>Invalid Mid And Tid</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>113</td>
+																					<td>Pos Device Is Not Approved</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>117</td>
+																					<td>Technical Error</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>118</td>
+																					<td>Invalid Transaction Type</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>120</td>
+																					<td>You Have Exceeded Transaction
+																						Status
+																						Last 24 Hours</td>
+																					<td></td>
+																				</tr>
+
+																				<tr>
+																					<td>122</td>
+																					<td>Source Details Not Found</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>123</td>
+																					<td>Merchant Details Not Found</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>124</td>
+																					<td>Invalid Transaction Type</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>125</td>
+																					<td>Unknown Error At Imsl</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>300</td>
+																					<td>Request Failure</td>
+																					<td></td>
+																				</tr>
+
+
+
+
+																			</tbody>
+																		</table>
+																	</div>
+																	<!-- /.card-body -->
+																</div>
+																<!-- /.card -->
+
+															</div>
+															<!-- /.col -->
+														</div>
+
+													</div>
+												</div>
+												<!-- /.card -->
+											</div>
+										</div>
+
+
+										<div class="col-4 col-ms-6">
+											<div class="test" style="text-align: center;">
+												<h5>Download the API Document</h5>
+												<div>
+													<div>
+														<button type="button"
+															class="btn btn-block btn-secondary btn-lg">Download</button>
+													</div>
+													<br>
+													<p>Sample Request Packet</p>
+													<div>
+														<textarea cols="40" rows="7"
+															style="overflow:scroll;"></textarea>
+													</div>
+													<br>
+													<div>
+														<button type="button" class="btn btn-block btn-primary btn-lg"
+															data-toggle="modal" data-target="#modal-lg">
+															Test API
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<div>
+				<div>
+					<footer class="main-footer">
+						<div class="col-md-4" style="float:left;"> © 2021-2022 All rights reserved.</div>
+						<div class="col-md-4" style="float:left;text-align:center;"> <img class="img-fluid"
+								th:src="@{/images/flag.png}" alt="Proudly Made In India" width="50" height="40">
+							&nbsp; Proudly Made In India</div>
+						<div class="float-right d-none d-sm-inline-block">
+							<!--<img class="img-fluid" th:src="@{/images/alliedlogo.jpeg}"  alt="Photo" width="60" height="60"> -->Designed
+							& Developed by <img class="img-fluid" width="100" height="100"
+								th:src="@{/images/AlliedGlobetech.png}" alt="Allied GlobeTech">
+						</div>
+					</footer>
+				</div>
+			</div>
+
+		</footer>
+	</div>
+	<!-- ./wrapper -->
+
+
+
+	<!-- Modal View -->
+	<div class="modal fade" id="modal-lg">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"><label> Test API</label></h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+
+					<div class="row">
+						<div class="col-12 ">
+							<div class="card card-primary card-outline card-tabs">
+								<div class="card-header p-0 pt-1 border-bottom-0">
+									<ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" id="custom-tabs-three-home-tab"
+												style="width: 380px; text-align: center;" data-toggle="pill"
+												href="#custom-tabs-three-home" role="tab"
+												aria-controls="custom-tabs-three-home"
+												aria-selected="true"><label>Body</label></a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="custom-tabs-three-profile-tab"
+												style="width: 385px; text-align: center;" data-toggle="pill"
+												href="#custom-tabs-three-profile" role="tab"
+												aria-controls="custom-tabs-three-profile"
+												aria-selected="false"><label>Header</label></a>
+										</li>
+									</ul>
+								</div>
+								<div class="card-body">
+									<div class="tab-content" id="custom-tabs-three-tabContent">
+										<div class="tab-pane fade show active" id="custom-tabs-three-home"
+											role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+
+											<!--Tab 1 Start-->
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label>Select Content Type:</label>
+															<select class="form-control select2" style="width: 100%;">
+																<option selected="selected">JSON</option>
+																<option>XML</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label>Request:</label>
+															<textarea
+																style=" overflow-y: scroll;width: 100%;height: 100px; resize: none;"></textarea>
+														</div>
+													</div>
+
+													<div class="col-md-6">
+														<div class="form-group">
+															<label>Response:</label>
+															<textarea
+																style=" overflow-y: scroll;width: 100%;height: 100px; resize: none;"></textarea>
+														</div>
+													</div>
+												</div>
+
+												<div class="testbtn" style="text-align: right;">
+													<button class="btn btn-primary ">Test</button>
+												</div>
+
+											</div>
+
+										</div>
+										<!--Tab 1 End-->
+
+										<!--Tab 2 Start-->
+										<div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel"
+											aria-labelledby="custom-tabs-three-profile-tab">
+											<div class="row">
+												<div class="col-md-10">
+													<label>Request header:</label>
+												</div>
+												<div class="col-md-2">
+													<button class="btn btn-secondary " id="buttonAdd">Add
+														Header</button>
+												</div>
+											</div>
+
+											<div id="TextBoxContainer" style="padding: 10px;">
+												<!--Textboxes will be added here -->
+												<label>Key : </label>&nbsp;&nbsp;<input name="CreateTextbox"
+													value="API key" type="text" disabled="disabled">&nbsp;&nbsp;
+												<label>Value : </label>&nbsp;&nbsp;<input name="CreateTextbox"
+													value="f219f506-1079-4c76-8ea6-439774f96265" type="text"
+													disabled="disabled">&nbsp;&nbsp;
+												<!--<input type='button' value="Remove" class="remove">-->
+												<br>
+												<br>
+											</div>
+
+										</div>
+										<!--Tab 2 End-->
+
+									</div>
+								</div>
+								<!-- /.card -->
+							</div>
+						</div>
+
+
+					</div>
+					<div class="modal-footer justify-content-between">
+						<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	</div>
+	<!-- Modal View End -->
+
+
+
+
+	<!-- REQUIRED SCRIPTS -->
+	<!-- jQuery -->
+	<script th:src="@{plugins/jquery/jquery.min.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- overlayScrollbars -->
+	<script th:src="@{plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{static/dist/js/adminlte.js}"></script>
+	<!-- Bootstrap Switch -->
+	<script th:src="@{plugins/bootstrap-switch/js/bootstrap-switch.min.js}"></script>
+	<!-- BS-Stepper -->
+	<script th:src="@{plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+	<!-- dropzonejs -->
+	<script th:src="@{plugins/dropzone/min/dropzone.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{dist/js/adminlte.min.js}"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script th:src="@{dist/js/demo.js}"></script>
+
+	<!-- PAGE PLUGINS -->
+	<!-- jQuery Mapael -->
+	<script th:src="@{plugins/jquery-mousewheel/jquery.mousewheel.js}"></script>
+	<script th:src="@{plugins/raphael/raphael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/jquery.mapael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/maps/usa_states.min.js}"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+	<!-- Developer Script -->
+	<script th:src="@{dist/js/Common.js}"></script>
+
+
+
+
+</body>
+
+</html>

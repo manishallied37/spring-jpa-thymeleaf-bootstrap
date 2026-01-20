@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Theme style -->
+	<link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}">
+	<!-- IonIcons -->
+	<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Select2 -->
+	<link rel="stylesheet" th:href="@{plugins/select2/css/select2.min.css}">
+	<!-- Bootstrap4 -->
+	<link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+	<!-- Bootstrap4 Duallistbox -->
+	<link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
+	<!-- BS Stepper -->
+	<link rel="stylesheet" th:href="@{plugins/bs-stepper/css/bs-stepper.min.css}">
+	<!-- dropzonejs -->
+	<link rel="stylesheet" th:href="@{plugins/dropzone/min/dropzone.min.css}">
+	<!-- Toastr -->
+	<link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}">
+
+
+	<style>
+		#load {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url(images/loader.gif) center no-repeat #fff;
+			opacity: 1;
+
+		}
+		.nav-sidebar .nav-treeview > .nav-item > .nav-link {
+		    background-color: transparent !important;
+		    color: #777 !important;
+		}
+		
+		.dropdown-menu-lg {
+		    max-height: 420px;
+		    overflow: hidden;
+		}
+		
+		#cartItems {
+		    max-height: 300px;
+		    overflow-y: auto;
+		}
+		
+		#cartItems::-webkit-scrollbar {
+		    width: 6px;
+		}
+		#cartItems::-webkit-scrollbar-thumb {
+		    background: #ccc;
+		    border-radius: 4px;
+		}
+		
+		.dropdown-item {
+		    white-space: normal !important;
+		}
+		
+		.cart-row {
+		    display: flex;
+		    align-items: center;
+		    justify-content: space-between;
+		    gap: 8px;
+		}
+		
+		.cart-text {
+		    flex: 1;
+		    min-width: 0;
+		    word-break: break-word;
+		    overflow-wrap: break-word;
+		}
+		
+	</style>
+
+</head>
+
+<body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+	<div id="load"></div>
+
+	<!-- HOME SECTION -->
+	<div class="wrapper">
+
+
+		<!-- Navbar -->
+		<nav class="main-header navbar navbar-expand navbar-light" style="background:rgb(255, 255, 255);">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+				</li>
+
+			</ul>
+
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+
+				<!-- Notifications Dropdown Menu -->
+				
+				<li class="nav-item dropdown">
+					<a class="nav-link" data-toggle="dropdown" href="#">
+						<i class="fas fa-shopping-cart"></i>
+						<span class="badge badge-warning navbar-badge" id="cartCount">0</span>
+					</a>
+
+					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+						<span class="dropdown-header">API Cart</span>
+						<div class="dropdown-divider"></div>
+
+						<div id="cartItems">
+							<span class="dropdown-item text-muted text-center">
+								Cart is empty
+							</span>
+						</div>
+
+						<div class="dropdown-divider"></div>
+						<a th:href="@{apicart}" onclick="setCartReferrer()"
+							class="dropdown-item dropdown-footer bg-primary text-white text-center">
+							Go to API cart
+						</a>
+					</div>
+				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link" data-widget="fullscreen" href="#" role="button">
+						<i class="fas fa-expand-arrows-alt"></i>
+					</a>
+				</li>
+
+			</ul>
+		</nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-light-primary elevation-4">
+			<!-- Brand Logo -->
+			<a href="#" class="brand-link">
+				<img th:src="@{images/2.jpg}" id="navbar-logo" alt="" class="brand-image  " style="width: 210px;">
+				<!--<span class="brand-text font-weight-dark ">ALLIED GLOBETECH</span>-->
+			</a>
+
+			<!-- Sidebar -->
+			<div class="sidebar">
+
+
+
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+
+					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column text-white rolelist"
+					    data-widget="treeview" role="menu" data-accordion="false">
+					
+						<li class="nav-item text-bold"
+						    th:each="menu : ${navMenus}"
+						    th:classappend="
+						        ${menu.children.size() > 0} ? 'has-treeview' : ''
+						    ">
+
+							<a class="nav-link"
+							   th:href="${menu.children.size() > 0} ? '#' : @{${menu.route}}">
+				
+				                <i class="nav-icon text-navy"
+				                   th:classappend="${menu.icon}"></i>
+				
+				                <p>
+				                    <i class="fas fa-angle-right right"
+				                       th:if="${menu.children.size() > 0}"></i>
+				                    <th:block th:text="${menu.title}"></th:block>
+				                </p>
+				            </a>
+				
+				            <ul class="nav nav-treeview"
+							    th:if="${menu.children.size() > 0}"
+							    th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
+							</ul>
+				
+				        </li>
+					</ul>
+
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
+
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>Accounts and Deposits</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a th:href="@{mainPage}">
+								<i class="fas fa-arrow-left mr-1"></i>Back to Main Page</a></li>
+								<li class="breadcrumb-item active">Accounts and Deposits</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row ">
+						<div class="col-md-12">
+							<div class="card card-primary card-outline">
+								<div class="card-body">
+
+									<p>A complete bouquet of APIs for authenticated customers to have access to
+										information
+										pertaining to their accounts and transactions. The offering provides robust
+										and
+										flexibility
+										access to information for customers from everything ranging from - account
+										balance,
+										mini-statements, transaction status or raising service requests. This is the
+										one-stop shop
+										to provide you with a plethora of accessibility to one's banking portfolio.
+										If
+										you are a
+										fintech or aggregator who wants to integrate with our services to provide
+										world-class user
+										experience for your users based on the authentication provided by customers,
+										do
+										check out
+										our offerings. Leverage Accounts and Deposits related APIs to create
+										innovative
+										solutions in
+										the space of accounts creation & management, to facilitate not just creating
+										of
+										various
+										types of accounts but to provide capabilities to view and manage the status,
+										transactions
+										and lifecycle. As an aggregator this is a useful set of APIs to leverage on
+										the
+										bank’s
+										account related services.</p>
+									<p> 1. Savings Bank APIs APIs to facilitate creation,
+										status checks
+										and servicing of savings accounts.</p>
+									<p> 2. APIs to facilitate creation (dealers,
+										merchants and
+										others) status checks and servicing of current accounts.</p>
+									<p> 3. Fixed Deposit APIs -
+										APIs to
+										facilitate creation, status checks, servicing and closure of fixed accounts.
+									</p>
+									<p> 4.
+										Recurring
+										Deposit APIs - APIs to facilitate creation, status checks, servicing and
+										closure
+										of
+										recurring accounts.</p>
+									<p> 5. iWish APIs – Services to set financial goals and track
+										till
+										achievement of targets. APIs to facilitate creation, status checks,
+										servicing
+										and closure of
+										fixed accounts.</p>
+
+
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Fixed Deposit</h3>
+												</div>
+												<div class="card-body">
+													A set of APIs to support Fixed Deposit lifecycle, enabling
+													innovative
+													solutions to
+													support end to end customer journey, from initiating the
+													customer
+													request for FD,
+													establishing </div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+										<!-- /.col -->
+
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Account validation</h3>
+												</div>
+												<div class="card-body">
+													Account Validation APIs
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+										<!-- /.col -->
+									</div>
+									<div class="row">
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Account validation</h3>
+												</div>
+												<div class="card-body">
+													Account Validation APIs
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+										<!-- /.col -->
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Depository - Demat Account Services</h3>
+												</div>
+												<div class="card-body">
+													This set of APIs are pertaining to DpSecure application, support
+													various
+													operation
+													of Demat business, facilitating end to end communication between
+													DpSecure
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+										<!-- /.col -->
+									</div>
+									<div class="row">
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Mutual Fund</h3>
+												</div>
+												<div class="card-body">
+													These are the set of APIs which can be leveraged to fetch Mutual
+													Fund
+													Account
+													related informations like holdings,gains,etc of the customers
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+										<!-- /.col -->
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">IPO</h3>
+												</div>
+												<div class="card-body">
+													These are the set of APIs related to IPO transactions
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+									</div>
+									<div class="row">
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Recurring Deposit</h3>
+												</div>
+												<div class="card-body">
+													A set of APIs to support Recurring Deposit lifecycle, enabling
+													innovative solutions
+													to support end to end customer journey, from initiating the
+													customer
+													request for RD,
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Saving Account</h3>
+												</div>
+												<div class="card-body">
+													A set of APIs to support Savings Account lifecycle, enabling
+													innovative
+													solutions to
+													support end to end customer journey, from initiating the
+													customer
+													request for
+													Savings
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+									</div>
+									<div class="row">
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Current Account</h3>
+												</div>
+												<div class="card-body">
+													A set of APIs to support Current Account lifecycle, enabling
+													innovative
+													solutions to
+													support end to end customer journey, from initiating the
+													customer
+													request for
+													Current
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">iWish</h3>
+												</div>
+												<div class="card-body">
+													A set of APIs to support IWish product lifecycle, enabling
+													innovative
+													solutions to
+													support end to end customer journey, from initiating the
+													customer
+													request for iWish,
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+									</div>
+									<div class="row">
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Account Aggregator</h3>
+												</div>
+												<div class="card-body">
+													These set of apis offfer various account related operations like
+													OTP
+													Creation, OTP
+													verification, Discover account and fetch account data
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">Over Draft (OD)</h3>
+												</div>
+												<div class="card-body">
+													These set of apis facilitates various over draft related
+													operations
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+
+									</div>
+									<div class="row">
+
+										<div class="col-lg-6">
+											<div class="card card-outline card-danger">
+												<div class="card-header">
+													<h3 class="card-title">OD Account</h3>
+												</div>
+												<div class="card-body">
+													These set of apis facilitates various over draft account related
+													operations
+												</div>
+												<!-- /.card-body -->
+											</div>
+											<!-- /.card -->
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+
+		<!-- Main Footer -->
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+	<!-- ./wrapper -->
+
+
+	<!-- REQUIRED SCRIPTS -->
+	<!-- jQuery -->
+	<script th:src="@{plugins/jquery/jquery.min.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- overlayScrollbars -->
+	<script th:src="@{plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{static/dist/js/adminlte.js}"></script>
+	<!-- Bootstrap Switch -->
+	<script th:src="@{plugins/bootstrap-switch/js/bootstrap-switch.min.js}"></script>
+	<!-- BS-Stepper -->
+	<script th:src="@{plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+	<!-- dropzonejs -->
+	<script th:src="@{plugins/dropzone/min/dropzone.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{dist/js/adminlte.min.js}"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script th:src="@{dist/js/demo.js}"></script>
+
+	<!-- PAGE PLUGINS -->
+	<!-- jQuery Mapael -->
+	<script th:src="@{plugins/jquery-mousewheel/jquery.mousewheel.js}"></script>
+	<script th:src="@{plugins/raphael/raphael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/jquery.mapael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/maps/usa_states.min.js}"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+	<!-- Developer Script -->
+	<script th:src="@{dist/js/Common.js}"></script>
+	<script th:src="@{dist/js/AccountsAndDeposits.js}"></script>
+	
+	<script th:inline="javascript">
+		const NAV_MENUS = /*[[${navMenus}]]*/[];
+		const CURRENT_ROUTE = /*[[${#httpServletRequest.requestURI}]]*/ '';
+	</script>
+
+	<script th:src="@{/swagger-editor/js-yaml-min.js}"></script>
+	<script th:src="@{/swagger-editor/swagger-ui-bundle.js}"></script>
+	<script th:src="@{/swagger-editor/swagger-ui-standalone-preset.js}"></script>
+	
+	<script>
+	
+	const CART_KEY = "API_CART";
+		
+		function getCart() {
+		    return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+		}
+		
+		function saveCart(cart) {
+		    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+		}
+		
+		function updateCartCount() {
+		    document.getElementById("cartCount").innerText = getCart().length;
+		}
+		
+		function addToCart(api) {
+		    let cart = JSON.parse(localStorage.getItem("apiCart")) || [];
+		    const exists = cart.some(item => item.id === api.id);
+		    if (!exists) {
+		        cart.push(api);
+		        localStorage.setItem("apiCart", JSON.stringify(cart));
+		    }
+		
+		    updateSubscribeButton(api.id, true);
+		    updateCartCount();
+		}
+		
+		function renderCartDropdown() {
+		    const cart = getCart();
+		    const container = document.getElementById("cartItems");
+		    container.innerHTML = "";
+		
+		    if (cart.length === 0) {
+		        container.innerHTML =
+		            `<span class="dropdown-item text-muted text-center">
+		                Cart is empty
+		             </span>`;
+		        return;
+		    }
+		
+		    cart.forEach(api => {
+				container.innerHTML += `
+				  <div class="dropdown-item cart-row">
+				      <div class="cart-text">
+				          <i class="fas fa-plug mr-2"></i>
+				          <strong>${api.name}</strong><br>
+				          <small class="text-muted">(${api.category})</small>
+				      </div>
+				
+				      <button class="btn btn-xs btn-danger remove-api"
+				              data-id="${api.id}">
+				          <i class="fas fa-trash"></i>
+				      </button>
+				  </div>
+				`;
+		    });
+		}
+		
+		function updateSubscribeButton() {
+		    const btn = document.getElementById("subscribeBtn");
+		    if (!btn) return;
+		
+		    const apiId = btn.dataset.apiId;
+		    const cart = getCart();
+		
+		    const exists = cart.some(api => api.id === apiId);
+		
+		    if (exists) {
+		        btn.innerText = "Added to Cart";
+		        btn.disabled = true;
+		    } else {
+		        btn.innerText = "Subscribe";
+		        btn.disabled = false;
+		    }
+		}
+		
+		document.addEventListener("click", function (e) {
+		    const btn = e.target.closest(".remove-api");
+		    if (!btn) return;
+		
+		    const apiId = btn.dataset.id;
+		
+		    let cart = getCart();
+		    cart = cart.filter(api => api.id !== apiId);
+		    saveCart(cart);
+		
+		    updateCartCount();
+		    renderCartDropdown();
+		    updateSubscribeButton();
+		});
+		
+		document.getElementById("subscribeBtn")?.addEventListener("click", function () {
+		    const api = {
+		        id: this.dataset.apiId,
+		        name: this.dataset.apiName,
+		        category: this.dataset.apiCategory
+		    };
+		
+		    let cart = getCart();
+		
+		    if (!cart.some(item => item.id === api.id)) {
+		        cart.push(api);
+		        saveCart(cart);
+		    }
+		
+		    updateCartCount();
+		    renderCartDropdown();
+		    updateSubscribeButton();
+		});
+		
+		updateCartCount();
+		renderCartDropdown();
+		updateSubscribeButton();
+	</script>
+	
+	<script>
+		$(function () {
+		
+		  const KEY = "ADMINLTE_SIDEBAR_STATE";
+		
+		  try {
+		    const state = JSON.parse(localStorage.getItem(KEY) || "[]");
+		
+		    state.forEach(idxPath => {
+		      let el = $(".nav-sidebar > li").eq(idxPath[0]);
+		
+		      for (let i = 1; i < idxPath.length; i++) {
+		        el.addClass("menu-open");
+		        el = el.children("ul").children("li").eq(idxPath[i]);
+		      }
+		
+		      el.parents(".has-treeview").addClass("menu-open");
+		      el.children("a.nav-link").addClass("active");
+		    });
+		  } catch (e) {
+		    console.warn("Sidebar restore failed");
+		  }
+		
+		  $(".nav-sidebar").on("click", "a.nav-link", function () {
+		
+		    const path = [];
+		    let li = $(this).closest("li");
+		
+		    while (li.length && li.closest(".nav-sidebar").length) {
+		      path.unshift(li.index());
+		      li = li.parent().closest("li");
+		    }
+		
+		    localStorage.setItem(KEY, JSON.stringify([path]));
+		  });
+		
+		});
+	</script>
+
+
+
+</body>
+
+</html>

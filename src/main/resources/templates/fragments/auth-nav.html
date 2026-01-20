@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<th:block xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+          th:fragment="authNav">
+
+    <!-- NOT LOGGED IN -->
+    <ul class="navbar-nav ml-auto"
+        th:if="${#authorization.expression('!isAuthenticated()')}">
+
+        <li class="nav-item d-flex flex-row">
+            <i class="fa fa-user-o align-self-center"></i>
+            <a class="nav-link mr-3" th:href="@{/login}">Log In</a>
+        </li>
+
+        <li class="nav-item d-flex flex-row">
+            <i class="fa fa-sign-in align-self-center"></i>
+            <a class="nav-link" th:href="@{/register}">Register</a>
+        </li>
+
+    </ul>
+
+    <!-- LOGGED IN -->
+    <ul class="navbar-nav ml-auto"
+        th:if="${#authorization.expression('isAuthenticated()')}">
+        
+         <li class="nav-item d-flex">
+		    <span class="shopping-cart align-self-center mx-2">
+		
+		        <a th:href="@{apicart}"
+		           style="background-color: transparent !important;"
+		           title="Go to API Cart">
+		
+		            <i class="fa fa-shopping-cart"
+		               id="shopping-cart-icon"
+		               aria-hidden="true"
+		               style="background-color: transparent !important"></i>
+		        </a>
+		
+		    </span>
+		</li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:document.logoutForm.submit()">
+                Logout
+            </a>
+
+            <form name="logoutForm"
+                  th:action="@{/logout}"
+                  method="post"
+                  hidden>
+                <input type="submit"/>
+            </form>
+        </li>
+
+    </ul>
+
+</th:block>
+</html>
