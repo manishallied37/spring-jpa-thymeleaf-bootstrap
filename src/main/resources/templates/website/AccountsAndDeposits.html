@@ -45,10 +45,9 @@
 			opacity: 1;
 
 		}
-
-		.nav-sidebar .nav-treeview>.nav-item>.nav-link {
-			background-color: transparent !important;
-			color: #777 !important;
+		.nav-sidebar .nav-treeview > .nav-item > .nav-link {
+		    background-color: transparent !important;
+		    color: #777 !important;
 		}
 	</style>
 
@@ -104,27 +103,33 @@
 				<nav class="mt-2">
 
 					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column text-white rolelist"
-						data-widget="treeview" role="menu" data-accordion="false">
-
-						<li class="nav-item text-bold" th:each="menu : ${navMenus}" th:classappend="
+					    data-widget="treeview" role="menu" data-accordion="false">
+					
+						<li class="nav-item text-bold"
+						    th:each="menu : ${navMenus}"
+						    th:classappend="
 						        ${menu.children.size() > 0} ? 'has-treeview' : ''
 						    ">
 
-							<a class="nav-link" th:href="${menu.children.size() > 0} ? '#' : @{${menu.route}}">
-
-								<i class="nav-icon text-navy" th:classappend="${menu.icon}"></i>
-
-								<p>
-									<i class="fas fa-angle-right right" th:if="${menu.children.size() > 0}"></i>
-									<th:block th:text="${menu.title}"></th:block>
-								</p>
-							</a>
-
-							<ul class="nav nav-treeview" th:if="${menu.children.size() > 0}"
-								th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
+							<a class="nav-link"
+							   th:href="${menu.children.size() > 0} ? '#' : @{${menu.route}}">
+				
+				                <i class="nav-icon text-navy"
+				                   th:classappend="${menu.icon}"></i>
+				
+				                <p>
+				                    <i class="fas fa-angle-right right"
+				                       th:if="${menu.children.size() > 0}"></i>
+				                    <th:block th:text="${menu.title}"></th:block>
+				                </p>
+				            </a>
+				
+				            <ul class="nav nav-treeview"
+							    th:if="${menu.children.size() > 0}"
+							    th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
 							</ul>
-
-						</li>
+				
+				        </li>
 					</ul>
 
 				</nav>

@@ -1,39 +1,35 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-
-	<!-- Google Font: Source Sans Pro -->
-	<link rel="stylesheet"
-		th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
-	<!-- Font Awesome Icons -->
-	<link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}">
-	<!-- overlayScrollbars -->
-	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
-	<!-- Theme style -->
-	<link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}">
-	<!-- IonIcons -->
-	<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
-	<!-- overlayScrollbars -->
-	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
-	<!-- Select2 -->
-	<link rel="stylesheet" th:href="@{plugins/select2/css/select2.min.css}">
-	<!-- Bootstrap4 -->
-	<link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
-	<!-- Bootstrap4 Duallistbox -->
-	<link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
-	<!-- BS Stepper -->
-	<link rel="stylesheet" th:href="@{plugins/bs-stepper/css/bs-stepper.min.css}">
-	<!-- dropzonejs -->
-	<link rel="stylesheet" th:href="@{plugins/dropzone/min/dropzone.min.css}">
-	<!-- Toastr -->
-	<link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}">
-
-
-	<style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title></title>
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback}"/>
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}"/>
+<!-- overlayScrollbars -->
+<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}"/>
+<!-- Theme style -->
+<link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}"/>
+<!-- IonIcons -->
+<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}"/>
+<!-- overlayScrollbars -->
+<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}"/>
+<!-- Select2 -->
+<link rel="stylesheet" th:href="@{plugins/select2/css/select2.min.css}"/>
+<!-- Bootstrap4 -->
+<link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}"/>
+<!-- Bootstrap4 Duallistbox -->
+<link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}"/>
+<!-- BS Stepper -->
+<link rel="stylesheet" th:href="@{plugins/bs-stepper/css/bs-stepper.min.css}"/>
+<!-- dropzonejs -->
+<link rel="stylesheet" th:href="@{plugins/dropzone/min/dropzone.min.css}"/>
+<!-- Toastr -->
+<link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}"/>
+<style>
 		#load {
 			position: fixed;
 			left: 0px;
@@ -45,2212 +41,646 @@
 			opacity: 1;
 
 		}
+		.nav-sidebar .nav-treeview > .nav-item > .nav-link {
+		    background-color: transparent !important;
+		    color: #777 !important;
+		}
 	</style>
-
 </head>
-
-<body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-
-	<div id="load"></div>
-
-	<!-- HOME SECTION -->
-	<div class="wrapper">
-
-
-		<!-- Navbar -->
-		<nav class="main-header navbar navbar-expand navbar-light" style="background:rgb(255, 255, 255);">
-			<!-- Left navbar links -->
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-				</li>
-
-			</ul>
-
-			<!-- Right navbar links -->
-			<ul class="navbar-nav ml-auto">
-
-				<!-- Notifications Dropdown Menu -->
-
-				<li class="nav-item">
-					<a class="nav-link" data-widget="fullscreen" href="#" role="button">
-						<i class="fas fa-expand-arrows-alt"></i>
-					</a>
-				</li>
-
-			</ul>
-		</nav>
-		<!-- /.navbar -->
-
-		<!-- Main Sidebar Container -->
-		<aside class="main-sidebar sidebar-light-primary elevation-4">
-			<!-- Brand Logo -->
-			<a href="#" class="brand-link">
-				<img th:src="@{images/2.jpg}" id="navbar-logo" alt="" class="brand-image  " style="width: 210px;">
-				<!--<span class="brand-text font-weight-dark ">ALLIED GLOBETECH</span>-->
-			</a>
-
-			<!-- Sidebar -->
-			<div class="sidebar">
-
-
-
-				<!-- Sidebar Menu -->
-				<nav class="mt-2">
-
-					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column  text-white rolelist"
-						data-widget="treeview" role="menu" data-accordion="false">
-						<!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-						<li class="nav-item text-bold"><a href="#" id="switchRole" class="nav-link"> <i
-									class="nav-icon fas fa-user-tag text-navy pt-2"></i>
-								<p>Modules</p> <!-- <span th:text="${authority}"></span> -->
-							</a></li>
-
-						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
-									class="nav-icon fas fa-globe text-navy"></i>
-								<p>Introduction</p>
-							</a></li>
-
-						<li class="nav-item text-bold">
-							<a th:href="@{Security}" class="nav-link">
-								<i class="nav-icon fas fa-shield-alt  text-navy"></i>
-								<p>Security</p>
-								<i class="fas fa-angle-left right"></i>
-							</a>
-
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{SecurityEncryption}" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Encryption</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{SecurityTestAPI}" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Test API</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{SecurityEncryption}" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Decryption</p>
-									</a>
-								</li>
-
-							</ul>
-						</li>
-
-						<li class="nav-item text-bold">
-							<a href="#" class="nav-link">
-								<i class="nav-icon fas fa-cube text-navy"></i>
-								<p>
-									Building Blocks
-									<i class="fas fa-angle-left right"></i>
-
-								</p>
-							</a>
-
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{BBPreApprovedOffers}" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Pre Approved Offers</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{BBGetPreApprovedOffers}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Get Pre Approved Offers</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBGetOfferOnCustomerID}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Get Pre Approved Offers On CutomerID</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBGetOfferOnMobile}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Get Pre Approved Offers On Mobile</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBPreApprovedOffer}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Pre Approved Offers</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBBlockPreApprovedOffer}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Block Pre Approved Offers</p>
-											</a>
-										</li>
-
-									</ul>
-
-								</li>
-								<li class="nav-item">
-									<a href="layout/top-nav-sidebar.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Passport</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{BBUpdatePassportDetails}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Update Passport Details</p>
-											</a>
-										</li>
-									</ul>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>VKYC</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{BBVideoKYCStatus}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Video KYC Status</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBGetDetailsByTrackingID}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>getDetailsByTrackingId</p>
-											</a>
-										</li>
-										<!--										<li class="nav-item">
-											<a th:href="@{}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>kycRegularization</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>vkycSignature</p>
-											</a>
-										</li>-->
-										<li class="nav-item">
-											<a th:href="@{BBVideoKYCStatus}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>videoKYCstatus</p>
-											</a>
-											<!--</li>
-										<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>WaitCallTimeAPI</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small; ">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p >Customer Hand Shake API</p>
-											</a>
-										</li>-->
-											<!--<li class="nav-item">
-											<a th:href="@{}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Get Details By Tracking ID</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Get Details by PAN</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>VKYC Customer Forwarding API</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Customer Handshake</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBWaitCallTime}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Call Wait Time	</p>
-											</a>
-										</li>-->
-
-									</ul>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Undefined Customer Journey</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{BBGetCVidyaStatus}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>GetCVidyaStatus</p>
-											</a>
-										</li>
-									</ul>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Customer Authentication</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>OTP Generation</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBTransUnion}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>TransUnion(Canada)</p>
-											</a>
-										</li>
-
-										<li class="nav-item">
-											<a th:href="@{BBCustomerAMLCheck}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Customer AML Check(Fircosoft_OSB)</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBCustomerAMLCheckCallBack}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Customer AML Check(Fircosoft_OSB) Callback</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBDIYCIBIL}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>DIY-CIBIL</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBFetchPANDetails}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Fetch PAN Details</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBOTPVerification}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>OTP Verification</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBAadharOTPGeneration}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Aadhar OTP generation</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBAadharOTPVerification}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Aadhar OTP verification</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBCustomerHandshake}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Customer Handshake</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBWaitCallTime}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>WaitCallTime</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBGetDetailsByTrackingID}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Get Details By TrackingID</p>
-											</a>
-										</li>
-										<!--<li class="nav-item">
-											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>ekyc_updation</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>ShuftiPro</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>ShuftiPro_Delete</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>ShuftiPro_Callback</p>
-											</a>
-										</li>-->
-									</ul>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Account Aggregator</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{BBConsentInitiation}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Consent Initiation</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBTransactionStatus}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Transaction Status</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{BBDownloadAnalysedReport}" class="nav-link"
-												style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Download Analysed Report</p>
-											</a>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>eKYC</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{BBeKYCforHR}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>eKYC for HR</p>
-											</a>
-										</li>
-									</ul>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Aadhar Vault</p>
-									</a>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Prefios</p>
-									</a>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Tokenization</p>
-									</a>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>New Customer Onboarding</p>
-									</a>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Bereau Check</p>
-									</a>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Pan Validation</p>
-									</a>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Eligibility Check</p>
-									</a>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Document Upload</p>
-									</a>
-								</li>
-
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="nav-icon fas fa-receipt text-danger"></i>
-										<p>Mobile Recharge</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="layout/boxed.html" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>GST</p>
-									</a>
-								</li>
-
-							</ul>
-						</li>
-
-						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
-									class="nav-icon fas fa-credit-card text-navy"></i>
-								<p>Loans and Cards</p>
-
-								<i class="fas fa-angle-left right"></i>
-							</a>
-
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{#}" class="nav-link" >
-										<i class="fas fa-receipt nav-icon text-danger"></i>
-										<p>Loans</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-									
-									<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{#}" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Auto Loans</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{ALOTPCreation}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>OTP Creation</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{ALGetOffer}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Get Offer</p>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Eligibility Check</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{ALSanctionLetter}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Sanction Letter</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{ALBankStatementUpload}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Bank Statement Upload</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{ALDocumentUpload}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Document Upload</p></a>
-										</li>
-										
-									</ul>
-								</li>
-							</ul>
-							
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{#}" class="nav-link">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>PersonalLoanV1</p>
-												<i class="fas fa-angle-left right"></i>
-											</a>
-											<ul class="nav nav-treeview">
-												<li class="nav-item">
-													<a th:href="@{PersonalLoanV1GenerateOTP}" class="nav-link"
-														style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-warning"></i>
-														<p>OTP Creation</p>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a th:href="@{PersonalLoanV1GetOffer}" class="nav-link"
-														style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-warning"></i>
-														<p>Get Offer</p>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a th:href="@{PersonalLoanV1OfferValidation}" class="nav-link"
-														style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-warning"></i>
-														<p>Offer Validation</p>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a th:href="@{PersonalLoanV1OfferConfirmation}" class="nav-link"
-														style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-warning"></i>
-														<p>Offer Conformation</p>
-													</a>
-												</li>
-
-
-											</ul>
-										</li>
-									</ul>
-
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{#}" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>PersonalLoanV2</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{PersonalLoanV2OTPCreation}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>OTP Creation</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{PersonalLoanV2GetOffer}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Get Offer</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{PersonalLoanV2EligibilityCheck}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Eligibility Check</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{PersonalLoanV2BankStatementUpload}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Bank Statement Upload</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{PersonalLoanV2DocumentUpload}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Document Upload</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{PersonalLoanV2LoanDisbursement}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Loan Disbursement</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{PersonalLoanV2FI_Interest_Fetch}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>FI_Interest_Fetch</p></a>
-										</li>
-																			
-										
-									</ul>
-								</li>
-							</ul>
-							
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{#}" class="nav-link">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Topup</p>
-												<i class="fas fa-angle-left right"></i>
-											</a>
-											<ul class="nav nav-treeview">
-												<li class="nav-item">
-													<a th:href="@{TopupFetchOffer}" class="nav-link"
-														style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-warning"></i>
-														<p>Fetch Offer</p>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a th:href="@{TopupGenerateAgreementLetter}" class="nav-link"
-														style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-warning"></i>
-														<p>Generate Aggrement Letter</p>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a th:href="@{TopupLoanDisbursement}" class="nav-link"
-														style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-warning"></i>
-														<p>Loan Disbursement</p>
-													</a>
-												</li>
-
-											</ul>
-										</li>
-									</ul>
-
-
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{#}" class="nav-link">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Loan Management</p>
-										<i class="fas fa-angle-left right"></i>
-									</a>
-									<ul class="nav nav-treeview">
-										<li class="nav-item">
-											<a th:href="@{LMGetLoanAccountDetails}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Get Loan Account Details</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{LMLoanDetails}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>loanDetails</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{LMRestructuring_NLI}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Restructuring_NLI</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{LMRepaymentDetails}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Repayment Details</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{LMProfileInformation}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Profile Information</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{LMDisbursementDetails}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Disbursement Details</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{LMLoanCredentialVerificationCheck}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Loan Credential Verification Check</p></a>
-										</li><li class="nav-item">
-											<a th:href="@{LMGetITCertificate}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Income Tax Certificate</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{LMOverdueOutstanding}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Overdue Outstanding</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{LMSRSearch}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>SR Search</p></a>
-										</li>
-										<li class="nav-item">
-											<a th:href="@{LMLoanSummary}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Loan Summary	</p></a>
-										</li>
-										
-										
-									</ul>
-								</li>
-							</ul>
-							
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{#}" class="nav-link">
-												<i class="fas fa-receipt nav-icon text-warning"></i>
-												<p>Mortgage Loan</p>
-												<i class="fas fa-angle-left right"></i>
-											</a>
-
-											<ul class="nav nav-treeview">
-												<li class="nav-item">
-													<a th:href="@{#}" class="nav-link"
-														style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-danger"></i>
-														<p>CKYC</p><i class="fas fa-angle-left right"></i>
-													</a>
-													<ul class="nav nav-treeview">
-														<li class="nav-item">
-															<a th:href="@{CKYCgetAccounts}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>getAccounts</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{CKYCgetDemography}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>getDemography</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{CKYCgetUSERDATA}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>getUSERDATA</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{CKYCgetRLOSMORTGAGEDATA}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>getRLOSMORTGAGE DATA</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{CKYCckycDataForAsset}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>ckycDataForAsset </p>
-															</a>
-														</li>
-														<!--<li class="nav-item">
-															<a th:href="@{CKYCgetUserDATABUYICICI}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>getUserDATABUYICICI </p>
-															</a>
-														</li>-->
-													</ul>
-													
-													<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-danger"></i>
-														<p>VAHAN</p>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a th:href="@{#}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-danger"></i>
-												<p>Create/Update Property API Information</p></a>
-													</li>
-													<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-danger"></i>
-														<p>Get Closest Property List API</p>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a th:href="@{#}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-danger"></i>
-												<p>Get Geocoding API</p></a>
-													</li><li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-danger"></i>
-														<p>Insurance Premium</p>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a th:href="@{#}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-danger"></i>
-												<p>E-Forex</p></a>
-													</li>
-													<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-danger"></i>
-														<p>Retailer Details</p><i class="fas fa-angle-left right"></i>
-													</a>
-													<ul class="nav nav-treeview">
-														<li class="nav-item">
-															<a th:href="@{CKYCgetAccounts}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>Single Retail</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{CKYCgetDemography}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>Multiple Retail</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{CKYCgetUSERDATA}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>Single Corporate</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{CKYCgetRLOSMORTGAGEDATA}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>Multiple Corporate</p>
-															</a>
-														</li>
-
-													</ul>
-												</li>
-												<li class="nav-item">
-													<a th:href="@{#}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-danger"></i>
-												<p>CRM-Customer Relationship Management</p><i class="fas fa-angle-left right"></i></a>
-													<ul class="nav nav-treeview">
-														<li class="nav-item">
-															<a th:href="@{CKYCgetAccounts}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>Login</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{CKYCgetDemography}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>Query</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{CKYCgetUSERDATA}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>Save</p>
-															</a>
-														</li>
-														
-													</ul>
-													</li>
-													<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-danger"></i>
-														<p>Fraud verification</p><i class="fas fa-angle-left right"></i>
-													</a>
-													<ul class="nav nav-treeview">
-														<li class="nav-item">
-															<a th:href="@{MLCMMAPF}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>CMM APF </p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{MLCMMUploadService}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>CMM Upload Service </p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{MLCMMStatusUpdate}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>CMM Status Update</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{MLCMMAPFUpdate}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>CMM APF Update</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{MLCMMCaseCreationNonAPF}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>CMM Case Creation Non APF</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{MLCMMCaseCreationAPF}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>CMM Case Creation APF</p>
-															</a>
-														</li>
-														<!--<li class="nav-item">
-															<a th:href="@{CKYCgetUSERDATA}" class="nav-link"
-																style="font-size: small;">
-																<i class="nav-icon fab fa-forumbee text-warning"></i>
-																<p>CMM Retrigger FCPG</p>
-															</a>
-														</li>-->
-
-
-													</ul>
-												</li>
-												<!--<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-danger"></i>
-												<p>Morgage Bre</p></a>
-													</li>
-													<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-danger"></i>
-												<p>CRM Reverse Feed</p></a>
-													</li>-->
-												<li class="nav-item">
-													<a th:href="@{MLSASVIYA}" class="nav-link"
-														style="font-size: small;">
-														<i class="fas fa-receipt nav-icon text-danger"></i>
-														<p>SAS VIYA</p>
-													</a>
-												</li>
-												<!--<li class="nav-item">
-											<a th:href="@{#}" class="nav-link" style="font-size: small;">
-												<i class="fas fa-receipt nav-icon text-danger"></i>
-												<p>Credit Vidya resubmission Service</p></a>
-													</li>-->
-
-
-										</li>
-									</ul>
-
-								</li>
-
-							</ul>
-
-
-
-						</li>
-						<li class="nav-item">
-							<a th:href="@{#}" class="nav-link">
-												<i class="fas fa-receipt nav-icon text-danger"></i>
-												<p>Cards</p><i class="fas fa-angle-left right"></i></a>
-												
-												<ul class="nav nav-treeview">
-														<li class="nav-item">
-															<a th:href="@{#}" class="nav-link">
-								<i class="fas fa-receipt nav-icon text-warning"></i>
-								<p>Credit Cards</p><i class="fas fa-angle-left right"></i>
-							</a>
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{LCOTPCreation}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>OTP Creation</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCBlockOnlineTransactions}" class="nav-link"
-										style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Block Online Transactions</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCUnblockOnlineTransactions}" class="nav-link"
-										style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Unblock Online Transactions</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCBlockATMWithdrawals}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Block ATM Withdrawals</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCUnblockATMWithdrawals}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Unblock ATM Withdrawals</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCBlockInternationalTransactions}" class="nav-link"
-										style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Block International Transactions</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCUnblockInternationalTransactions}" class="nav-link"
-										style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Unblock International Transactions</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCPrimeCreditCard}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Prime Credit Card</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCConvertTransactionToEMI}" class="nav-link"
-										style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>convertTransactionToEMI</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCCAplicationStatus}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>CCAplicationStatus</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCreateCCBillPayment}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Create CC Bill Payment</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCreditCardsGetOffer}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Get Offer</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCFetchCCBillPayment}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Fetch CC Bill Payment</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCardCreation}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card Creation</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCardStatus}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card Status</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCViewStatement}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>View Statement</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCAvailableCreditLimit}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Available Credit Limit</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCViewRewardPoints}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>View Reward Points</p>
-									</a>
-								</li>
-								<!--<li class="nav-item">
-																<a th:href="@{LCUnblockCard}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Block Card</p></a>
-																</li>-->
-								<li class="nav-item">
-									<a th:href="@{LCUnblockCard}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Unblock Card</p>
-									</a>
-								</li>
-
-
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a th:href="@{MLCMMAPF}" class="nav-link">
-								<i class="fas fa-receipt nav-icon text-warning"></i>
-								<p>Prepaid Card </p><i class="fas fa-angle-left right"></i>
-							</a>
-
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{LCApplicationProcessing}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Application Processing</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCardInformationEnquiry}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Fetch Card Information</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCMonthlyStatement}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Monthly Statement</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCardBlockUnblock}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card Block/Unblock</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCTransactionEnquiry}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Transaction Enquiry</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCGetCardMobileNumber}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Get Card (Mobile Number)</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCUpdateBuyerInformation}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Update Buyer Information</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCUpgradeCardVirtualtoPhysical}" class="nav-link"
-										style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Upgrade Card (Virtual To Physical)</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCAccountStatement}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Account Statement</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCardClose}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card Close</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCreditFreezetoActive}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Credit Freeze To Active</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCardActivation}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card Activation</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCPassivetoActive}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Passive To Active</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCUpdateChangePIN}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Update/Change PIN</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCPeriodicStatement}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Periodic Statement</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCMiniStatement}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Mini Statement</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCardtoCardTransfer}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card to Card Transfer</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCLinkedMobile}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Linked Mobile</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCardSale}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card Sale</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCVVGeneration}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>CVV Generation</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCBuyerNumberLinked}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Buyer Number Linked</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCLast10TransactionDetails}" class="nav-link"
-										style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Last 10 Transactions Details</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCCardTopupCardToCard}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card Topup (Card To Card)</p>
-									</a>
-								</li>
-								<!--<li class="nav-item">
-																<a th:href="@{LCCardInstantDebit}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Card Topup</p></a>
-																</li>-->
-								<li class="nav-item">
-									<a th:href="@{LCCardInstantDebit}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card Instant Debit</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCLimitVerification}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Card Limit Verification</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCFetchContactInfo}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Fetch Contact Information</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCFetchPersonalInfo}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Fetch Personal Information</p>
-									</a>
-								</li>
-
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a th:href="@{#}" class="nav-link">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Pockets</p><i class="fas fa-angle-left right"></i>
-															</a>
-															<ul class="nav nav-treeview">
-																<li class="nav-item">
-																<a th:href="@{LCPocketsWalletCreationAPI}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Wallet Creation API</p></a>
-																</li>
-																<li class="nav-item">
-																<a th:href="@{LCPocketsAddFundsAPI}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Add Funds API</p></a>
-																</li>
-																<li class="nav-item">
-																<a th:href="@{LCPocketsCardDebitAPI}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Card Debit API</p></a>
-																</li>
-																<li class="nav-item">
-																<a th:href="@{LCPocketsTransactionEnquiryAPI}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Transaction Enquiry API</p></a>
-																</li>
-																<li class="nav-item">
-																<a th:href="@{LCPocketsMiniStatementAPI}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Mini Statement API</p></a>
-																</li>
-																<li class="nav-item">
-																<a th:href="@{LCPocketsDetailedStatementAPI}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Detailed Statement API</p></a>
-																</li>
-															</ul>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{#}" class="nav-link">
-								<i class="fas fa-receipt nav-icon text-warning"></i>
-								<p>Debit Card</p><i class="fas fa-angle-left right"></i>
-							</a>
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a th:href="@{LCDebitCardStatus}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>Debit Card Status</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a th:href="@{LCDebitCardGridAuth}" class="nav-link" style="font-size: small;">
-										<i class="fas fa-receipt nav-icon text-warning"></i>
-										<p>GridAuth</p>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-
-					</ul>
-					</li>
-
-					<li class="nav-item">
-						<a th:href="@{#}" class="nav-link">
-								<i class="fas fa-receipt nav-icon text-danger"></i>
-								<p>Paylater</p><i class="fas fa-angle-left right"></i></a>
-								
-								<ul class="nav nav-treeview">
-														<li class="nav-item">
-															<a th:href="@{LCAccountCreation}" class="nav-link">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Account Creation</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{#}" class="nav-link">
-							<i class="fas fa-receipt nav-icon text-warning"></i>
-							<p>Account Management</p><i class="fas fa-angle-left right"></i>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a th:href="@{LCApplicationStatusCheck}" class="nav-link" style="font-size: small;">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Application Status Check </p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a th:href="@{LCPaylaterBalanceInquiry}" class="nav-link" style="font-size: small;">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Balance Inquiry</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a th:href="@{LCPaylaterBillEnquiry}" class="nav-link" style="font-size: small;">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Bill Inquiry</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a th:href="@{LCPaylaterStatement}" class="nav-link" style="font-size: small;">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Statement</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a th:href="@{LCPaylaterPayDues}" class="nav-link" style="font-size: small;">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Pay Dues</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a th:href="@{LCPaylaterODAcDiscovery}" class="nav-link" style="font-size: small;">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>OD A/c Discovery</p>
-								</a>
-							</li>
-
-						</ul>
-					</li>
-					<li class="nav-item">
-						<a th:href="@{#}" class="nav-link">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Paylater with EMI</p>
-															<i class="fas fa-angle-left right"></i></a>
-								
-													<ul class="nav nav-treeview">
-														<li class="nav-item">
-															<a th:href="@{LCAccountClosure}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Account Closure</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{LCGetSavingAccountDetails}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Get Saving Account Details</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{LCForeclosureAmount}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Foreclosure Amount</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{LCRePaymentOfLoan}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Re-Payment Of Loan</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{LCPaylaterEmiBillInquiry}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Bill Inquiry</p>
-															</a>
-														</li>
-														<!--<li class="nav-item">
-															<a th:href="@{LCAccountCreation}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Account Inquiry</p>
-															</a>
-														</li>-->
-														<li class="nav-item">
-															<a th:href="@{LCPaylaterEmiAmortizationSchedule}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Amortization Schedule</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{LCPaylaterEmiLoanDisbursement}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Loan Disbursement</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{LCPaylaterEmiLoanLoanCreation}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Loan Creation</p>
-															</a>
-														</li>
-														<li class="nav-item">
-															<a th:href="@{LCLoanCreationForExistingAccountHolderAndAutoDebit}" class="nav-link" style="font-size: small;">
-																<i class="fas fa-receipt nav-icon text-warning"></i>
-																<p>Loan Creation for Existing Account Holder and Auto Debit.</p>
-															</a>
-														</li>
-													</ul>
-													
-														</li>
-								</ul>
-						</li>
-						
-						<li class="nav-item">
-							<a th:href="@{#}" class="nav-link">
-							<i class="fas fa-receipt nav-icon text-danger"></i>
-							<p>Cardless EMI</p><i class="fas fa-angle-left right"></i>
-						</a>
-
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a th:href="@{LCCardlessEMIEligibility}" class="nav-link">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Eligibility</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a th:href="@{LCCardlessEMIValidation}" class="nav-link">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Validation</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a th:href="@{LCCardlessEMIConfirmation}" class="nav-link">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Confirmation</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a th:href="@{LCCardlessEMICancellation}" class="nav-link">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Cancellation</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a th:href="@{LCCardlessEMIResendOTP}" class="nav-link">
-									<i class="fas fa-receipt nav-icon text-warning"></i>
-									<p>Resend-OTP</p>
-								</a>
-							</li>
-
-						</ul>
-					</li>
-
-					</ul>
-
-					</li>
-					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
-								class="nav-icon fas fa-cash-register text-navy"></i>
-							<p>Payments</p>
-						</a></li>
-					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
-								class="nav-icon fas fa-piggy-bank text-navy"></i>
-							<p>Accounts and Deposits</p>
-						</a></li>
-
-					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
-								class="nav-icon fas fa-business-time text-navy"></i>
-							<p>Business Banking</p>
-						</a></li>
-					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
-								class="nav-icon fas fa-landmark text-navy"></i>
-							<p>Trade Services</p>
-						</a></li>
-					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
-								class="nav-icon fas fa-arrows-alt-h text-navy"></i>
-							<p>Corporate API Suite</p>
-						</a></li>
-
-					</ul>
-
-				</nav>
-				<!-- /.sidebar-menu -->
-			</div>
-			<!-- /.sidebar -->
-		</aside>
-
-
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
-			<div class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1>Retrieve Report</h1>
-						</div><!-- /.col -->
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Building Blocks</a></li>
-								<li class="breadcrumb-item active">Retrieve Report</li>
-							</ol>
-						</div><!-- /.col -->
-					</div><!-- /.row -->
-				</div><!-- /.container-fluid -->
-			</div>
-			<!-- /.content-header -->
-
-			<!-- Main content -->
-
-			<section class="content">
-				<div class="container-fluid">
-					<div class="row ">
-						<div class="col-md-12">
-							<div class="card card-primary card-outline">
-								<div class="card-body">
-
-									<p>This API is used to retrieve report</p>
-
-									<div class="row">
-										<div class="col-8 col-ms-6">
-											<div class="card card-primary card-outline card-outline-tabs">
-												<div class="card-header p-0 border-bottom-0">
-													<ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-														<li class="nav-item">
-															<a class="nav-link active" id="custom-tabs-four-home-tab"
-																data-toggle="pill" href="#custom-tabs-four-home"
-																role="tab" aria-controls="custom-tabs-four-home"
-																aria-selected="true">Input
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div id="load"></div>
+<!-- HOME SECTION -->
+<div class="wrapper">
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-light" style="background:rgb(255, 255, 255);">
+<!-- Left navbar links -->
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+</li>
+</ul>
+<!-- Right navbar links -->
+<ul class="navbar-nav ml-auto">
+<!-- Notifications Dropdown Menu -->
+<li class="nav-item dropdown">
+<a class="nav-link" data-toggle="dropdown" href="#">
+<i class="fas fa-shopping-cart"></i>
+<span class="badge badge-warning navbar-badge" id="cartCount">0</span>
+</a>
+<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+<span class="dropdown-header">API Cart</span>
+<div class="dropdown-divider"></div>
+<div id="cartItems">
+<span class="dropdown-item text-muted text-center">
+                Cart is empty
+            </span>
+</div>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item dropdown-footer bg-primary text-white text-center" onclick="setCartReferrer()" th:href="@{apicart}">
+            Go to API cart
+        </a>
+</div>
+</li><li class="nav-item">
+<a class="nav-link" data-widget="fullscreen" href="#" role="button">
+<i class="fas fa-expand-arrows-alt"></i>
+</a>
+</li>
+</ul>
+</nav>
+<!-- /.navbar -->
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-light-primary elevation-4">
+<!-- Brand Logo -->
+<a class="brand-link" href="#">
+<img alt="" class="brand-image" id="navbar-logo" style="width: 210px;" th:src="@{images/2.jpg}"/>
+<!--<span class="brand-text font-weight-dark ">ALLIED GLOBETECH</span>-->
+</a>
+<!-- Sidebar -->
+<div class="sidebar">
+<!-- Sidebar Menu -->
+<nav class="mt-2">
+<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column text-white rolelist" data-accordion="false" data-widget="treeview" role="menu">
+<li class="nav-item text-bold" th:classappend="
+						        ${menu.children.size() &gt; 0} ? 'has-treeview' : ''
+						    " th:each="menu : ${navMenus}">
+<a class="nav-link" th:href="${menu.children.size() &gt; 0} ? '#' : @{${menu.route}}">
+<i class="nav-icon text-navy" th:classappend="${menu.icon}"></i>
+<p>
+<i class="fas fa-angle-right right" th:if="${menu.children.size() &gt; 0}"></i>
+<th:block th:text="${menu.title}"></th:block>
+</p>
+</a>
+<ul class="nav nav-treeview" th:if="${menu.children.size() &gt; 0}" th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
+</ul>
+</li>
+</ul>
+</nav>
+<!-- /.sidebar-menu -->
+</div>
+<!-- /.sidebar -->
+</aside>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<div class="content-header">
+<div class="container-fluid">
+<div class="row mb-2">
+<div class="col-sm-6">
+<h1>Retrieve Report</h1><span><button class="btn btn-danger" data-api-category="Security" data-api-id="BBPERFIOSGSTSTATEMENTUPLOADRETRIEVEREPORT_API" data-api-name="BBPerfiosgstStatementUploadRetrieveReport" id="subscribeBtn" type="button">Subscribe</button></span>
+</div><!-- /.col -->
+<div class="col-sm-6">
+<ol class="breadcrumb float-sm-right">
+<li class="breadcrumb-item"><a href="#">Building Blocks</a></li>
+<li class="breadcrumb-item active">Retrieve Report</li>
+</ol>
+</div><!-- /.col -->
+</div><!-- /.row -->
+</div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<div class="card card-primary card-outline">
+<div class="card-body">
+<p>This API is used to retrieve report</p>
+<div class="row">
+<div class="col-8 col-ms-6">
+<div class="card card-primary card-outline card-outline-tabs">
+<div class="card-header p-0 border-bottom-0">
+<ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+<li class="nav-item">
+<a aria-controls="custom-tabs-four-home" aria-selected="true" class="nav-link active" data-toggle="pill" href="#custom-tabs-four-home" id="custom-tabs-four-home-tab" role="tab">Input
 																Parameters</a>
-														</li>
-														<li class="nav-item">
-															<a class="nav-link" id="custom-tabs-four-profile-tab"
-																data-toggle="pill" href="#custom-tabs-four-profile"
-																role="tab" aria-controls="custom-tabs-four-profile"
-																aria-selected="false">Output
+</li>
+<li class="nav-item">
+<a aria-controls="custom-tabs-four-profile" aria-selected="false" class="nav-link" data-toggle="pill" href="#custom-tabs-four-profile" id="custom-tabs-four-profile-tab" role="tab">Output
 																Parameters</a>
-														</li>
-														<li class="nav-item">
-															<a class="nav-link" id="custom-tabs-four-messages-tab"
-																data-toggle="pill" href="#custom-tabs-four-messages"
-																role="tab" aria-controls="custom-tabs-four-messages"
-																aria-selected="false">Possible
+</li>
+<li class="nav-item">
+<a aria-controls="custom-tabs-four-messages" aria-selected="false" class="nav-link" data-toggle="pill" href="#custom-tabs-four-messages" id="custom-tabs-four-messages-tab" role="tab">Possible
 																Errors</a>
-														</li>
-
-													</ul>
-												</div>
-												<div class="card-body">
-													<div class="tab-content" id="custom-tabs-four-tabContent">
-														<div class="tab-pane fade show active"
-															id="custom-tabs-four-home" role="tabpanel"
-															aria-labelledby="custom-tabs-four-home-tab">
-															<div class="card">
-																<div class="card-header">
-
-																	<!-- /.card-header -->
-																	<div class="card-body p-0">
-																		<table class="table">
-																			<thead>
-																				<tr>
-																					<th>Name</th>
-																					<th>Type</th>
-																					<th>Description</th>
-																					<th>Mandatory</th>
-																				</tr>
-																			</thead>
-																			<tbody>
-
-																				<tr>
-																					<td>vendorId</td>
-																					<td>String</td>
-																					<td>Vendor Code .</td>
-																					<td>M</td>
-																				</tr>
-
-																				<tr>
-																					<td>perfiosTransactionId</td>
-																					<td>String</td>
-																					<td>Perfios transaction id .</td>
-																					<td>M</td>
-																				</tr>
-
-
-
-																			</tbody>
-																		</table>
-																	</div>
-																	<!-- /.card-body -->
-																</div>
-																<!-- /.card -->
-
-															</div>
-															<!-- /.col -->
-														</div>
-														<div class="tab-pane fade" id="custom-tabs-four-profile"
-															role="tabpanel"
-															aria-labelledby="custom-tabs-four-profile-tab">
-
-															<div class="card">
-																<div class="card-header">
-
-																	<!-- /.card-header -->
-																	<div class="card-body p-0">
-																		<table class="table">
-																			<thead>
-																				<tr>
-																					<th>Name</th>
-																					<th>Type</th>
-																					<th>Description</th>
-
-																				</tr>
-																			</thead>
-																			<tbody>
-																				<tr>
-																					<td>code</td>
-																					<td>String</td>
-																					<td>Message code</td>
-																				</tr>
-																				<tr>
-																					<td>message</td>
-																					<td>String</td>
-																					<td>Message description</td>
-																				</tr>
-																				<tr>
-																					<td>success</td>
-																					<td>String</td>
-																					<td>Success Flag (true / false)</td>
-																				</tr>
-
-
-																			</tbody>
-																		</table>
-																	</div>
-																	<!-- /.card-body -->
-																</div>
-																<!-- /.card -->
-
-															</div>
-															<!-- /.col -->
-														</div>
-														<div class="tab-pane fade" id="custom-tabs-four-messages"
-															role="tabpanel"
-															aria-labelledby="custom-tabs-four-messages-tab">
-															<div class="card">
-																<div class="card-header">
-
-																	<!-- /.card-header -->
-																	<div class="card-body p-0">
-																		<table class="table">
-																			<thead>
-																				<tr>
-																					<th>Error Code</th>
-																					<th>Error Name</th>
-																					<th>Error Logs</th>
-
-																				</tr>
-																			</thead>
-																			<tbody>
-																				<tr>
-																					<td>400P</td>
-																					<td>Incorrect Precision/Scale</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>400F</td>
-																					<td>Invalid Format Of Data</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>400N</td>
-																					<td>Field Value Is Not Required</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>400P</td>
-																					<td>Incorrect Precision/Scale</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>400T</td>
-																					<td>Invalid Format Of Date</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>400L</td>
-																					<td>Field Length Is More Than
+</li>
+</ul>
+</div>
+<div class="card-body">
+<div class="tab-content" id="custom-tabs-four-tabContent">
+<div aria-labelledby="custom-tabs-four-home-tab" class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel">
+<div class="card">
+<div class="card-header">
+<!-- /.card-header -->
+<div class="card-body p-0">
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vendorId</td>
+<td>String</td>
+<td>Vendor Code .</td>
+<td>M</td>
+</tr>
+<tr>
+<td>perfiosTransactionId</td>
+<td>String</td>
+<td>Perfios transaction id .</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<div aria-labelledby="custom-tabs-four-profile-tab" class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel">
+<div class="card">
+<div class="card-header">
+<!-- /.card-header -->
+<div class="card-body p-0">
+<table class="table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>Message code</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Message description</td>
+</tr>
+<tr>
+<td>success</td>
+<td>String</td>
+<td>Success Flag (true / false)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<div aria-labelledby="custom-tabs-four-messages-tab" class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel">
+<div class="card">
+<div class="card-header">
+<!-- /.card-header -->
+<div class="card-body p-0">
+<table class="table">
+<thead>
+<tr>
+<th>Error Code</th>
+<th>Error Name</th>
+<th>Error Logs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400P</td>
+<td>Incorrect Precision/Scale</td>
+<td></td>
+</tr>
+<tr>
+<td>400F</td>
+<td>Invalid Format Of Data</td>
+<td></td>
+</tr>
+<tr>
+<td>400N</td>
+<td>Field Value Is Not Required</td>
+<td></td>
+</tr>
+<tr>
+<td>400P</td>
+<td>Incorrect Precision/Scale</td>
+<td></td>
+</tr>
+<tr>
+<td>400T</td>
+<td>Invalid Format Of Date</td>
+<td></td>
+</tr>
+<tr>
+<td>400L</td>
+<td>Field Length Is More Than
 																						Expected
 																					</td>
-																					<td></td>
-																				</tr>
-
-																				<tr>
-																					<td>400I</td>
-																					<td>Invalid Data Is Entered</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>400M</td>
-																					<td>Mandatory Field Is Missing</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>400C</td>
-																					<td>Conditional Mandatory Field Is
+<td></td>
+</tr>
+<tr>
+<td>400I</td>
+<td>Invalid Data Is Entered</td>
+<td></td>
+</tr>
+<tr>
+<td>400M</td>
+<td>Mandatory Field Is Missing</td>
+<td></td>
+</tr>
+<tr>
+<td>400C</td>
+<td>Conditional Mandatory Field Is
 																						Missing</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>400D</td>
-																					<td>Field Value Can'T Be Duplicate
+<td></td>
+</tr>
+<tr>
+<td>400D</td>
+<td>Field Value Can'T Be Duplicate
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>200</td>
-																					<td>Ok</td>
-																					<td>The Request Has Succeeded</td>
-																				</tr>
-																				<tr>
-																					<td>950</td>
-																					<td>No Response From Backend Within
+<td></td>
+</tr>
+<tr>
+<td>200</td>
+<td>Ok</td>
+<td>The Request Has Succeeded</td>
+</tr>
+<tr>
+<td>950</td>
+<td>No Response From Backend Within
 																						Specific Time Period. Timed Out
 																					</td>
-																					<td>Backend Issue Communicate Them
+<td>Backend Issue Communicate Them
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>951</td>
-																					<td>Blank Response From Backend</td>
-																					<td>Backend Issue Communicate Them
+</tr>
+<tr>
+<td>951</td>
+<td>Blank Response From Backend</td>
+<td>Backend Issue Communicate Them
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>952</td>
-																					<td>Due To Incorrect Request Iso
+</tr>
+<tr>
+<td>952</td>
+<td>Due To Incorrect Request Iso
 																						Message
 																						Or If The Proccode Or Ip Is Not
 																						Registered</td>
-																					<td>Frontend Issue Communicate Them
+<td>Frontend Issue Communicate Them
 																					</td>
-																				</tr>
-
-																				<tr>
-																					<td>953</td>
-																					<td>Iso Response Parsing Failure,Due
+</tr>
+<tr>
+<td>953</td>
+<td>Iso Response Parsing Failure,Due
 																						To
 																						Incorrect Response Iso Message
 																						Format</td>
-																					<td>Backend Issue Communicate Them
+<td>Backend Issue Communicate Them
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>954</td>
-																					<td>Back End Down So Could Not
+</tr>
+<tr>
+<td>954</td>
+<td>Back End Down So Could Not
 																						Connect
 																					</td>
-																					<td>Backend Issue Communicate Them
+<td>Backend Issue Communicate Them
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>955</td>
-																					<td>Internal Iai Timeout Due To
+</tr>
+<tr>
+<td>955</td>
+<td>Internal Iai Timeout Due To
 																						Issue In
 																						Any Of Its Services</td>
-																					<td>Esb Issue Involve Development
+<td>Esb Issue Involve Development
 																						Team
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>956</td>
-																					<td>Request Xml Validation Failure
+</tr>
+<tr>
+<td>956</td>
+<td>Request Xml Validation Failure
 																					</td>
-																					<td>Frontend Issue Communicate Them
+<td>Frontend Issue Communicate Them
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>957</td>
-																					<td>Response Xml Validation Failure
+</tr>
+<tr>
+<td>957</td>
+<td>Response Xml Validation Failure
 																					</td>
-																					<td>Backend Issue Communicate Them
+<td>Backend Issue Communicate Them
 																					</td>
-																				</tr>
-
-																				<tr>
-																					<td>958</td>
-																					<td>Due To Incorrect Response From
+</tr>
+<tr>
+<td>958</td>
+<td>Due To Incorrect Response From
 																						Backend. Http Error</td>
-																					<td>Backend Issue Communicate Them
+<td>Backend Issue Communicate Them
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>959</td>
-																					<td>No Response From Backend Within
+</tr>
+<tr>
+<td>959</td>
+<td>No Response From Backend Within
 																						Specific Time Period. Zero Bytes
 																						Received From Back End</td>
-																					<td>Backend Issue Communicate Them
+<td>Backend Issue Communicate Them
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>960</td>
-																					<td>Error In Configuration File Due
+</tr>
+<tr>
+<td>960</td>
+<td>Error In Configuration File Due
 																						To
 																						Incorrect Format/Iso Request
 																						Parsing
 																						Failure</td>
-																					<td>Esb Issue</td>
-																				</tr>
-																				<tr>
-																					<td>961</td>
-																					<td>Not Applicable Now</td>
-																					<td>Esb Issue</td>
-																				</tr>
-																				<tr>
-																					<td>962</td>
-																					<td>Proccode Application Name Or
+<td>Esb Issue</td>
+</tr>
+<tr>
+<td>961</td>
+<td>Not Applicable Now</td>
+<td>Esb Issue</td>
+</tr>
+<tr>
+<td>962</td>
+<td>Proccode Application Name Or
 																						Information Not Entered In
 																						Config
 																						File</td>
-																					<td>Esb Issue</td>
-																				</tr>
-																				<tr>
-																					<td>963</td>
-																					<td>Incomplete Message Received From
+<td>Esb Issue</td>
+</tr>
+<tr>
+<td>963</td>
+<td>Incomplete Message Received From
 																						Back End</td>
-																					<td>Backend Issue</td>
-																				</tr>
-																				<tr>
-																					<td>964</td>
-																					<td>Not Applicable Now</td>
-																					<td>Esb Issue</td>
-																				</tr>
-																				<tr>
-																					<td>965</td>
-																					<td>Due To Incorrect Messagetype &
+<td>Backend Issue</td>
+</tr>
+<tr>
+<td>964</td>
+<td>Not Applicable Now</td>
+<td>Esb Issue</td>
+</tr>
+<tr>
+<td>965</td>
+<td>Due To Incorrect Messagetype &amp;
 																						Proccode Value In The
 																						Request/Response Packet</td>
-																					<td>Frontend/Backend Issue</td>
-																				</tr>
-																				<tr>
-																					<td>966</td>
-																					<td>Iso Parsing Template Is Not
+<td>Frontend/Backend Issue</td>
+</tr>
+<tr>
+<td>966</td>
+<td>Iso Parsing Template Is Not
 																						Deployed
 																						In Eai Configuration Db</td>
-																					<td>Eai Issue Frontend/Backend Issue
+<td>Eai Issue Frontend/Backend Issue
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>967</td>
-																					<td>Received From Base24 When
+</tr>
+<tr>
+<td>967</td>
+<td>Received From Base24 When
 																						Frontend
 																						Sends An Invalid Key In The
 																						Request
 																						Message</td>
-																					<td>Base24 Or Esb Issue</td>
-																				</tr>
-																				<tr>
-																					<td>970</td>
-																					<td>Message Size Validation Failed
+<td>Base24 Or Esb Issue</td>
+</tr>
+<tr>
+<td>970</td>
+<td>Message Size Validation Failed
 																					</td>
-																					<td>Base24 Or Esb Issue</td>
-																				</tr>
-																				<tr>
-																					<td>0</td>
-																					<td>Financial Transaction Has Been
+<td>Base24 Or Esb Issue</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Financial Transaction Has Been
 																						Approved (Dcc Should Go Ahead
 																						And
 																						Complete The Transaction)</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>111</td>
-																					<td>Invalid Scheme Type</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>114</td>
-																					<td>Invalid Account Number (Dcc
+<td></td>
+</tr>
+<tr>
+<td>111</td>
+<td>Invalid Scheme Type</td>
+<td></td>
+</tr>
+<tr>
+<td>114</td>
+<td>Invalid Account Number (Dcc
 																						Should
 																						Reject The Transaction)</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>115</td>
-																					<td>First Two Digits Of Processing
+<td></td>
+</tr>
+<tr>
+<td>115</td>
+<td>First Two Digits Of Processing
 																						Code
 																						Or Function Code Is Invalid Dcc
 																						Should Reject The Transaction
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>116</td>
-																					<td>Insufficient Funds (Dcc Should
+<td></td>
+</tr>
+<tr>
+<td>116</td>
+<td>Insufficient Funds (Dcc Should
 																						Reject The Transaction)</td>
-																					<td></td>
-																				</tr>
-
-																				<tr>
-																					<td>119</td>
-																					<td>Transaction Not Permitted To
+<td></td>
+</tr>
+<tr>
+<td>119</td>
+<td>Transaction Not Permitted To
 																						Card
 																						Holder (Dcc Should Reject The
 																						Transaction)</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>121</td>
-																					<td>Withdrawal Amount Limit Exceeded
+<td></td>
+</tr>
+<tr>
+<td>121</td>
+<td>Withdrawal Amount Limit Exceeded
 																						(Dcc Should Reject The
 																						Transaction)
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>163</td>
-																					<td>Invalid Cheque Status</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>180</td>
-																					<td>Transfer Limit Exceeded (Dcc
+<td></td>
+</tr>
+<tr>
+<td>163</td>
+<td>Invalid Cheque Status</td>
+<td></td>
+</tr>
+<tr>
+<td>180</td>
+<td>Transfer Limit Exceeded (Dcc
 																						Should
 																						Reject The Transaction)</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>181</td>
-																					<td>Cheques Are In Different Books
+<td></td>
+</tr>
+<tr>
+<td>181</td>
+<td>Cheques Are In Different Books
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>182</td>
-																					<td>Not All Cheques Could Be Stopped
+<td></td>
+</tr>
+<tr>
+<td>182</td>
+<td>Not All Cheques Could Be Stopped
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>183</td>
-																					<td>Cheque Not Issued To This
+<td></td>
+</tr>
+<tr>
+<td>183</td>
+<td>Cheque Not Issued To This
 																						Account
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>184</td>
-																					<td>Requested Block Operation Failed
+<td></td>
+</tr>
+<tr>
+<td>184</td>
+<td>Requested Block Operation Failed
 																						Since Account Is Closed/Frozen
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>185</td>
-																					<td>Invalid Currency/Transaction
+<td></td>
+</tr>
+<tr>
+<td>185</td>
+<td>Invalid Currency/Transaction
 																						Amount
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>186</td>
-																					<td>Block Does Not Exist</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>187</td>
-																					<td>Cheque Stopped</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>188</td>
-																					<td>Invalid Rate Currency
+<td></td>
+</tr>
+<tr>
+<td>186</td>
+<td>Block Does Not Exist</td>
+<td></td>
+</tr>
+<tr>
+<td>187</td>
+<td>Cheque Stopped</td>
+<td></td>
+</tr>
+<tr>
+<td>188</td>
+<td>Invalid Rate Currency
 																						Combination
 
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>189</td>
-																					<td>Cheque Book Already Issued</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>190</td>
-																					<td>Dd Already Paid</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>800</td>
-																					<td>Network Message Was Accepted
+<td></td>
+</tr>
+<tr>
+<td>189</td>
+<td>Cheque Book Already Issued</td>
+<td></td>
+</tr>
+<tr>
+<td>190</td>
+<td>Dd Already Paid</td>
+<td></td>
+</tr>
+<tr>
+<td>800</td>
+<td>Network Message Was Accepted
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>902</td>
-																					<td>Invalid Transaction (Invalid
+<td></td>
+</tr>
+<tr>
+<td>902</td>
+<td>Invalid Transaction (Invalid
 																						Function Code Within Network
 																						Management Messages) (Dcc Should
 																						Reject The Transaction)</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>904</td>
-																					<td>Format Error (Any Format Related
+<td></td>
+</tr>
+<tr>
+<td>904</td>
+<td>Format Error (Any Format Related
 																						Errors Etc) (Dcc Should Reject
 																						The
 																						Transaction)</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>906</td>
-																					<td>Cut-Over In Progress (When
+<td></td>
+</tr>
+<tr>
+<td>906</td>
+<td>Cut-Over In Progress (When
 																						Stand-In
 																						Server Is Handing Over Control
 																						To
 																						Finacle</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>907</td>
-																					<td>Card Issuer Inoperative (When
+<td></td>
+</tr>
+<tr>
+<td>907</td>
+<td>Card Issuer Inoperative (When
 																						Bancsconnect Cannot Contact
 																						Finacle
 																						And Cannot Do Stand-In
 																						Processing )
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>909</td>
-																					<td>System Malfunction (Sent By
+<td></td>
+</tr>
+<tr>
+<td>909</td>
+<td>System Malfunction (Sent By
 																						Bancsconnect For Errors Like
 																						Database Corrupted)</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>911</td>
-																					<td>Card Issuer Timed Out
+<td></td>
+</tr>
+<tr>
+<td>911</td>
+<td>Card Issuer Timed Out
 																						(Bancsconnect
 																						Contacts Finacle And Finacle
 																						Times
 																						Out And Bancsconnect Cannot Do
 																						Stand-In Processing)</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>913</td>
-																					<td>Duplicate Transmission</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>8005</td>
-																					<td>Missing Required Field</td>
-																					<td>Mandatory Field Is Missing.</td>
-																				</tr>
-																				<tr>
-																					<td>400</td>
-																					<td>Invalid Data. The Response Will
+<td></td>
+</tr>
+<tr>
+<td>913</td>
+<td>Duplicate Transmission</td>
+<td></td>
+</tr>
+<tr>
+<td>8005</td>
+<td>Missing Required Field</td>
+<td>Mandatory Field Is Missing.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Invalid Data. The Response Will
 																						Contain Details Of What Is
 																						Invalid.
 																						If Json Format Is Invalid, Then
 																						No
 																						Details.</td>
-																					<td></td>
-																				</tr>
-
-																				<tr>
-																					<td>401</td>
-																					<td>Unauthorized</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>404</td>
-																					<td>{"Code":1012,"Message":"Entity
+<td></td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td></td>
+</tr>
+<tr>
+<td>404</td>
+<td>{"Code":1012,"Message":"Entity
 																						Not
 																						Found"}</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>500</td>
-																					<td>Internal Server Error</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>403</td>
-																					<td>{"Code":1023,"Message":"Videokyc
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td></td>
+</tr>
+<tr>
+<td>403</td>
+<td>{"Code":1023,"Message":"Videokyc
 																						With Given Trcakingid Is Already
 																						Exist"} If Kyc Status Is Other
 																						Than
-																						Open & Unable 1040 – Videokyc Is
+																						Open &amp; Unable 1040 – Videokyc Is
 																						Agent Assigned 1041 – Videokyc
 																						Is
 																						Successful 1042 – Videokyc Is
@@ -2261,455 +691,534 @@
 																						Approved
 																						1046 – Videokyc Is Not Approved
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>8000</td>
-																					<td>Invalid Encrypted Request</td>
-																					<td>Decryption Failure</td>
-																				</tr>
-																				<tr>
-																					<td>8012</td>
-																					<td>Backend Connection Timeout</td>
-																					<td>When Connection Gets Timeout
+<td></td>
+</tr>
+<tr>
+<td>8000</td>
+<td>Invalid Encrypted Request</td>
+<td>Decryption Failure</td>
+</tr>
+<tr>
+<td>8012</td>
+<td>Backend Connection Timeout</td>
+<td>When Connection Gets Timeout
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>8013</td>
-																					<td>Backend Read Timeout</td>
-																					<td>Timed Out For Reading The
+</tr>
+<tr>
+<td>8013</td>
+<td>Backend Read Timeout</td>
+<td>Timed Out For Reading The
 																						Response
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>8014</td>
-																					<td>Backend Bad Url</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>8016</td>
-																					<td>Decryption Failure</td>
-																					<td>Request Is Not Encrypted
+</tr>
+<tr>
+<td>8014</td>
+<td>Backend Bad Url</td>
+<td></td>
+</tr>
+<tr>
+<td>8016</td>
+<td>Decryption Failure</td>
+<td>Request Is Not Encrypted
 																						Properly
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>8019</td>
-																					<td>Respose Encryption Failure</td>
-																					<td>Response Cannot Be Encrypted
+</tr>
+<tr>
+<td>8019</td>
+<td>Respose Encryption Failure</td>
+<td>Response Cannot Be Encrypted
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>429</td>
-																					<td>Too Many Requests</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>8001</td>
-																					<td>Json Is Empty</td>
-																					<td>Json Schema Request Empty</td>
-																				</tr>
-																				<tr>
-																					<td>8002</td>
-																					<td>Invalid Json</td>
-																					<td>Json Is Not Valid.</td>
-																				</tr>
-																				<tr>
-																					<td>8003</td>
-																					<td>Data Size Limit Exceeded</td>
-																					<td>Field Is Not In The Format
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td></td>
+</tr>
+<tr>
+<td>8001</td>
+<td>Json Is Empty</td>
+<td>Json Schema Request Empty</td>
+</tr>
+<tr>
+<td>8002</td>
+<td>Invalid Json</td>
+<td>Json Is Not Valid.</td>
+</tr>
+<tr>
+<td>8003</td>
+<td>Data Size Limit Exceeded</td>
+<td>Field Is Not In The Format
 																						Mentioned.</td>
-																				</tr>
-																				<tr>
-																					<td>8004</td>
-																					<td>Missing Required Field Data</td>
-																					<td>Mandatory Field Data Is Missing.
+</tr>
+<tr>
+<td>8004</td>
+<td>Missing Required Field Data</td>
+<td>Mandatory Field Data Is Missing.
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>8006</td>
-																					<td>Invalid Field Length</td>
-																					<td>Length Of Field Exceeds Defined
+</tr>
+<tr>
+<td>8006</td>
+<td>Invalid Field Length</td>
+<td>Length Of Field Exceeds Defined
 																						Length.</td>
-																				</tr>
-																				<tr>
-																					<td>8007</td>
-																					<td>Invalid Json,Open Curly Brace
+</tr>
+<tr>
+<td>8007</td>
+<td>Invalid Json,Open Curly Brace
 																						Missing.</td>
-																					<td>Open Brace Missing In Json.</td>
-																				</tr>
-																				<tr>
-																					<td>8008</td>
-																					<td>Invalid Json,End Curly Brace
+<td>Open Brace Missing In Json.</td>
+</tr>
+<tr>
+<td>8008</td>
+<td>Invalid Json,End Curly Brace
 																						Missing.</td>
-																					<td>Closing Brace Missing In Json.
+<td>Closing Brace Missing In Json.
 																					</td>
-																				</tr>
-																				<tr>
-																					<td>8009</td>
-																					<td>Internal Server Error</td>
-																					<td>White Space Characters.</td>
-																				</tr>
-																				<tr>
-																					<td>8010</td>
-																					<td>Internal Service Failure</td>
-																					<td>Routing Failure.</td>
-																				</tr>
-																				<tr>
-																					<td>8011</td>
-																					<td>Backend Host Not Found</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>104</td>
-																					<td>Invalid Data</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>105</td>
-																					<td>Invalid Transaction Id</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>106</td>
-																					<td>Invalid Transaction Amount</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>107</td>
-																					<td>Mid Is Mandatory</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>108</td>
-																					<td>Tid Is Mandatory</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>109</td>
-																					<td>Invalid Mid And Tid Combination
+</tr>
+<tr>
+<td>8009</td>
+<td>Internal Server Error</td>
+<td>White Space Characters.</td>
+</tr>
+<tr>
+<td>8010</td>
+<td>Internal Service Failure</td>
+<td>Routing Failure.</td>
+</tr>
+<tr>
+<td>8011</td>
+<td>Backend Host Not Found</td>
+<td></td>
+</tr>
+<tr>
+<td>104</td>
+<td>Invalid Data</td>
+<td></td>
+</tr>
+<tr>
+<td>105</td>
+<td>Invalid Transaction Id</td>
+<td></td>
+</tr>
+<tr>
+<td>106</td>
+<td>Invalid Transaction Amount</td>
+<td></td>
+</tr>
+<tr>
+<td>107</td>
+<td>Mid Is Mandatory</td>
+<td></td>
+</tr>
+<tr>
+<td>108</td>
+<td>Tid Is Mandatory</td>
+<td></td>
+</tr>
+<tr>
+<td>109</td>
+<td>Invalid Mid And Tid Combination
 																					</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>110</td>
-																					<td>Invalid Mid</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>112</td>
-																					<td>Invalid Mid And Tid</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>113</td>
-																					<td>Pos Device Is Not Approved</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>117</td>
-																					<td>Technical Error</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>118</td>
-																					<td>Invalid Transaction Type</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>120</td>
-																					<td>You Have Exceeded Transaction
+<td></td>
+</tr>
+<tr>
+<td>110</td>
+<td>Invalid Mid</td>
+<td></td>
+</tr>
+<tr>
+<td>112</td>
+<td>Invalid Mid And Tid</td>
+<td></td>
+</tr>
+<tr>
+<td>113</td>
+<td>Pos Device Is Not Approved</td>
+<td></td>
+</tr>
+<tr>
+<td>117</td>
+<td>Technical Error</td>
+<td></td>
+</tr>
+<tr>
+<td>118</td>
+<td>Invalid Transaction Type</td>
+<td></td>
+</tr>
+<tr>
+<td>120</td>
+<td>You Have Exceeded Transaction
 																						Status
 																						Last 24 Hours</td>
-																					<td></td>
-																				</tr>
-
-																				<tr>
-																					<td>122</td>
-																					<td>Source Details Not Found</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>123</td>
-																					<td>Merchant Details Not Found</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>124</td>
-																					<td>Invalid Transaction Type</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>125</td>
-																					<td>Unknown Error At Imsl</td>
-																					<td></td>
-																				</tr>
-																				<tr>
-																					<td>300</td>
-																					<td>Request Failure</td>
-																					<td></td>
-																				</tr>
-
-
-
-
-																			</tbody>
-																		</table>
-																	</div>
-																	<!-- /.card-body -->
-																</div>
-																<!-- /.card -->
-
-															</div>
-															<!-- /.col -->
-														</div>
-
-													</div>
-												</div>
-												<!-- /.card -->
-											</div>
-										</div>
-
-										<div class="col-4 col-ms-6">
-											<div class="test" style="text-align: center;">
-												<h5>Download the API Document</h5>
-												<div>
-													<div>
-														<button type="button"
-															class="btn btn-block btn-secondary btn-lg">Download</button>
-													</div>
-													<br>
-													<p>Sample Request Packet</p>
-													<div>
-														<textarea id="SampleRequestPacketJson" cols="40" rows="7"
-															style="overflow:scroll; font-size: small; overflow-wrap: normal; ">
+<td></td>
+</tr>
+<tr>
+<td>122</td>
+<td>Source Details Not Found</td>
+<td></td>
+</tr>
+<tr>
+<td>123</td>
+<td>Merchant Details Not Found</td>
+<td></td>
+</tr>
+<tr>
+<td>124</td>
+<td>Invalid Transaction Type</td>
+<td></td>
+</tr>
+<tr>
+<td>125</td>
+<td>Unknown Error At Imsl</td>
+<td></td>
+</tr>
+<tr>
+<td>300</td>
+<td>Request Failure</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+</div>
+</div>
+<!-- /.card -->
+</div>
+</div>
+<div class="col-4 col-ms-6">
+<div class="test" style="text-align: center;">
+<h5>Download the API Document</h5>
+<div>
+<div>
+<button class="btn btn-block btn-secondary btn-lg" type="button">Download</button>
+</div>
+<br/>
+<p>Sample Request Packet</p>
+<div>
+<textarea cols="40" id="SampleRequestPacketJson" rows="7" style="overflow:scroll; font-size: small; overflow-wrap: normal; ">
 
 														</textarea>
-													</div>
-													<br>
-													<div>
-														<button type="button" class="btn btn-block btn-primary btn-lg"
-															data-toggle="modal" data-target="#modal-lg">
+</div>
+<br/>
+<div>
+<button class="btn btn-block btn-primary btn-lg" data-target="#modal-lg" data-toggle="modal" type="button">
 															Test API
 														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
-			</section>
-			<!-- /.content -->
-		</div>
-		<!-- /.content-wrapper -->
-
-
-		<!-- Main Footer -->
-		<footer class="main-footer">
-			<div>
-				<div>
-					<footer class="main-footer">
-						<div class="col-md-4" style="float:left;"> © 2021-2022 All rights reserved.</div>
-						<div class="col-md-4" style="float:left;text-align:center;"> <img class="img-fluid"
-								th:src="@{/images/flag.png}" alt="Proudly Made In India" width="50" height="40">
-							&nbsp; Proudly Made In India</div>
-						<div class="float-right d-none d-sm-inline-block">
-							<!--<img class="img-fluid" th:src="@{/images/alliedlogo.jpeg}"  alt="Photo" width="60" height="60"> -->Designed
-							& Developed by <img class="img-fluid" width="100" height="100"
-								th:src="@{/images/AlliedGlobetech.png}" alt="Allied GlobeTech">
-						</div>
-					</footer>
-				</div>
-			</div>
-
-		</footer>
-	</div>
-	<!-- ./wrapper -->
-
-
-
-	<!-- Modal View -->
-	<div class="modal fade" id="modal-lg">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title"><label> Test API</label></h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-
-
-					<div class="row">
-						<div class="col-12 ">
-							<div class="card card-primary card-outline card-tabs">
-								<div class="card-header p-0 pt-1 border-bottom-0">
-									<ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
-										<li class="nav-item">
-											<a class="nav-link active" id="custom-tabs-three-home-tab"
-												style="width: 380px; text-align: center;" data-toggle="pill"
-												href="#custom-tabs-three-home" role="tab"
-												aria-controls="custom-tabs-three-home"
-												aria-selected="true"><label>Body</label></a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" id="custom-tabs-three-profile-tab"
-												style="width: 385px; text-align: center;" data-toggle="pill"
-												href="#custom-tabs-three-profile" role="tab"
-												aria-controls="custom-tabs-three-profile"
-												aria-selected="false"><label>Header</label></a>
-										</li>
-									</ul>
-								</div>
-								<div class="card-body">
-									<div class="tab-content" id="custom-tabs-three-tabContent">
-										<div class="tab-pane fade show active" id="custom-tabs-three-home"
-											role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
-
-											<!--Tab 1 Start-->
-											<div class="card-body">
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Select Content Type:</label>
-															<select class="form-control select2" style="width: 100%;">
-																<option selected="selected">JSON</option>
-																<option>XML</option>
-															</select>
-														</div>
-													</div>
-												</div>
-
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Request:</label>
-															<textarea id="RequestJson"
-																style=" overflow-y: scroll;width: 100%;height: 125px; resize: none; font-size: small;">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div><br/></div><div class="row">
+<div class="col-12">
+<div class="card card-success collapsed-card">
+<div class="card-header">
+<h3 class="card-title">Load Swagger</h3>
+<div class="card-tools">
+<button class="btn btn-tool" data-card-widget="collapse" onclick="loadSwagger()" type="button">
+<i class="fas fa-plus"></i>
+</button>
+</div>
+<!-- /.card-tools -->
+</div>
+<!-- /.card-header -->
+<div class="card-body">
+<div id="swagger-ui"></div>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+</div></div>
+</div>
+</div>
+</div></section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- Main Footer -->
+<footer class="main-footer">
+<div>
+<div>
+<footer class="main-footer">
+<div class="col-md-4" style="float:left;"> © 2021-2022 All rights reserved.</div>
+<div class="col-md-4" style="float:left;text-align:center;"> <img alt="Proudly Made In India" class="img-fluid" height="40" th:src="@{/images/flag.png}" width="50"/>
+							  Proudly Made In India</div>
+<div class="float-right d-none d-sm-inline-block">
+<!--<img class="img-fluid" th:src="@{/images/alliedlogo.jpeg}"  alt="Photo" width="60" height="60"> -->Designed
+							&amp; Developed by <img alt="Allied GlobeTech" class="img-fluid" height="100" th:src="@{/images/AlliedGlobetech.png}" width="100"/>
+</div>
+</footer>
+</div>
+</div>
+</footer>
+</div>
+<!-- ./wrapper -->
+<!-- Modal View -->
+<div class="modal fade" id="modal-lg">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title"><label> Test API</label></h4>
+<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-12">
+<div class="card card-primary card-outline card-tabs">
+<div class="card-header p-0 pt-1 border-bottom-0">
+<ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+<li class="nav-item">
+<a aria-controls="custom-tabs-three-home" aria-selected="true" class="nav-link active" data-toggle="pill" href="#custom-tabs-three-home" id="custom-tabs-three-home-tab" role="tab" style="width: 380px; text-align: center;"><label>Body</label></a>
+</li>
+<li class="nav-item">
+<a aria-controls="custom-tabs-three-profile" aria-selected="false" class="nav-link" data-toggle="pill" href="#custom-tabs-three-profile" id="custom-tabs-three-profile-tab" role="tab" style="width: 385px; text-align: center;"><label>Header</label></a>
+</li>
+</ul>
+</div>
+<div class="card-body">
+<div class="tab-content" id="custom-tabs-three-tabContent">
+<div aria-labelledby="custom-tabs-three-home-tab" class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel">
+<!--Tab 1 Start-->
+<div class="card-body">
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+<label>Select Content Type:</label>
+<select class="form-control select2" style="width: 100%;">
+<option selected="selected">JSON</option>
+<option>XML</option>
+</select>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+<label>Request:</label>
+<textarea id="RequestJson" style=" overflow-y: scroll;width: 100%;height: 125px; resize: none; font-size: small;">
 
 															</textarea>
-														</div>
-													</div>
-
-													<div class="col-md-6">
-														<form id='form1'>
-															<div class="form-group">
-
-																<label>Response:</label>
-																<textarea id="ResponseJson"
-																	style=" overflow-y: scroll;width: 100%;height: 125px; resize: none; font-size: small;">
+</div>
+</div>
+<div class="col-md-6">
+<form id="form1">
+<div class="form-group">
+<label>Response:</label>
+<textarea id="ResponseJson" style=" overflow-y: scroll;width: 100%;height: 125px; resize: none; font-size: small;">
 
 																</textarea>
-
-															</div>
-														</form>
-													</div>
-												</div>
-
-												<div class="testbtn" style="text-align: right;">
-													<button class="btn btn-primary " id="submitTest">Test</button>
-												</div>
-
-											</div>
-
-										</div>
-										<!--Tab 1 End-->
-
-
-
-										<!--Tab 2 Start-->
-										<div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel"
-											aria-labelledby="custom-tabs-three-profile-tab">
-											<div class="row">
-												<div class="col-md-10">
-													<label>Request header:</label>
-												</div>
-												<div class="col-md-2">
-													<button class="btn btn-secondary " id="buttonAdd">Add
+</div>
+</form>
+</div>
+</div>
+<div class="testbtn" style="text-align: right;">
+<button class="btn btn-primary" id="submitTest">Test</button>
+</div>
+</div>
+</div>
+<!--Tab 1 End-->
+<!--Tab 2 Start-->
+<div aria-labelledby="custom-tabs-three-profile-tab" class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel">
+<div class="row">
+<div class="col-md-10">
+<label>Request header:</label>
+</div>
+<div class="col-md-2">
+<button class="btn btn-secondary" id="buttonAdd">Add
 														Header</button>
-												</div>
-											</div>
-
-											<div id="TextBoxContainer" style="padding: 10px;">
-												<!--Textboxes will be added here -->
-												<label>Key : </label>&nbsp;&nbsp;<input name="CreateTextbox"
-													value="API key" type="text" disabled="disabled">&nbsp;&nbsp;
-												<label>Value : </label>&nbsp;&nbsp;<input name="CreateTextbox"
-													value="f219f506-1079-4c76-8ea6-439774f96265" type="text"
-													disabled="disabled">&nbsp;&nbsp;
+</div>
+</div>
+<div id="TextBoxContainer" style="padding: 10px;">
+<!--Textboxes will be added here -->
+<label>Key : </label>  <input disabled="disabled" name="CreateTextbox" type="text" value="API key"/>  
+												<label>Value : </label>  <input disabled="disabled" name="CreateTextbox" type="text" value="f219f506-1079-4c76-8ea6-439774f96265"/>  
 												<!--<input type='button' value="Remove" class="remove">-->
-												<br>
-												<br>
-											</div>
+<br/>
+<br/>
+</div>
+</div>
+<!--Tab 2 End-->
+</div>
+</div>
+<!-- /.card -->
+</div>
+</div>
+</div>
+<div class="modal-footer justify-content-between">
+<button class="btn btn-dark" data-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+</div>
+<!-- Modal View End -->
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script th:src="@{plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- overlayScrollbars -->
+<script th:src="@{plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{static/dist/js/adminlte.js}"></script>
+<!-- Bootstrap Switch -->
+<script th:src="@{plugins/bootstrap-switch/js/bootstrap-switch.min.js}"></script>
+<!-- BS-Stepper -->
+<script th:src="@{plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+<!-- dropzonejs -->
+<script th:src="@{plugins/dropzone/min/dropzone.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{dist/js/demo.js}"></script>
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script th:src="@{plugins/jquery-mousewheel/jquery.mousewheel.js}"></script>
+<script th:src="@{plugins/raphael/raphael.min.js}"></script>
+<script th:src="@{plugins/jquery-mapael/jquery.mapael.min.js}"></script>
+<script th:src="@{plugins/jquery-mapael/maps/usa_states.min.js}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+<!-- Developer Script -->
+<script th:src="@{dist/js/Common.js}"></script>
+<script th:src="@{dist/js/BBPerfiosgstStatementUploadRetrieveReport.js}"></script>
+<script th:inline="javascript">
+		const NAV_MENUS = /*[[${navMenus}]]*/[];
+		const CURRENT_ROUTE = /*[[${#httpServletRequest.requestURI}]]*/ '';
+</script><script th:src="@{/swagger-editor/js-yaml-min.js}"></script><script th:src="@{/swagger-editor/swagger-ui-bundle.js}"></script><script th:src="@{/swagger-editor/swagger-ui-standalone-preset.js}"></script><script>
+		const CART_KEY = "API_CART";
 
-										</div>
-										<!--Tab 2 End-->
+		function getCart() {
+			return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+		}
 
-									</div>
-								</div>
-								<!-- /.card -->
-							</div>
-						</div>
+		function saveCart(cart) {
+			localStorage.setItem(CART_KEY, JSON.stringify(cart));
+		}
 
-
-					</div>
-					<div class="modal-footer justify-content-between">
-						<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
-		<!-- /.modal -->
-	</div>
-	<!-- Modal View End -->
+		function updateCartCount() {
+			const el = document.getElementById("cartCount");
+			if (el) el.innerText = getCart().length;
+		}
 
 
+		function setCartReferrer() {
+			const referrer = {
+				title: document.title || "Go back",
+				url: window.location.pathname
+			};
+			sessionStorage.setItem("cartReferrer", JSON.stringify(referrer));
+		}
 
+		function addToCart(api) {
+			let cart = JSON.parse(localStorage.getItem("apiCart")) || [];
+			const exists = cart.some(item => item.id === api.id);
+			if (!exists) {
+				cart.push(api);
+				localStorage.setItem("apiCart", JSON.stringify(cart));
+			}
 
-	<!-- REQUIRED SCRIPTS -->
-	<!-- jQuery -->
-	<script th:src="@{plugins/jquery/jquery.min.js}"></script>
-	<!-- Bootstrap -->
-	<script th:src="@{plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
-	<!-- overlayScrollbars -->
-	<script th:src="@{plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
-	<!-- AdminLTE App -->
-	<script th:src="@{static/dist/js/adminlte.js}"></script>
-	<!-- Bootstrap Switch -->
-	<script th:src="@{plugins/bootstrap-switch/js/bootstrap-switch.min.js}"></script>
-	<!-- BS-Stepper -->
-	<script th:src="@{plugins/bs-stepper/js/bs-stepper.min.js}"></script>
-	<!-- dropzonejs -->
-	<script th:src="@{plugins/dropzone/min/dropzone.min.js}"></script>
-	<!-- AdminLTE App -->
-	<script th:src="@{dist/js/adminlte.min.js}"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script th:src="@{dist/js/demo.js}"></script>
+			updateSubscribeButton(api.id, true);
+			updateCartCount();
+		}
 
-	<!-- PAGE PLUGINS -->
-	<!-- jQuery Mapael -->
-	<script th:src="@{plugins/jquery-mousewheel/jquery.mousewheel.js}"></script>
-	<script th:src="@{plugins/raphael/raphael.min.js}"></script>
-	<script th:src="@{plugins/jquery-mapael/jquery.mapael.min.js}"></script>
-	<script th:src="@{plugins/jquery-mapael/maps/usa_states.min.js}"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		function renderCartDropdown() {
+			const cart = getCart();
+			const container = document.getElementById("cartItems");
+			if (!container) return;
+			container.innerHTML = "";
 
-	<!-- Developer Script -->
-	<script th:src="@{dist/js/Common.js}"></script>
-	<script th:src="@{dist/js/BBPerfiosgstStatementUploadRetrieveReport.js}"></script>
+			if (cart.length === 0) {
+				container.innerHTML =
+					`<span class="dropdown-item text-muted text-center">
+		                Cart is empty
+		             </span>`;
+				return;
+			}
 
+			cart.forEach(api => {
+				container.innerHTML += `
+				  <div class="dropdown-item d-flex justify-content-between align-items-center">
+				      <div>
+				          <i class="fas fa-plug mr-2"></i>
+				          ${api.name}
+				          <small class="text-muted ml-2">(${api.category})</small>
+				      </div>
+				      <button class="btn btn-xs btn-danger remove-api"
+				              data-id="${api.id}">
+				          <i class="fas fa-trash"></i>
+				      </button>
+				  </div>`;
+			});
+		}
 
+		function updateSubscribeButton() {
+			const btn = document.getElementById("subscribeBtn");
+			if (!btn) return;
 
+			const apiId = btn.dataset.apiId;
+			const cart = getCart();
 
+			const exists = cart.some(api => api.id === apiId);
 
-</body>
+			if (exists) {
+				btn.innerText = "Added to Cart";
+				btn.disabled = true;
+			} else {
+				btn.innerText = "Subscribe";
+				btn.disabled = false;
+			}
+		}
 
+		document.addEventListener("click", function (e) {
+			const btn = e.target.closest(".remove-api");
+			if (!btn) return;
+
+			const apiId = btn.dataset.id;
+
+			let cart = getCart();
+			cart = cart.filter(api => api.id !== apiId);
+			saveCart(cart);
+
+			updateCartCount();
+			renderCartDropdown();
+			updateSubscribeButton();
+		});
+
+		document.getElementById("subscribeBtn")?.addEventListener("click", function () {
+			const api = {
+				id: this.dataset.apiId,
+				name: this.dataset.apiName,
+				category: this.dataset.apiCategory
+			};
+
+			let cart = getCart();
+
+			if (!cart.some(item => item.id === api.id)) {
+				cart.push(api);
+				saveCart(cart);
+			}
+
+			updateCartCount();
+			renderCartDropdown();
+			updateSubscribeButton();
+		});
+
+		updateCartCount();
+		renderCartDropdown();
+		updateSubscribeButton();
+	</script></body>
 </html>

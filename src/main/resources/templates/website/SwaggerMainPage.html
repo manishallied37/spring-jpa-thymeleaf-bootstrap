@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Theme style -->
+	<link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}">
+	<!-- IonIcons -->
+	<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" th:href="@{plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+	<!-- Select2 -->
+	<link rel="stylesheet" th:href="@{plugins/select2/css/select2.min.css}">
+	<!-- Bootstrap4 -->
+	<link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+	<!-- Bootstrap4 Duallistbox -->
+	<link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
+	<!-- BS Stepper -->
+	<link rel="stylesheet" th:href="@{plugins/bs-stepper/css/bs-stepper.min.css}">
+	<!-- dropzonejs -->
+	<link rel="stylesheet" th:href="@{plugins/dropzone/min/dropzone.min.css}">
+	<!-- Toastr -->
+	<link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}">
+
+
+	<style>
+		#load {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url(images/loader.gif) center no-repeat #fff;
+			opacity: 1;
+
+		}
+		.nav-sidebar .nav-treeview > .nav-item > .nav-link {
+		    background-color: transparent !important;
+		    color: #777 !important;
+		}
+		/* =========================
+		   Button feedback
+		   ========================= */
+		.btn-primary:hover {
+		    box-shadow: 0 4px 10px rgba(0,123,255,.35);
+		}
+		
+		.btn-primary:active,
+		.btn-primary.active {
+		    transform: translateY(1px);
+		    box-shadow: inset 0 3px 5px rgba(0,0,0,.2);
+		}
+		
+		/* =========================
+		   One-line flex layout
+		   ========================= */
+		form.d-flex {
+		    flex-wrap: nowrap;
+		}
+		
+		form.d-flex > * {
+		    flex-shrink: 0;
+		}
+		
+		/* =========================
+		   Unified control height
+		   ========================= */
+		.select2-container--bootstrap4 .select2-selection--single,
+		.custom-file,
+		.custom-file-input,
+		.custom-file-label,
+		.btn {
+		    height: 38px !important;
+		}
+		
+		/* =========================
+		   Select2 styling & alignment
+		   ========================= */
+		.select2-container--bootstrap4 .select2-selection--single {
+		    display: flex;
+		    align-items: center;
+		    padding: 0 10px;
+		    border-radius: 6px;
+		    border: 1px solid #ced4da;
+		    transition: border-color .2s ease, box-shadow .2s ease;
+		}
+		
+		.select2-container--bootstrap4
+		.select2-selection--single:hover {
+		    border-color: #80bdff;
+		}
+		
+		.select2-container--bootstrap4
+		.select2-selection--single.select2-selection--focus {
+		    border-color: #007bff;
+		    box-shadow: 0 0 0 .15rem rgba(0,123,255,.25);
+		}
+		
+		.select2-container--bootstrap4
+		.select2-selection__rendered {
+		    line-height: 38px;
+		    padding-left: 0;
+		    font-weight: 500;
+		}
+		
+		/* Dropdown arrow */
+		.select2-container--bootstrap4
+		.select2-selection__arrow {
+		    height: 38px;
+		}
+		
+		.select2-container--bootstrap4
+		.select2-selection__arrow b {
+		    border-color: #495057 transparent transparent transparent;
+		    border-width: 6px 5px 0 5px;
+		}
+		
+		.select2-container--bootstrap4
+		.select2-selection--single:hover
+		.select2-selection__arrow b {
+		    border-color: #007bff transparent transparent transparent;
+		}
+		
+		/* Dropdown menu */
+		.select2-dropdown {
+		    border-radius: 6px;
+		    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+		}
+		
+		.custom-file-input:focus ~ .custom-file-label {
+		    border-color: #80bdff;
+		    box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+		}
+		
+		/* Unified height */
+		.select2-container--bootstrap4 .select2-selection--single,
+		.custom-file-label,
+		.custom-file-label::after,
+		.btn {
+		    height: 38px;
+		    line-height: 38px;
+		}
+		
+		/* Fix Browse alignment */
+		.custom-file-label::after {
+		    line-height: 38px;
+		    padding: 0 12px;
+		}
+		
+		.select2-container--bootstrap4
+		.select2-selection--single
+		.select2-selection__rendered {
+		    line-height: 38px;
+		}
+		
+		/* Fix upload button vertical alignment */
+		.btn {
+		    height: 38px;
+		    line-height: 38px;
+		    padding: 0 16px;
+		    display: inline-flex;
+		    align-items: center;
+		    justify-content: center;
+		}
+		
+		.btn i {
+		    line-height: 1;
+		}
+		form label {
+		    line-height: 38px;
+		}
+		
+		.custom-file-label {
+		    height: 38px;
+		    display: flex;
+		    align-items: center;
+		    line-height: normal;
+		    padding-right: 90px; /* space for Browse button */
+		}
+		
+		/* Keep Browse perfectly aligned */
+		.custom-file-label::after {
+		    height: 38px;
+		    line-height: 38px;
+		    display: flex;
+		    align-items: center;
+		}
+		
+		/* Make selection relative so arrow can anchor */
+		.select2-container--bootstrap4 .select2-selection--single {
+		    position: relative;
+		}
+		
+		/* Force arrow inside the box */
+		.select2-container--bootstrap4 .select2-selection__arrow {
+		    position: absolute;
+		    top: 50%;
+		    right: 10px;
+		    transform: translateY(-50%);
+		    height: auto;
+		    width: auto;
+		}
+		
+		/* Remove flex interference */
+		.select2-container--bootstrap4
+		.select2-selection--single {
+		    display: block; /* NOT flex */
+		}
+		
+		/* Ensure text stays vertically centered */
+		.select2-container--bootstrap4
+		.select2-selection__rendered {
+		    line-height: 38px;
+		    padding-right: 30px; /* space for arrow */
+		}
+
+
+	</style>
+
+</head>
+
+<body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+	<div id="load"></div>
+
+	<!-- HOME SECTION -->
+	<div class="wrapper">
+
+
+		<!-- Navbar -->
+		<nav class="main-header navbar navbar-expand navbar-light" style="background:rgb(255, 255, 255);">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+				</li>
+
+			</ul>
+
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+
+				<!-- Notifications Dropdown Menu -->
+
+				<li class="nav-item">
+					<a class="nav-link" data-widget="fullscreen" href="#" role="button">
+						<i class="fas fa-expand-arrows-alt"></i>
+					</a>
+				</li>
+
+			</ul>
+		</nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-light-primary elevation-4">
+			<!-- Brand Logo -->
+			<a href="#" class="brand-link">
+				<img th:src="@{images/2.jpg}" id="navbar-logo" alt="" class="brand-image  " style="width: 210px;">
+				<!--<span class="brand-text font-weight-dark ">ALLIED GLOBETECH</span>-->
+			</a>
+
+			<!-- Sidebar -->
+			<div class="sidebar">
+
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+
+					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column text-white rolelist"
+					    data-widget="treeview" role="menu" data-accordion="false">
+					
+						<li class="nav-item text-bold"
+						    th:each="menu : ${navMenus}"
+						    th:classappend="
+						        ${menu.children.size() > 0} ? 'has-treeview' : ''
+						    ">
+
+							<a class="nav-link"
+							   th:href="${menu.children.size() > 0} ? '#' : @{${menu.route}}">
+				
+				                <i class="nav-icon text-navy"
+				                   th:classappend="${menu.icon}"></i>
+				
+				                <p>
+				                    <i class="fas fa-angle-right right"
+				                       th:if="${menu.children.size() > 0}"></i>
+				                    <th:block th:text="${menu.title}"></th:block>
+				                </p>
+				            </a>
+				
+				            <ul class="nav nav-treeview"
+							    th:if="${menu.children.size() > 0}"
+							    th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
+							</ul>
+				
+				        </li>
+					</ul>
+
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
+
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>Upload Swagger File</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<!--<li class="breadcrumb-item"><a href="#">Loans And Cards</a></li>
+								<li class="breadcrumb-item"><a href="#">Loans</a></li>
+								<li class="breadcrumb-item"><a href="#">Topup</a></li>
+								<li class="breadcrumb-item active">Loan Disbursement</li>-->
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+
+			<section class="content">
+			    <div class="container-fluid">
+			
+			        <form th:action="@{/upload}" method="post" enctype="multipart/form-data"
+					      class="form-inline align-items-center">
+						
+						    <!-- Label -->
+						    <label class="mr-3 mb-0 font-weight-semibold">
+						        Select corresponding Menu containing the API
+						    </label>
+						
+						    <!-- Menu Dropdown -->
+						    <select class="form-control select2 mr-3"
+						            name="menuName"
+						            style="width:260px"
+						            required>
+						        <option value="">— Select Menu —</option>
+						
+						        <th:block th:each="menu : ${navMenus}">
+						            <option th:value="${menu.title}"
+						                    th:text="${menu.title}">
+						            </option>
+						
+						            <th:block th:each="child : ${menu.children}">
+						                <option th:value="${child.title}"
+						                        th:text="|— ${child.title}|">
+						                </option>
+						            </th:block>
+						        </th:block>
+						    </select>
+						
+						    <!-- File Picker -->
+						    <div class="custom-file mr-3" style="width:280px">
+						        <input type="file"
+						               class="custom-file-input"
+						               id="swaggerFile"
+						               name="file"
+						               required>
+						        <label class="custom-file-label" for="swaggerFile">
+						            Choose Swagger file
+						        </label>
+						    </div>
+						
+						    <!-- Upload Button -->
+						    <button type="submit"
+						            id="uploadBtn"
+						            class="btn btn-primary"
+						            disabled>
+						        <i class="fas fa-upload mr-1"></i> Upload
+						    </button>
+						
+						</form>
+			    </div>
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<div>
+				<div>
+					<footer class="main-footer">
+						<div class="col-md-4" style="float:left;"> © 2021-2022 All rights reserved.</div>
+						<div class="col-md-4" style="float:left;text-align:center;"> <img class="img-fluid"
+								th:src="@{/images/flag.png}" alt="Proudly Made In India" width="50" height="40">
+							&nbsp; Proudly Made In India</div>
+						<div class="float-right d-none d-sm-inline-block">
+							<!--<img class="img-fluid" th:src="@{/images/alliedlogo.jpeg}"  alt="Photo" width="60" height="60"> -->Designed
+							& Developed by <img class="img-fluid" width="100" height="100" th:src="@{/images/2.jpg}"
+								alt="Allied GlobeTech">
+						</div>
+					</footer>
+				</div>
+			</div>
+
+		</footer>
+	</div>
+	<!-- ./wrapper -->
+
+
+	<!-- REQUIRED SCRIPTS -->
+	<!-- jQuery -->
+	<script th:src="@{plugins/jquery/jquery.min.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	
+	<script th:src="@{plugins/select2/js/select2.full.min.js}"></script>
+	
+	<script th:src="@{dist/js/adminlte.min.js}"></script>
+	<!-- overlayScrollbars -->
+	<script th:src="@{plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+	<!-- Bootstrap Switch -->
+	<script th:src="@{plugins/bootstrap-switch/js/bootstrap-switch.min.js}"></script>
+	<!-- BS-Stepper -->
+	<script th:src="@{plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+	<!-- dropzonejs -->
+	<script th:src="@{plugins/dropzone/min/dropzone.min.js}"></script>
+
+	<!-- PAGE PLUGINS -->
+	<!-- jQuery Mapael -->
+	<script th:src="@{plugins/jquery-mousewheel/jquery.mousewheel.js}"></script>
+	<script th:src="@{plugins/raphael/raphael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/jquery.mapael.min.js}"></script>
+	<script th:src="@{plugins/jquery-mapael/maps/usa_states.min.js}"></script>
+
+	<!-- Developer Script -->
+	<script th:src="@{dist/js/Common.js}"></script>
+	
+	<script>
+		$(document).ready(function () {
+		
+		    const $menu = $('select[name="menuName"]');
+		    const $file = $('#swaggerFile');
+		    const $btn  = $('#uploadBtn');
+		
+		    // Init Select2
+		    $menu.select2({
+		        theme: 'bootstrap4',
+		        width: '260px',
+		        placeholder: '— Select Menu —',
+		        allowClear: true
+		    });
+		
+		    function validateForm() {
+		        const menuSelected = $menu.val() && $menu.val() !== '';
+		        const fileSelected = $file[0].files && $file[0].files.length > 0;
+		        $btn.prop('disabled', !(menuSelected && fileSelected));
+		    }
+		
+		    $menu.on('select2:select select2:clear', validateForm);
+		
+		    $file.on('change', function () {
+		        const fileName = this.files.length
+		            ? this.files[0].name
+		            : 'Choose Swagger file';
+		
+		        $(this).next('.custom-file-label').text(fileName);
+		        validateForm();
+		    });
+		
+		    validateForm();
+		});
+	</script>
+</body>
+
+</html>

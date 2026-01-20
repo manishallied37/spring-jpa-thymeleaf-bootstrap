@@ -181,7 +181,7 @@
 			
 			          <div class="mt-3 text-right">
 			            <button class="btn btn-success" id="checkoutBtn">
-			              Proceed to Billing
+			              Proceed to Subscribe
 			            </button>
 			          </div>
 			
@@ -201,7 +201,7 @@
 			<div>
 				<div>
 					<footer class="main-footer">
-						<div class="col-md-4" style="float:left;"> © 2021-2026 All rights reserved.</div>
+						<div class="col-md-4" style="float:left;"> © 2021-2022 All rights reserved.</div>
 						<div class="col-md-4" style="float:left;text-align:center;"> <img class="img-fluid"
 								th:src="@{/images/flag.png}" alt="Proudly Made In India" width="50" height="40">
 							&nbsp; Proudly Made In India</div>
@@ -256,19 +256,32 @@
 	<script th:src="@{/swagger-editor/js-yaml-min.js}"></script>
 	<script th:src="@{/swagger-editor/swagger-ui-bundle.js}"></script>
 	<script th:src="@{/swagger-editor/swagger-ui-standalone-preset.js}"></script>
-			
+	
+	<script th:src="@{dist/js/SecurityEncryption.js}"></script>
+	
 	<script>
 	
-	const CART_KEY = "API_CART";
+	console.log("Cart page JS loaded");
+	console.log("LocalStorage apiCart =", localStorage.getItem("API_CART"));
 
 	function getCart() {
-		    const cart = localStorage.getItem(CART_KEY);
+		    const cart = localStorage.getItem("API_CART");
 		    return cart ? JSON.parse(cart) : [];
 		}
 	function saveCart(cart) {
 		    localStorage.setItem(CART_KEY, JSON.stringify(cart));
 		}
-		
+		function removeFromCart(apiId) {
+	    let cart = getCart();
+	
+	    cart = cart.filter(item => item.id !== apiId);
+	
+	    saveCart(cart);
+	
+	    renderCartTable();
+	
+	    window.dispatchEvent(new Event("cartUpdated"));
+	}
 	
 	function renderBreadcrumb() {
 	    const breadcrumb = document.getElementById("dynamicBreadcrumb");
@@ -330,10 +343,6 @@
 	    
 	    const subscribeBtn = document.querySelector(".btn-success");
 		subscribeBtn.disabled = cart.length === 0;
-		
-		
-
-
 	}
 	
 	document.addEventListener("click", function (e) {
@@ -359,24 +368,12 @@
 	        return;
 	    }
 	
-	    //alert("Proceeding to subscription approval flow");    
+	    alert("Proceeding to subscription approval flow");	    
 	});
 	
 	renderCartTable();
 	renderBreadcrumb();
-	
-
-	document.getElementById("checkoutBtn").addEventListener("click", function () {
-       window.location.href = "/api-cart-billing"; // target page
-	});
-	
-	
-	
-	
-	
 	</script>
-	
-	
 
 
 
