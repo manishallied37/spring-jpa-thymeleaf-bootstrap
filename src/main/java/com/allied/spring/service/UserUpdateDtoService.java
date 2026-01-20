@@ -2,7 +2,6 @@ package com.allied.spring.service;
 
 import com.allied.spring.domain.User;
 import com.allied.spring.web.dto.UserUpdateDto;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -16,25 +15,25 @@ import java.util.List;
 @Service
 public class UserUpdateDtoService {
 
-    private UserService userService;
-    private ModelMapper modelMapper;
+    private final UserService userService;
+    private final ModelMapper modelMapper;
 
     public UserUpdateDtoService(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
     }
 
-    public List<UserUpdateDto> findAll(){
+    public List<UserUpdateDto> findAll() {
         List<User> userList = userService.findAllEagerly();
         List<UserUpdateDto> userUpdateDtosList = new ArrayList<>();
 
-        for(User user : userList){
+        for (User user : userList) {
             userUpdateDtosList.add(modelMapper.map(user, UserUpdateDto.class));
         }
         return userUpdateDtosList;
     }
 
-    public UserUpdateDto findById(Long id){
+    public UserUpdateDto findById(Long id) {
         return modelMapper.map(userService.findByIdEagerly(id), UserUpdateDto.class);
     }
 

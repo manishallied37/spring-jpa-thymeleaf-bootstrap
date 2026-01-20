@@ -15,7 +15,7 @@ public class RoleNameValidator implements ConstraintValidator<ValidRoleName, Str
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return s.length() >= 5 && s.substring(0, 5).equals(VALID_ROLE_NAME_PREFIX);
+        return s.length() >= 5 && s.startsWith(VALID_ROLE_NAME_PREFIX);
     }
 
 }

@@ -1,14 +1,13 @@
 package com.allied.spring.service;
 
+import com.allied.spring.domain.NavigationRepository;
+import com.allied.spring.web.dto.MenuDTO;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Service;
-
-import com.allied.spring.domain.NavigationRepository;
-import com.allied.spring.web.dto.MenuDTO;
 
 @Service
 public class NavigationBarService {

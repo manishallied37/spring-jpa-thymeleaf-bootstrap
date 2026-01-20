@@ -15,23 +15,23 @@ public class UserDto {
 
     private Long id;
 
-    @NotBlank (message = "Name is required")
+    @NotBlank(message = "Name is required")
     private String name;
 
-    @NotBlank (message = "Surname is required")
+    @NotBlank(message = "Surname is required")
     private String surname;
 
-    @NotBlank (message = "Username is required")
+    @NotBlank(message = "Username is required")
     private String username;
 
     @ValidEmail
-    @NotBlank (message = "Email is required")
+    @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank (message = "Password is required")
+    @NotBlank(message = "Password is required")
     private String password;
 
-    @NotBlank (message = "Matching password is required")
+    @NotBlank(message = "Matching password is required")
     private String matchingPassword;
 
     private boolean enabled;

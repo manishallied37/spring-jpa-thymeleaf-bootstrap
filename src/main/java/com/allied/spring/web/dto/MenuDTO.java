@@ -62,7 +62,7 @@ public class MenuDTO {
     public void setDisplayOrder(int displayOrder) {
         this.displayOrder = displayOrder;
     }
-    
+
     public String getJsonContent() {
         return jsonContent;
     }
@@ -79,6 +79,11 @@ public class MenuDTO {
         this.children = children;
     }
 
-    public boolean isOpen() { return open; }
-    public void setOpen(boolean open) { this.open = open; }
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
 }

@@ -1,7 +1,6 @@
 package com.allied.spring.web.dto;
 
 import com.allied.spring.customAnnotations.ValidRoleName;
-
 import lombok.Data;
 
 /**

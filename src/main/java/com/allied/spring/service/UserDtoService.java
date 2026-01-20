@@ -2,7 +2,6 @@ package com.allied.spring.service;
 
 import com.allied.spring.domain.User;
 import com.allied.spring.web.dto.UserDto;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -29,7 +28,7 @@ public class UserDtoService {
         this.modelMapper = modelMapper;
     }
 
-    public List<UserDto> findAll(){
+    public List<UserDto> findAll() {
         List<User> users = userService.findAll();
         return users.stream().map(user -> modelMapper.map(user, UserDto.class)).collect(toList());
     }
@@ -45,7 +44,7 @@ public class UserDtoService {
         return retrievedUser.map(user -> modelMapper.map(user, UserDto.class));
     }
 
-    public UserDto findByEmail(String email){
+    public UserDto findByEmail(String email) {
         return modelMapper.map(userService.findByEmail(email), UserDto.class);
     }
 
@@ -55,7 +54,7 @@ public class UserDtoService {
         return new PageImpl<>(userDtos, pageRequest, users.getTotalElements());
     }
 
-    public UserDto findByUsername(String username){
+    public UserDto findByUsername(String username) {
         return modelMapper.map(userService.findByUsername(username), UserDto.class);
     }
 

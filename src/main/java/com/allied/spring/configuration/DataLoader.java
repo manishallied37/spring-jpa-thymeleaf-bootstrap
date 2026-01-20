@@ -4,7 +4,6 @@ import com.allied.spring.domain.Role;
 import com.allied.spring.domain.User;
 import com.allied.spring.service.RoleService;
 import com.allied.spring.service.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -20,12 +19,11 @@ import java.util.List;
  */
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
-    private boolean alreadySetup = false;
     private final UserService userService;
     private final RoleService roleService;
-
+    private boolean alreadySetup = false;
     @Autowired
-    private  BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public DataLoader(UserService userService, RoleService roleService) {
         this.userService = userService;
@@ -44,10 +42,10 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
         createUserIfNotFound("admin@gmail.com", "Admin", "Admin", "admin", "admin", adminRoles);
 
-		/*
-		 * for (int i = 1; i < 50; i++) createUserIfNotFound("user" + i + "@gmail.com",
-		 * "User" + i, "User" + i, "user" + i, "user" + i, userRoles);
-		 */
+        /*
+         * for (int i = 1; i < 50; i++) createUserIfNotFound("user" + i + "@gmail.com",
+         * "User" + i, "User" + i, "user" + i, "user" + i, userRoles);
+         */
         alreadySetup = true;
     }
 

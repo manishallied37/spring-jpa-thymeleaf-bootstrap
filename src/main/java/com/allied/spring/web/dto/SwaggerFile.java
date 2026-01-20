@@ -1,8 +1,7 @@
 package com.allied.spring.web.dto;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "swaggerfile")
@@ -18,7 +17,7 @@ public class SwaggerFile {
 
     @Column(name = "upload_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime uploadDate = LocalDateTime.now();
-    
+
     @Column(name = "api_name", length = 255)
     private String apiName;
 
@@ -54,7 +53,7 @@ public class SwaggerFile {
     public void setUploadDate(LocalDateTime uploadDate) {
         this.uploadDate = uploadDate;
     }
-    
+
     public String getApiName() {
         return apiName;
     }

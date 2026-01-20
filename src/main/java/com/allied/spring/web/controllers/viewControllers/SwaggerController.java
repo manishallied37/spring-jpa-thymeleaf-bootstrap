@@ -1,32 +1,31 @@
 package com.allied.spring.web.controllers.viewControllers;
 
+import com.allied.spring.domain.SwaggerFileRepository;
+import com.allied.spring.service.SwaggerService;
 import com.allied.spring.web.dto.SwaggerFile;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
-import com.allied.spring.domain.SwaggerFileRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.allied.spring.service.SwaggerService;;
 
 @Controller
 public class SwaggerController {
 
     @Autowired
     private SwaggerFileRepository swaggerFileRepository;
-    
+
     @Autowired
     private SwaggerService swaggerService;
-    
+
     @PostMapping("/upload")
-    public String uploadJson(@RequestParam("file") MultipartFile file,@RequestParam("menuName") String menuName, Model model) {
+    public String uploadJson(@RequestParam("file") MultipartFile file, @RequestParam("menuName") String menuName, Model model) {
 
         String fileName = file.getOriginalFilename();
 
@@ -34,14 +33,14 @@ public class SwaggerController {
             model.addAttribute("error", "Invalid file.");
             return "website/SwaggerMainPage";
         }
-        
+
         if (menuName.isBlank()) {
             model.addAttribute("error", "Please select a valid menu.");
             return "website/SwaggerMainPage";
         }
-        
+
         menuName = cleanMenuName(menuName);
-        
+
         String lowerName = fileName.toLowerCase();
         if (!(lowerName.endsWith(".json")
                 || lowerName.endsWith(".yaml")
@@ -55,16 +54,16 @@ public class SwaggerController {
         }
 
         try {
-        	swaggerService.uploadSwagger(file,menuName);
+            swaggerService.uploadSwagger(file, menuName);
             return "website/swaggerContent";
 
         } catch (IllegalArgumentException ex) {
-        	ex.printStackTrace();
+            ex.printStackTrace();
             model.addAttribute("error", ex.getMessage());
             return "website/SwaggerMainPage";
 
         } catch (Exception ex) {
-        	ex.printStackTrace();
+            ex.printStackTrace();
             model.addAttribute("error", "Failed to upload Swagger file.");
             return "website/SwaggerMainPage";
         }
@@ -85,14 +84,14 @@ public class SwaggerController {
         }
         return ResponseEntity.ok(swaggerFile.getJsonContent());
     }
-    
+
     private String cleanMenuName(String raw) {
         if (raw == null) {
             return "";
         }
 
         return raw
-                .replaceAll("^[\\s\\-—–]+", "") 
+                .replaceAll("^[\\s\\-—–]+", "")
                 .trim();
     }
 }

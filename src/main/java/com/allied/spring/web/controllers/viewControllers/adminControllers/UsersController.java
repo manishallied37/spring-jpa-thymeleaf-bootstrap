@@ -12,9 +12,7 @@ import com.allied.spring.service.searching.UserSearchParameters;
 import com.allied.spring.service.searching.UserSearchResult;
 import com.allied.spring.web.dto.UserDto;
 import com.allied.spring.web.dto.UserUpdateDto;
-import com.allied.spring.web.paging.InitialPagingSizes;
 import com.allied.spring.web.paging.Pager;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -66,7 +64,7 @@ public class UsersController {
      * Get all users or search users if searching parameters exist
      */
     @GetMapping("/users")
-    public ModelAndView getUsers (ModelAndView modelAndView, UserSearchParameters searchParams) {
+    public ModelAndView getUsers(ModelAndView modelAndView, UserSearchParameters searchParams) {
         int selectedPageSize = searchParams.getPageSize().orElse(INITIAL_PAGE_SIZE);
         int selectedPage = (searchParams.getPage().orElse(0) < 1) ? INITIAL_PAGE : (searchParams.getPage().get() - 1);
 
@@ -91,9 +89,9 @@ public class UsersController {
         }
 
         Pager pager = new Pager(userSearchResult.getUserPage().getTotalPages(),
-                                userSearchResult.getUserPage().getNumber(),
-                                BUTTONS_TO_SHOW,
-                                userSearchResult.getUserPage().getTotalElements());
+                userSearchResult.getUserPage().getNumber(),
+                BUTTONS_TO_SHOW,
+                userSearchResult.getUserPage().getTotalElements());
         modelAndView.addObject("pager", pager);
         modelAndView.addObject("users", userSearchResult.getUserPage());
         modelAndView.addObject("selectedPageSize", selectedPageSize);
@@ -144,7 +142,7 @@ public class UsersController {
     @GetMapping("/users/newUser")
     public String getAddNewUserForm(Model model) {
         model.addAttribute("newUser", new UserDto());
-		return "adminPage/user/newUser";
+        return "adminPage/user/newUser";
     }
 
     @PostMapping("/users/newUser")

@@ -4,7 +4,6 @@ import com.allied.spring.domain.User;
 import com.allied.spring.service.EmailService;
 import com.allied.spring.service.UserService;
 import com.allied.spring.web.dto.UserDto;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -22,8 +21,8 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("")
 public class RegisterController {
-    private UserService userService;
-    private EmailService emailService;
+    private final UserService userService;
+    private final EmailService emailService;
 
     public RegisterController(UserService userService, EmailService emailService) {
         this.userService = userService;
@@ -32,7 +31,7 @@ public class RegisterController {
 
     @PostMapping(value = "/submit-registration")
     public ModelAndView saveUser(ModelAndView modelAndView, @ModelAttribute("userDto") @Valid final UserDto userDto,
-                                 BindingResult bindingResult, HttpServletRequest request, Errors errors){
+                                 BindingResult bindingResult, HttpServletRequest request, Errors errors) {
 
         User emailExists = userService.findByEmail(userDto.getEmail());
         User userNameExists = userService.findByUsername(userDto.getUsername());
@@ -44,15 +43,14 @@ public class RegisterController {
             bindingResult.rejectValue("email", "emailAlreadyExists");
         }
 
-        if (userNameExists!= null) {
+        if (userNameExists != null) {
             modelAndView.setViewName("website/register");
             bindingResult.rejectValue("username", "usernameAlreadyExists");
         }
 
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("website/register");
-        }
-        else { // new user so we create user and send confirmation e-mail
+        } else { // new user so we create user and send confirmation e-mail
 
             User user = userService.createNewAccount(userDto);
             // Disable user until they click on confirmation link in email
@@ -72,7 +70,7 @@ public class RegisterController {
             emailService.sendEmail(registrationEmail);*/
 
             modelAndView.addObject("confirmationMessage", "A confirmation e-mail has been sent to "
-                                    + userDto.getEmail());
+                    + userDto.getEmail());
             modelAndView.setViewName("website/registered");
         }
 

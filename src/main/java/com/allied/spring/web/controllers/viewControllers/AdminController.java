@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class AdminController {
 
-	@PostMapping(value = { "/", "/FormForNewAPI" })
-	public String insertAdminData() {
-		
-		return "website/FormForNewAPI";
-	}
+    @PostMapping(value = {"/", "/FormForNewAPI"})
+    public String insertAdminData() {
+
+        return "website/FormForNewAPI";
+    }
 
 }

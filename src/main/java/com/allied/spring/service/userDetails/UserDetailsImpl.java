@@ -1,11 +1,10 @@
 package com.allied.spring.service.userDetails;
 
+import com.allied.spring.domain.Role;
+import com.allied.spring.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import com.allied.spring.domain.Role;
-import com.allied.spring.domain.User;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,7 +16,8 @@ import java.util.List;
 
 
 public class UserDetailsImpl implements UserDetails {
-    private User user;
+    private final User user;
+
     public UserDetailsImpl(User user) {
         this.user = user;
     }
@@ -26,8 +26,8 @@ public class UserDetailsImpl implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new HashSet<>();
         List<Role> roles = user.getRoles();
-        for( Role role : roles ) {
-            authorities.add( new SimpleGrantedAuthority(role.getName()));
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
         return authorities;
 

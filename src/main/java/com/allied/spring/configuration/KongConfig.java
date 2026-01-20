@@ -1,7 +1,8 @@
 package com.allied.spring.configuration;
 
-import java.net.http.HttpClient;
-
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,27 +12,22 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.Getter;
+import java.net.http.HttpClient;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Configuration
 public class KongConfig {
-	
+
     private final Logger logger = LoggerFactory.getLogger(KongConfig.class);
-	
-	@Value("${kong.admin.url}")
-    private String kongAdminUrl;
-	private final RestTemplate restTemplate;
-	
-	private final AtomicReference<String> cachedKongInfo = new AtomicReference<>();
-    private volatile long lastFetchTime = 0;
+    private final RestTemplate restTemplate;
+    private final AtomicReference<String> cachedKongInfo = new AtomicReference<>();
     @Getter
     private final HttpClient httpClient = HttpClient.newHttpClient();
+    @Value("${kong.admin.url}")
+    private String kongAdminUrl;
+    private volatile long lastFetchTime = 0;
 
     public KongConfig(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder

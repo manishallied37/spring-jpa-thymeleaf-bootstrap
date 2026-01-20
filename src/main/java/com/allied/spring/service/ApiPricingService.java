@@ -1,13 +1,13 @@
 package com.allied.spring.service;
 
+import com.allied.spring.domain.ApiPricingRepository;
+import com.allied.spring.web.dto.ApiPricing;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.allied.spring.web.dto.ApiPricing;
-import com.allied.spring.domain.ApiPricingRepository;
 
 @Service
 public class ApiPricingService {
@@ -19,8 +19,8 @@ public class ApiPricingService {
         return repository.findPricesForApis(apiNames)
                 .stream()
                 .collect(Collectors.toMap(
-                    ApiPricing::getApiName,
-                    ApiPricing::getPrice
+                        ApiPricing::getApiName,
+                        ApiPricing::getPrice
                 ));
     }
 }

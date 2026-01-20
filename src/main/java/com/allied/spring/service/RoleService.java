@@ -1,11 +1,10 @@
 package com.allied.spring.service;
 
+import com.allied.spring.domain.Role;
+import com.allied.spring.domain.RoleRepository;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-
-import com.allied.spring.domain.Role;
-import com.allied.spring.domain.RoleRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +14,7 @@ import java.util.Optional;
  */
 @Service
 public class RoleService {
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
     public RoleService(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
@@ -40,7 +39,7 @@ public class RoleService {
     //==================================================================================
     //endregion
 
-    @CacheEvict(value = {"cache.allRoles" , "cache.roleByName", "cache.roleById"}, allEntries = true)
+    @CacheEvict(value = {"cache.allRoles", "cache.roleByName", "cache.roleById"}, allEntries = true)
     public void save(Role role) {
         roleRepository.save(role);
     }
@@ -52,6 +51,7 @@ public class RoleService {
             if (!role.getName().equals(persistedRole.getName())
                     && role.getName().equals(role1.getName())) {
                 roleNameAlreadyExists = true;
+                break;
             }
         }
         return roleNameAlreadyExists;

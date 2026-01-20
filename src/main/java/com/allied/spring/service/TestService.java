@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TestService {
 
-	 public void view();
+    void view();
 
-	void view(Object CorporateAPISuite);
-	 
-	 
+    void view(Object CorporateAPISuite);
+
+
 }

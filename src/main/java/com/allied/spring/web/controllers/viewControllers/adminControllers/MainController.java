@@ -12,8 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/adminPage")
 public class MainController {
 
-    @GetMapping ("")
-    public ModelAndView adminPage(){
+    @GetMapping("")
+    public ModelAndView adminPage() {
         return new ModelAndView("redirect:/adminPage/users");
     }
 }

@@ -78,7 +78,8 @@
                                         <td>
                                             <a data-placement="right" data-target='#deleteModal'
                                                data-toggle='modal' id="remove-link"
-                                               style="text-decoration: none; color:red" th:onclick="'setRowIndexAndUserId(this, ' + ${user.id} + ')'"
+                                               style="text-decoration: none; color:red"
+                                               th:onclick="'setRowIndexAndUserId(this, ' + ${user.id} + ')'"
                                                title="Remove user">
                                                 <i aria-hidden="true" class="fa fa-times"></i>
                                             </a>
@@ -146,7 +147,8 @@
                                  th:attr="data-pageSizesToShow = ${pager.pageSizesToShowInJSON}"></div>
 
                             <select class="form-control pagination" id="pageSizeSelect">
-                                <option th:each="pageSize : ${pageSizes}" th:selected="${pageSize} == ${selectedPageSize}" th:text="${pageSize}"
+                                <option th:each="pageSize : ${pageSizes}"
+                                        th:selected="${pageSize} == ${selectedPageSize}" th:text="${pageSize}"
                                         th:value="${pageSize}"></option>
                             </select>
                         </div>

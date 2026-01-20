@@ -85,11 +85,6 @@ public class Pager {
         return pageSizesToShow;
     }
 
-    public String getPageSizesToShowInJSON() {
-        Gson gson = new GsonBuilder().create();
-        return gson.toJson(pageSizesToShow);
-    }
-
     public void setPageSizesToShow(List<Integer> pageSizesToShow) {
         this.pageSizesToShow = pageSizesToShow;
     }
@@ -98,5 +93,10 @@ public class Pager {
         this.pageSizesToShow = Arrays.stream(InitialPagingSizes.PAGE_SIZES).boxed()
                 .filter(pageSize -> totalSize > pageSize)
                 .collect(Collectors.toList());
+    }
+
+    public String getPageSizesToShowInJSON() {
+        Gson gson = new GsonBuilder().create();
+        return gson.toJson(pageSizesToShow);
     }
 }

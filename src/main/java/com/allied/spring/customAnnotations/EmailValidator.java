@@ -9,16 +9,18 @@ import java.util.regex.Pattern;
  * Created by Keno&Kemo on 21.10.2017..
  */
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]" +
+            "(.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(.[A-Za-z0-9]+)*" +
+            "(.[A-Za-z]{2,})$";
     private Pattern pattern;
     private Matcher matcher;
-    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]"+
-        "(.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(.[A-Za-z0-9]+)*"+
-            "(.[A-Za-z]{2,})$";
+
     @Override
     public void initialize(ValidEmail constraintAnnotation) {
     }
+
     @Override
-    public boolean isValid(String email, ConstraintValidatorContext context){
+    public boolean isValid(String email, ConstraintValidatorContext context) {
         return (validateEmail(email));
     }
 

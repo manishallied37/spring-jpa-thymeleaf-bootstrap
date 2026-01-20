@@ -1,10 +1,10 @@
 package com.allied.spring.configuration;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+
+import javax.annotation.PostConstruct;
 
 @Configuration
 public class SslTrustStoreConfig {
@@ -14,12 +14,12 @@ public class SslTrustStoreConfig {
         Resource r = new ClassPathResource("tradconnect.jks");
 
         System.setProperty(
-            "javax.net.ssl.trustStore",
-            r.getFile().getAbsolutePath()
+                "javax.net.ssl.trustStore",
+                r.getFile().getAbsolutePath()
         );
         System.setProperty(
-            "javax.net.ssl.trustStorePassword",
-            "changeit"
+                "javax.net.ssl.trustStorePassword",
+                "changeit"
         );
     }
 }

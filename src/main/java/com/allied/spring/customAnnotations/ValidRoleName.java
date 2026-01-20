@@ -18,6 +18,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface ValidRoleName {
     String message() default "Invalid role name. Name of the role should start with prefix \"ROLE_\"";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

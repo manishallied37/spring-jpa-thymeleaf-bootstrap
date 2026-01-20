@@ -5,7 +5,6 @@ import com.allied.spring.domain.User;
 import com.allied.spring.domain.UserRepository;
 import com.allied.spring.web.dto.UserDto;
 import com.allied.spring.web.dto.UserUpdateDto;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
@@ -28,11 +27,11 @@ import static java.util.Collections.emptyList;
 @Service
 public class UserService {
 
-    @Autowired
-    private  BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
     private final RoleService roleService;
     private final CacheManager cacheManager;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public UserService(UserRepository userRepository,
                        RoleService roleService,

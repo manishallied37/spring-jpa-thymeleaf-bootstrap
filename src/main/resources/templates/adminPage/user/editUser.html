@@ -13,7 +13,8 @@
                 <div th:replace="fragments/adminSidebar :: admin-sidebar"></div>
                 <div id="admin-content">
                     <form class="admin-form" method="post"
-                          th th:action="@{/adminPage/users/{id}(id=${userUpdateDto.id})}" th:method="post" th:object="${userUpdateDto}">
+                          th th:action="@{/adminPage/users/{id}(id=${userUpdateDto.id})}" th:method="post"
+                          th:object="${userUpdateDto}">
                         <ul class="global-errors" th:if="${#fields.hasErrors('global')}">
                             <li class="text-danger" th:each="err : ${#fields.errors('global')}" th:text="${err}">
                                 Input is incorrect

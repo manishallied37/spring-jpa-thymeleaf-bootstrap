@@ -2,7 +2,6 @@ package com.allied.spring.web.controllers.restApiControllers;
 
 import com.allied.spring.domain.User;
 import com.allied.spring.service.UserService;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 public class restController {
-    private UserService userService;
+    private final UserService userService;
 
     public restController(UserService userService) {
         this.userService = userService;

@@ -2,7 +2,6 @@ package com.allied.spring.service.searching;
 
 import com.allied.spring.service.UserDtoService;
 import com.allied.spring.web.dto.UserDto;
-
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +33,10 @@ public class UserFinder {
             try {
                 userDtoPage = userDtoService.findByIdPageable(parseLong(params.getPropertyValue().get()), pageRequest);
             } catch (NumberFormatException e) {
-               // log.error(e);
+                // log.error(e);
                 return new UserSearchResult(userDtoService.findAllPageable(pageRequest), true);
             }
-        }
-        else if ("Name".equals(s))
+        } else if ("Name".equals(s))
             userDtoPage = userDtoService.findByNameContaining(params.getPropertyValue().get(), pageRequest);
         else if ("Surname".equals(s))
             userDtoPage = userDtoService.findBySurnameContaining(params.getPropertyValue().get(), pageRequest);
