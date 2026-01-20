@@ -52,10 +52,6 @@
 			opacity: 1;
 
 		}
-		.nav-sidebar .nav-treeview > .nav-item > .nav-link {
-		    background-color: transparent !important;
-		    color: #777 !important;
-		}
 	</style>
 
 </head>
@@ -106,34 +102,67 @@
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
 
-					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column text-white rolelist"
-					    data-widget="treeview" role="menu" data-accordion="false">
-					
-						<li class="nav-item text-bold"
-						    th:each="menu : ${navMenus}"
-						    th:classappend="
-						        ${menu.children.size() > 0} ? 'has-treeview' : ''
-						    ">
+					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column  text-white rolelist"
+						data-widget="treeview" role="menu" data-accordion="false">
+						<!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
 
-							<a class="nav-link"
-							   th:href="${menu.children.size() > 0} ? '#' : @{${menu.route}}">
-				
-				                <i class="nav-icon text-navy"
-				                   th:classappend="${menu.icon}"></i>
-				
-				                <p>
-				                    <i class="fas fa-angle-right right"
-				                       th:if="${menu.children.size() > 0}"></i>
-				                    <th:block th:text="${menu.title}"></th:block>
-				                </p>
-				            </a>
-				
-				            <ul class="nav nav-treeview"
-							    th:if="${menu.children.size() > 0}"
-							    th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
+						<li class="nav-item text-bold"><a href="#" id="switchRole" class="nav-link"> <i
+									class="nav-icon fas fa-user-tag text-navy pt-2"></i>
+								<p>Modules</p> <!-- <span th:text="${authority}"></span> -->
+							</a></li>
+
+						<li class="nav-item text-bold"><a th:href="@{AdminIndexPage}" class="nav-link"> <i
+									class="nav-icon fas fa-globe text-navy"></i>
+								<p>Home</p>
+							</a></li>
+						<li class="nav-item text-bold"><a th:href="@{UserManagement}" class="nav-link"> <i
+									class="nav-icon  ion ion-person-add text-navy"></i>
+								<p>User Management</p>
+							</a></li>
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fa fa-user-secret text-navy"></i>
+								<p>Admin</p>
+							</a></li>
+						<li class="nav-item text-bold"><a th:href="@{FormForNewAPI}" class="nav-link"> <i
+									class="nav-icon ion ion-ios-shuffle-strong text-navy"></i>
+								<p>Api Management</p>
+							</a></li>
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon ion ion-clipboard text-navy"></i>
+								<p>Audits</p>
+							</a></li>
+
+						<!--<li class="nav-item text-bold">
+							<a th:href="@{Security}" class="nav-link">
+								<i class="nav-icon fas fa-shield-alt  text-navy"></i>
+								<p>User Management</p>
+								<i class="fas fa-angle-left right"></i>
+							</a>
+
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{SecurityEncryption}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Encryption</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{SecurityTestAPI}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Test API</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{SecurityEncryption}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Decryption</p>
+									</a>
+								</li>
+
 							</ul>
-				
-				        </li>
+						</li>-->
+
 					</ul>
 				</nav>
 				<!-- /.sidebar-menu -->
@@ -153,9 +182,8 @@
 							<h1>User Management</h1>
 						</div>
 						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right"> 
-								<li class="breadcrumb-item"><a th:href="@{mainPage}"> 
-								<i class="fas fa-arrow-left mr-1"></i>Back to Main Page</a></li>
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
 								<li class="breadcrumb-item active">Add New User</li>
 							</ol>
 						</div>

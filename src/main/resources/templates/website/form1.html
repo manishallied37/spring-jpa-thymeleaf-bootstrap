@@ -33,14 +33,6 @@
 	<link rel="stylesheet" th:href="@{../../plugins/dropzone/min/dropzone.min.css}">
 	<!-- Toastr -->
 	<link rel="stylesheet" th:href="@{../../plugins/toastr/toastr.min.css}">
-	
-	<style>
-		.nav-sidebar .nav-treeview > .nav-item > .nav-link {
-		    background-color: transparent !important;
-		    color: #777 !important;
-		}
-		
-	</style>
 
 </head>
 
@@ -94,34 +86,202 @@
 
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
-					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column text-white rolelist"
-					    data-widget="treeview" role="menu" data-accordion="false">
-					
-						<li class="nav-item text-bold"
-						    th:each="menu : ${navMenus}"
-						    th:classappend="
-						        ${menu.children.size() > 0} ? 'has-treeview' : ''
-						    ">
+					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column  text-white rolelist"
+						data-widget="treeview" role="menu" data-accordion="false">
+						<!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
 
-							<a class="nav-link"
-							   th:href="${menu.children.size() > 0} ? '#' : @{${menu.route}}">
-				
-				                <i class="nav-icon text-navy"
-				                   th:classappend="${menu.icon}"></i>
-				
-				                <p>
-				                    <i class="fas fa-angle-right right"
-				                       th:if="${menu.children.size() > 0}"></i>
-				                    <th:block th:text="${menu.title}"></th:block>
-				                </p>
-				            </a>
-				
-				            <ul class="nav nav-treeview"
-							    th:if="${menu.children.size() > 0}"
-							    th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
+						<li class="nav-item text-bold"><a href="#" id="switchRole" class="nav-link"> <i
+									class="nav-icon fas fa-user-tag text-navy pt-2"></i>
+								<p>Modules</p> <!-- <span th:text="${authority}"></span> -->
+							</a></li>
+
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-globe text-navy"></i>
+								<p>Introduction</p>
+							</a></li>
+
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-shield-alt  text-navy"></i>
+								<p>
+									Security
+									<i class="fas fa-angle-left right"></i>
+
+								</p>
+							</a>
+
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{SecurityEncryption.html}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Encryption</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="layout/top-nav-sidebar.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Test API</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Decryption</p>
+									</a>
+								</li>
+
 							</ul>
-				
-				        </li>
+						</li>
+
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-cube text-navy"></i>
+								<p>
+									Building Blocks
+									<i class="fas fa-angle-left right"></i>
+
+								</p>
+							</a>
+
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{SecurityEncryption.html}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Pre Approved Offers</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="layout/top-nav-sidebar.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Passport</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>VKYC</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Undefined Customer Journey</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Customer Authentication</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Account Aggregator</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Aadhar Vault</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Prefios</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Tokenization</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>New Customer Onboarding</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Bereau Check</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Pan Validation</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Eligibility Check</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Document Upload</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="nav-icon fas fa-receipt text-danger"></i>
+										<p>Mobile Recharge</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>GST</p>
+									</a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-credit-card text-navy"></i>
+								<p>Loans and Cards</p>
+							</a></li>
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-cash-register text-navy"></i>
+								<p>Payments</p>
+							</a></li>
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-piggy-bank text-navy"></i>
+								<p>Accounts and Deposits</p>
+							</a></li>
+
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-business-time text-navy"></i>
+								<p>Business Banking</p>
+							</a></li>
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-landmark text-navy"></i>
+								<p>Trade Services</p>
+							</a></li>
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-arrows-alt-h text-navy"></i>
+								<p>Corporate API Suite</p>
+							</a></li>
+
 					</ul>
 				</nav>
 				<!-- /.sidebar-menu -->
@@ -139,9 +299,8 @@
 							<h1 class="m-0">Dashboard v2</h1>
 						</div><!-- /.col -->
 						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right"> 
-								<li class="breadcrumb-item"><a th:href="@{mainPage}"> 
-								<i class="fas fa-arrow-left mr-1"></i>Back to Main Page</a></li>
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
 								<li class="breadcrumb-item active">Dashboard v2</li>
 							</ol>
 						</div><!-- /.col -->

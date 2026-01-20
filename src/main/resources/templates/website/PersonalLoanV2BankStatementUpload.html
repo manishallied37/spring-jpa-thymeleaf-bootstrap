@@ -45,10 +45,6 @@
 			opacity: 1;
 
 		}
-		.nav-sidebar .nav-treeview > .nav-item > .nav-link {
-		    background-color: transparent !important;
-		    color: #777 !important;
-		}
 	</style>
 
 </head>
@@ -102,34 +98,1548 @@
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
 
-					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column text-white rolelist"
-					    data-widget="treeview" role="menu" data-accordion="false">
-					
-						<li class="nav-item text-bold"
-						    th:each="menu : ${navMenus}"
-						    th:classappend="
-						        ${menu.children.size() > 0} ? 'has-treeview' : ''
-						    ">
+					<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column  text-white rolelist"
+						data-widget="treeview" role="menu" data-accordion="false">
+						<!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
 
-							<a class="nav-link"
-							   th:href="${menu.children.size() > 0} ? '#' : @{${menu.route}}">
-				
-				                <i class="nav-icon text-navy"
-				                   th:classappend="${menu.icon}"></i>
-				
-				                <p>
-				                    <i class="fas fa-angle-right right"
-				                       th:if="${menu.children.size() > 0}"></i>
-				                    <th:block th:text="${menu.title}"></th:block>
-				                </p>
-				            </a>
-				
-				            <ul class="nav nav-treeview"
-							    th:if="${menu.children.size() > 0}"
-							    th:insert="fragments/sidebar-menu :: childMenu(${menu.children})">
+						<li class="nav-item text-bold"><a href="#" id="switchRole" class="nav-link"> <i
+									class="nav-icon fas fa-user-tag text-navy pt-2"></i>
+								<p>Modules</p> <!-- <span th:text="${authority}"></span> -->
+							</a></li>
+
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-globe text-navy"></i>
+								<p>Introduction</p>
+							</a></li>
+
+						<li class="nav-item text-bold">
+							<a th:href="@{Security}" class="nav-link">
+								<i class="nav-icon fas fa-shield-alt  text-navy"></i>
+								<p>Security</p>
+								<i class="fas fa-angle-left right"></i>
+							</a>
+
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{SecurityEncryption}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Encryption</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{SecurityTestAPI}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Test API</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{SecurityEncryption}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Decryption</p>
+									</a>
+								</li>
+
 							</ul>
-				
-				        </li>
+						</li>
+
+						<li class="nav-item text-bold">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-cube text-navy"></i>
+								<p>
+									Building Blocks
+									<i class="fas fa-angle-left right"></i>
+
+								</p>
+							</a>
+
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{BBPreApprovedOffers}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Pre Approved Offers</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{BBGetPreApprovedOffers}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Get Pre Approved Offers</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBGetOfferOnCustomerID}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Get Pre Approved Offers On CutomerID</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBGetOfferOnMobile}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Get Pre Approved Offers On Mobile</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBPreApprovedOffer}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Pre Approved Offers</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBBlockPreApprovedOffer}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Block Pre Approved Offers</p>
+											</a>
+										</li>
+
+									</ul>
+
+								</li>
+								<li class="nav-item">
+									<a href="layout/top-nav-sidebar.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Passport</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{BBUpdatePassportDetails}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Update Passport Details</p>
+											</a>
+										</li>
+									</ul>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>VKYC</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{BBVideoKYCStatus}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Video KYC Status</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBGetDetailsByTrackingID}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>getDetailsByTrackingId</p>
+											</a>
+										</li>
+										<!--										<li class="nav-item">
+											<a th:href="@{}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>kycRegularization</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>vkycSignature</p>
+											</a>
+										</li>-->
+										<li class="nav-item">
+											<a th:href="@{BBVideoKYCStatus}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>videoKYCstatus</p>
+											</a>
+											<!--</li>
+										<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>WaitCallTimeAPI</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small; ">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p >Customer Hand Shake API</p>
+											</a>
+										</li>-->
+											<!--<li class="nav-item">
+											<a th:href="@{}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Get Details By Tracking ID</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Get Details by PAN</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>VKYC Customer Forwarding API</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Customer Handshake</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBWaitCallTime}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Call Wait Time	</p>
+											</a>
+										</li>-->
+
+									</ul>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Undefined Customer Journey</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{BBGetCVidyaStatus}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>GetCVidyaStatus</p>
+											</a>
+										</li>
+									</ul>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Customer Authentication</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>OTP Generation</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBTransUnion}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>TransUnion(Canada)</p>
+											</a>
+										</li>
+
+										<li class="nav-item">
+											<a th:href="@{BBCustomerAMLCheck}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Customer AML Check(Fircosoft_OSB)</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBCustomerAMLCheckCallBack}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Customer AML Check(Fircosoft_OSB) Callback</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBDIYCIBIL}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>DIY-CIBIL</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBFetchPANDetails}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Fetch PAN Details</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBOTPVerification}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>OTP Verification</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBAadharOTPGeneration}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Aadhar OTP generation</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBAadharOTPVerification}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Aadhar OTP verification</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBCustomerHandshake}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Customer Handshake</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBWaitCallTime}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>WaitCallTime</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBGetDetailsByTrackingID}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Get Details By TrackingID</p>
+											</a>
+										</li>
+										<!--<li class="nav-item">
+											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>ekyc_updation</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>ShuftiPro</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>ShuftiPro_Delete</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBOTPGeneration}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>ShuftiPro_Callback</p>
+											</a>
+										</li>-->
+									</ul>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Account Aggregator</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{BBConsentInitiation}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Consent Initiation</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBTransactionStatus}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Transaction Status</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{BBDownloadAnalysedReport}" class="nav-link"
+												style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Download Analysed Report</p>
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>eKYC</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{BBeKYCforHR}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>eKYC for HR</p>
+											</a>
+										</li>
+									</ul>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Aadhar Vault</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Prefios</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Tokenization</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>New Customer Onboarding</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Bereau Check</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Pan Validation</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Eligibility Check</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Document Upload</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="nav-icon fas fa-receipt text-danger"></i>
+										<p>Mobile Recharge</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="layout/boxed.html" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>GST</p>
+									</a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+									class="nav-icon fas fa-credit-card text-navy"></i>
+								<p>Loans and Cards</p>
+
+								<i class="fas fa-angle-left right"></i>
+							</a>
+
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{#}" class="nav-link" >
+										<i class="fas fa-receipt nav-icon text-danger"></i>
+										<p>Loans</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+									
+									<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{#}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Auto Loans</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{ALOTPCreation}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>OTP Creation</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{ALGetOffer}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Get Offer</p>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Eligibility Check</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{ALSanctionLetter}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Sanction Letter</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{ALBankStatementUpload}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Bank Statement Upload</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{ALDocumentUpload}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Document Upload</p></a>
+										</li>
+										
+									</ul>
+								</li>
+							</ul>
+							
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{#}" class="nav-link">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>PersonalLoanV1</p>
+												<i class="fas fa-angle-left right"></i>
+											</a>
+											<ul class="nav nav-treeview">
+												<li class="nav-item">
+													<a th:href="@{PersonalLoanV1GenerateOTP}" class="nav-link"
+														style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-warning"></i>
+														<p>OTP Creation</p>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a th:href="@{PersonalLoanV1GetOffer}" class="nav-link"
+														style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-warning"></i>
+														<p>Get Offer</p>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a th:href="@{PersonalLoanV1OfferValidation}" class="nav-link"
+														style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-warning"></i>
+														<p>Offer Validation</p>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a th:href="@{PersonalLoanV1OfferConfirmation}" class="nav-link"
+														style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-warning"></i>
+														<p>Offer Conformation</p>
+													</a>
+												</li>
+
+
+											</ul>
+										</li>
+									</ul>
+
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{#}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>PersonalLoanV2</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{PersonalLoanV2OTPCreation}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>OTP Creation</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{PersonalLoanV2GetOffer}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Get Offer</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{PersonalLoanV2EligibilityCheck}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Eligibility Check</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{PersonalLoanV2BankStatementUpload}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Bank Statement Upload</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{PersonalLoanV2DocumentUpload}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Document Upload</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{PersonalLoanV2LoanDisbursement}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Loan Disbursement</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{PersonalLoanV2FI_Interest_Fetch}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>FI_Interest_Fetch</p></a>
+										</li>
+																			
+										
+									</ul>
+								</li>
+							</ul>
+							
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{#}" class="nav-link">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Topup</p>
+												<i class="fas fa-angle-left right"></i>
+											</a>
+											<ul class="nav nav-treeview">
+												<li class="nav-item">
+													<a th:href="@{TopupFetchOffer}" class="nav-link"
+														style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-warning"></i>
+														<p>Fetch Offer</p>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a th:href="@{TopupGenerateAgreementLetter}" class="nav-link"
+														style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-warning"></i>
+														<p>Generate Aggrement Letter</p>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a th:href="@{TopupLoanDisbursement}" class="nav-link"
+														style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-warning"></i>
+														<p>Loan Disbursement</p>
+													</a>
+												</li>
+
+											</ul>
+										</li>
+									</ul>
+
+
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{#}" class="nav-link">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Loan Management</p>
+										<i class="fas fa-angle-left right"></i>
+									</a>
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a th:href="@{LMGetLoanAccountDetails}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Get Loan Account Details</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{LMLoanDetails}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>loanDetails</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{LMRestructuring_NLI}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Restructuring_NLI</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{LMRepaymentDetails}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Repayment Details</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{LMProfileInformation}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Profile Information</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{LMDisbursementDetails}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Disbursement Details</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{LMLoanCredentialVerificationCheck}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Loan Credential Verification Check</p></a>
+										</li><li class="nav-item">
+											<a th:href="@{LMGetITCertificate}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Income Tax Certificate</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{LMOverdueOutstanding}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Overdue Outstanding</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{LMSRSearch}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>SR Search</p></a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{LMLoanSummary}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Loan Summary	</p></a>
+										</li>
+										
+										
+									</ul>
+								</li>
+							</ul>
+							
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{#}" class="nav-link">
+												<i class="fas fa-receipt nav-icon text-warning"></i>
+												<p>Mortgage Loan</p>
+												<i class="fas fa-angle-left right"></i>
+											</a>
+
+											<ul class="nav nav-treeview">
+												<li class="nav-item">
+													<a th:href="@{#}" class="nav-link"
+														style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-danger"></i>
+														<p>CKYC</p><i class="fas fa-angle-left right"></i>
+													</a>
+													<ul class="nav nav-treeview">
+														<li class="nav-item">
+															<a th:href="@{CKYCgetAccounts}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>getAccounts</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{CKYCgetDemography}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>getDemography</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{CKYCgetUSERDATA}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>getUSERDATA</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{CKYCgetRLOSMORTGAGEDATA}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>getRLOSMORTGAGE DATA</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{CKYCckycDataForAsset}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>ckycDataForAsset </p>
+															</a>
+														</li>
+														<!--<li class="nav-item">
+															<a th:href="@{CKYCgetUserDATABUYICICI}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>getUserDATABUYICICI </p>
+															</a>
+														</li>-->
+													</ul>
+													
+													<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-danger"></i>
+														<p>VAHAN</p>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a th:href="@{#}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-danger"></i>
+												<p>Create/Update Property API Information</p></a>
+													</li>
+													<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-danger"></i>
+														<p>Get Closest Property List API</p>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a th:href="@{#}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-danger"></i>
+												<p>Get Geocoding API</p></a>
+													</li><li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-danger"></i>
+														<p>Insurance Premium</p>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a th:href="@{#}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-danger"></i>
+												<p>E-Forex</p></a>
+													</li>
+													<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-danger"></i>
+														<p>Retailer Details</p><i class="fas fa-angle-left right"></i>
+													</a>
+													<ul class="nav nav-treeview">
+														<li class="nav-item">
+															<a th:href="@{CKYCgetAccounts}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>Single Retail</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{CKYCgetDemography}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>Multiple Retail</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{CKYCgetUSERDATA}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>Single Corporate</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{CKYCgetRLOSMORTGAGEDATA}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>Multiple Corporate</p>
+															</a>
+														</li>
+
+													</ul>
+												</li>
+												<li class="nav-item">
+													<a th:href="@{#}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-danger"></i>
+												<p>CRM-Customer Relationship Management</p><i class="fas fa-angle-left right"></i></a>
+													<ul class="nav nav-treeview">
+														<li class="nav-item">
+															<a th:href="@{CKYCgetAccounts}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>Login</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{CKYCgetDemography}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>Query</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{CKYCgetUSERDATA}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>Save</p>
+															</a>
+														</li>
+														
+													</ul>
+													</li>
+													<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-danger"></i>
+														<p>Fraud verification</p><i class="fas fa-angle-left right"></i>
+													</a>
+													<ul class="nav nav-treeview">
+														<li class="nav-item">
+															<a th:href="@{MLCMMAPF}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>CMM APF </p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{MLCMMUploadService}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>CMM Upload Service </p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{MLCMMStatusUpdate}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>CMM Status Update</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{MLCMMAPFUpdate}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>CMM APF Update</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{MLCMMCaseCreationNonAPF}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>CMM Case Creation Non APF</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{MLCMMCaseCreationAPF}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>CMM Case Creation APF</p>
+															</a>
+														</li>
+														<!--<li class="nav-item">
+															<a th:href="@{CKYCgetUSERDATA}" class="nav-link"
+																style="font-size: small;">
+																<i class="nav-icon fab fa-forumbee text-warning"></i>
+																<p>CMM Retrigger FCPG</p>
+															</a>
+														</li>-->
+
+
+													</ul>
+												</li>
+												<!--<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-danger"></i>
+												<p>Morgage Bre</p></a>
+													</li>
+													<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-danger"></i>
+												<p>CRM Reverse Feed</p></a>
+													</li>-->
+												<li class="nav-item">
+													<a th:href="@{MLSASVIYA}" class="nav-link"
+														style="font-size: small;">
+														<i class="fas fa-receipt nav-icon text-danger"></i>
+														<p>SAS VIYA</p>
+													</a>
+												</li>
+												<!--<li class="nav-item">
+											<a th:href="@{#}" class="nav-link" style="font-size: small;">
+												<i class="fas fa-receipt nav-icon text-danger"></i>
+												<p>Credit Vidya resubmission Service</p></a>
+													</li>-->
+
+
+										</li>
+									</ul>
+
+								</li>
+
+							</ul>
+
+
+
+						</li>
+						<li class="nav-item">
+							<a th:href="@{#}" class="nav-link">
+												<i class="fas fa-receipt nav-icon text-danger"></i>
+												<p>Cards</p><i class="fas fa-angle-left right"></i></a>
+												
+												<ul class="nav nav-treeview">
+														<li class="nav-item">
+															<a th:href="@{#}" class="nav-link">
+								<i class="fas fa-receipt nav-icon text-warning"></i>
+								<p>Credit Cards</p><i class="fas fa-angle-left right"></i>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{LCOTPCreation}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>OTP Creation</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCBlockOnlineTransactions}" class="nav-link"
+										style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Block Online Transactions</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCUnblockOnlineTransactions}" class="nav-link"
+										style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Unblock Online Transactions</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCBlockATMWithdrawals}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Block ATM Withdrawals</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCUnblockATMWithdrawals}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Unblock ATM Withdrawals</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCBlockInternationalTransactions}" class="nav-link"
+										style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Block International Transactions</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCUnblockInternationalTransactions}" class="nav-link"
+										style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Unblock International Transactions</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCPrimeCreditCard}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Prime Credit Card</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCConvertTransactionToEMI}" class="nav-link"
+										style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>convertTransactionToEMI</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCCAplicationStatus}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>CCAplicationStatus</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCreateCCBillPayment}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Create CC Bill Payment</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCreditCardsGetOffer}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Get Offer</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCFetchCCBillPayment}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Fetch CC Bill Payment</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCardCreation}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card Creation</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCardStatus}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card Status</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCViewStatement}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>View Statement</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCAvailableCreditLimit}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Available Credit Limit</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCViewRewardPoints}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>View Reward Points</p>
+									</a>
+								</li>
+								<!--<li class="nav-item">
+																<a th:href="@{LCUnblockCard}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Block Card</p></a>
+																</li>-->
+								<li class="nav-item">
+									<a th:href="@{LCUnblockCard}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Unblock Card</p>
+									</a>
+								</li>
+
+
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a th:href="@{MLCMMAPF}" class="nav-link">
+								<i class="fas fa-receipt nav-icon text-warning"></i>
+								<p>Prepaid Card </p><i class="fas fa-angle-left right"></i>
+							</a>
+
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{LCApplicationProcessing}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Application Processing</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCardInformationEnquiry}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Fetch Card Information</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCMonthlyStatement}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Monthly Statement</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCardBlockUnblock}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card Block/Unblock</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCTransactionEnquiry}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Transaction Enquiry</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCGetCardMobileNumber}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Get Card (Mobile Number)</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCUpdateBuyerInformation}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Update Buyer Information</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCUpgradeCardVirtualtoPhysical}" class="nav-link"
+										style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Upgrade Card (Virtual To Physical)</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCAccountStatement}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Account Statement</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCardClose}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card Close</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCreditFreezetoActive}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Credit Freeze To Active</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCardActivation}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card Activation</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCPassivetoActive}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Passive To Active</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCUpdateChangePIN}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Update/Change PIN</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCPeriodicStatement}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Periodic Statement</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCMiniStatement}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Mini Statement</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCardtoCardTransfer}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card to Card Transfer</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCLinkedMobile}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Linked Mobile</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCardSale}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card Sale</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCVVGeneration}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>CVV Generation</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCBuyerNumberLinked}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Buyer Number Linked</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCLast10TransactionDetails}" class="nav-link"
+										style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Last 10 Transactions Details</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCCardTopupCardToCard}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card Topup (Card To Card)</p>
+									</a>
+								</li>
+								<!--<li class="nav-item">
+																<a th:href="@{LCCardInstantDebit}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Card Topup</p></a>
+																</li>-->
+								<li class="nav-item">
+									<a th:href="@{LCCardInstantDebit}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card Instant Debit</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCLimitVerification}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Card Limit Verification</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCFetchContactInfo}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Fetch Contact Information</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCFetchPersonalInfo}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Fetch Personal Information</p>
+									</a>
+								</li>
+
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a th:href="@{#}" class="nav-link">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Pockets</p><i class="fas fa-angle-left right"></i>
+															</a>
+															<ul class="nav nav-treeview">
+																<li class="nav-item">
+																<a th:href="@{LCPocketsWalletCreationAPI}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Wallet Creation API</p></a>
+																</li>
+																<li class="nav-item">
+																<a th:href="@{LCPocketsAddFundsAPI}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Add Funds API</p></a>
+																</li>
+																<li class="nav-item">
+																<a th:href="@{LCPocketsCardDebitAPI}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Card Debit API</p></a>
+																</li>
+																<li class="nav-item">
+																<a th:href="@{LCPocketsTransactionEnquiryAPI}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Transaction Enquiry API</p></a>
+																</li>
+																<li class="nav-item">
+																<a th:href="@{LCPocketsMiniStatementAPI}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Mini Statement API</p></a>
+																</li>
+																<li class="nav-item">
+																<a th:href="@{LCPocketsDetailedStatementAPI}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Detailed Statement API</p></a>
+																</li>
+															</ul>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{#}" class="nav-link">
+								<i class="fas fa-receipt nav-icon text-warning"></i>
+								<p>Debit Card</p><i class="fas fa-angle-left right"></i>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a th:href="@{LCDebitCardStatus}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>Debit Card Status</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a th:href="@{LCDebitCardGridAuth}" class="nav-link" style="font-size: small;">
+										<i class="fas fa-receipt nav-icon text-warning"></i>
+										<p>GridAuth</p>
+									</a>
+								</li>
+							</ul>
+						</li>
+
+
+					</ul>
+					</li>
+
+					<li class="nav-item">
+						<a th:href="@{#}" class="nav-link">
+								<i class="fas fa-receipt nav-icon text-danger"></i>
+								<p>Paylater</p><i class="fas fa-angle-left right"></i></a>
+								
+								<ul class="nav nav-treeview">
+														<li class="nav-item">
+															<a th:href="@{LCAccountCreation}" class="nav-link">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Account Creation</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{#}" class="nav-link">
+							<i class="fas fa-receipt nav-icon text-warning"></i>
+							<p>Account Management</p><i class="fas fa-angle-left right"></i>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a th:href="@{LCApplicationStatusCheck}" class="nav-link" style="font-size: small;">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Application Status Check </p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{LCPaylaterBalanceInquiry}" class="nav-link" style="font-size: small;">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Balance Inquiry</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{LCPaylaterBillEnquiry}" class="nav-link" style="font-size: small;">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Bill Inquiry</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{LCPaylaterStatement}" class="nav-link" style="font-size: small;">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Statement</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{LCPaylaterPayDues}" class="nav-link" style="font-size: small;">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Pay Dues</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{LCPaylaterODAcDiscovery}" class="nav-link" style="font-size: small;">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>OD A/c Discovery</p>
+								</a>
+							</li>
+
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a th:href="@{#}" class="nav-link">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Paylater with EMI</p>
+															<i class="fas fa-angle-left right"></i></a>
+								
+													<ul class="nav nav-treeview">
+														<li class="nav-item">
+															<a th:href="@{LCAccountClosure}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Account Closure</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{LCGetSavingAccountDetails}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Get Saving Account Details</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{LCForeclosureAmount}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Foreclosure Amount</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{LCRePaymentOfLoan}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Re-Payment Of Loan</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{LCPaylaterEmiBillInquiry}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Bill Inquiry</p>
+															</a>
+														</li>
+														<!--<li class="nav-item">
+															<a th:href="@{LCAccountCreation}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Account Inquiry</p>
+															</a>
+														</li>-->
+														<li class="nav-item">
+															<a th:href="@{LCPaylaterEmiAmortizationSchedule}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Amortization Schedule</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{LCPaylaterEmiLoanDisbursement}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Loan Disbursement</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{LCPaylaterEmiLoanLoanCreation}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Loan Creation</p>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a th:href="@{LCLoanCreationForExistingAccountHolderAndAutoDebit}" class="nav-link" style="font-size: small;">
+																<i class="fas fa-receipt nav-icon text-warning"></i>
+																<p>Loan Creation for Existing Account Holder and Auto Debit.</p>
+															</a>
+														</li>
+													</ul>
+													
+														</li>
+								</ul>
+						</li>
+						
+						<li class="nav-item">
+							<a th:href="@{#}" class="nav-link">
+							<i class="fas fa-receipt nav-icon text-danger"></i>
+							<p>Cardless EMI</p><i class="fas fa-angle-left right"></i>
+						</a>
+
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a th:href="@{LCCardlessEMIEligibility}" class="nav-link">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Eligibility</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{LCCardlessEMIValidation}" class="nav-link">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Validation</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{LCCardlessEMIConfirmation}" class="nav-link">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Confirmation</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{LCCardlessEMICancellation}" class="nav-link">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Cancellation</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{LCCardlessEMIResendOTP}" class="nav-link">
+									<i class="fas fa-receipt nav-icon text-warning"></i>
+									<p>Resend-OTP</p>
+								</a>
+							</li>
+
+						</ul>
+					</li>
+
+					</ul>
+
+					</li>
+					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+								class="nav-icon fas fa-cash-register text-navy"></i>
+							<p>Payments</p>
+						</a></li>
+					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+								class="nav-icon fas fa-piggy-bank text-navy"></i>
+							<p>Accounts and Deposits</p>
+						</a></li>
+
+					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+								class="nav-icon fas fa-business-time text-navy"></i>
+							<p>Business Banking</p>
+						</a></li>
+					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+								class="nav-icon fas fa-landmark text-navy"></i>
+							<p>Trade Services</p>
+						</a></li>
+					<li class="nav-item text-bold"><a href="#" class="nav-link"> <i
+								class="nav-icon fas fa-arrows-alt-h text-navy"></i>
+							<p>Corporate API Suite</p>
+						</a></li>
+
 					</ul>
 
 				</nav>
@@ -149,12 +1659,10 @@
 							<h1>Personal Loan Bank Statement Upload</h1>
 						</div><!-- /.col -->
 						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right"> 
-								<li class="breadcrumb-item"><a th:href="@{mainPage}"> 
-								<i class="fas fa-arrow-left mr-1"></i>Back to Main Page</a></li>
-								<li class="breadcrumb-item"><a th:href="@{LoansAndCards}">Loans And Cards</a></li>
-								<li class="breadcrumb-item"><a th:href="@{LCLoans}">Loans</a></li>
-								<li class="breadcrumb-item"><a th:href="@{PersonalLoanV1}">PersonalLoanV1</a></li>
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Loans And Cards</a></li>
+								<li class="breadcrumb-item"><a href="#">Loans</a></li>
+								<li class="breadcrumb-item"><a href="#">Personal Loan</a></li>
 								<li class="breadcrumb-item active">Bank Statement Upload</li>
 							</ol>
 						</div><!-- /.col -->
