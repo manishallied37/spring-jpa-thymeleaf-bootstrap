@@ -32,19 +32,56 @@
     <link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}"/>
     <style>
         #load {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: url(images/loader.gif) center no-repeat #fff;
-            opacity: 1;
-
+          position: fixed;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          z-index: 9999;
+          background: url(images/loader.gif) center no-repeat #fff;
+          opacity: 1;
         }
+
         .nav-sidebar .nav-treeview > .nav-item > .nav-link {
-            background-color: transparent !important;
-            color: #777 !important;
+          background-color: transparent !important;
+          color: #777 !important;
+        }
+
+        .dropdown-menu-lg {
+          max-height: 420px;
+          overflow: hidden;
+        }
+
+        #cartItems {
+          max-height: 300px;
+          overflow-y: auto;
+        }
+
+        #cartItems::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        #cartItems::-webkit-scrollbar-thumb {
+          background: #ccc;
+          border-radius: 4px;
+        }
+
+        .dropdown-item {
+          white-space: normal !important;
+        }
+
+        .cart-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+        }
+
+        .cart-text {
+          flex: 1;
+          min-width: 0;
+          word-break: break-word;
+          overflow-wrap: break-word;
         }
     </style>
 </head>
@@ -83,6 +120,30 @@
                     </a>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge badge-warning navbar-badge" id="cartCount">0</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-header">API Cart</span>
+                    <div class="dropdown-divider"></div>
+
+                    <div id="cartItems">
+            <span class="dropdown-item text-muted text-center">
+								Cart is empty
+							</span>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item dropdown-footer bg-primary text-white text-center" onclick="setCartReferrer()"
+                       th:href="@{apicart}">
+                        Go to API cart
+                    </a>
+                </div>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -1482,6 +1543,45 @@
     updateCartCount();
     renderCartDropdown();
     updateSubscribeButton();
+</script>
+
+<script>
+    $(function () {
+
+    			const KEY = "ADMINLTE_SIDEBAR_STATE";
+
+    			try {
+    				const state = JSON.parse(localStorage.getItem(KEY) || "[]");
+
+    				state.forEach(idxPath => {
+    					let el = $(".nav-sidebar > li").eq(idxPath[0]);
+
+    					for (let i = 1; i < idxPath.length; i++) {
+    						el.addClass("menu-open");
+    						el = el.children("ul").children("li").eq(idxPath[i]);
+    					}
+
+    					el.parents(".has-treeview").addClass("menu-open");
+    					el.children("a.nav-link").addClass("active");
+    				});
+    			} catch (e) {
+    				console.warn("Sidebar restore failed");
+    			}
+
+    			$(".nav-sidebar").on("click", "a.nav-link", function () {
+
+    				const path = [];
+    				let li = $(this).closest("li");
+
+    				while (li.length && li.closest(".nav-sidebar").length) {
+    					path.unshift(li.index());
+    					li = li.parent().closest("li");
+    				}
+
+    				localStorage.setItem(KEY, JSON.stringify([path]));
+    			});
+
+    		});
 </script>
 <script th:src="@{dist/js/BBEligibilityCheck.js}"></script>
 </body>

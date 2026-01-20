@@ -35,195 +35,232 @@
 
     <style>
         #load {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: url(images/loader.gif) center no-repeat #fff;
-            opacity: 1;
-
+          position: fixed;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          z-index: 9999;
+          background: url(images/loader.gif) center no-repeat #fff;
+          opacity: 1;
         }
+
         .nav-sidebar .nav-treeview > .nav-item > .nav-link {
-            background-color: transparent !important;
-            color: #777 !important;
-        }
-        /* =========================
-           Button feedback
-           ========================= */
-        .btn-primary:hover {
-            box-shadow: 0 4px 10px rgba(0,123,255,.35);
+          background-color: transparent !important;
+          color: #777 !important;
         }
 
-        .btn-primary:active,
-        .btn-primary.active {
-            transform: translateY(1px);
-            box-shadow: inset 0 3px 5px rgba(0,0,0,.2);
+        .dropdown-menu-lg {
+          max-height: 420px;
+          overflow: hidden;
         }
 
-        /* =========================
-           One-line flex layout
-           ========================= */
-        form.d-flex {
-            flex-wrap: nowrap;
+        #cartItems {
+          max-height: 300px;
+          overflow-y: auto;
         }
 
-        form.d-flex > * {
-            flex-shrink: 0;
+        #cartItems::-webkit-scrollbar {
+          width: 6px;
         }
 
-        /* =========================
-           Unified control height
-           ========================= */
-        .select2-container--bootstrap4 .select2-selection--single,
-        .custom-file,
-        .custom-file-input,
-        .custom-file-label,
-        .btn {
-            height: 38px !important;
+        #cartItems::-webkit-scrollbar-thumb {
+          background: #ccc;
+          border-radius: 4px;
         }
 
-        /* =========================
-           Select2 styling & alignment
-           ========================= */
-        .select2-container--bootstrap4 .select2-selection--single {
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-            border-radius: 6px;
-            border: 1px solid #ced4da;
-            transition: border-color .2s ease, box-shadow .2s ease;
+        .dropdown-item {
+          white-space: normal !important;
         }
 
-        .select2-container--bootstrap4
-        .select2-selection--single:hover {
-            border-color: #80bdff;
+        .cart-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
         }
 
-        .select2-container--bootstrap4
-        .select2-selection--single.select2-selection--focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 .15rem rgba(0,123,255,.25);
+        .cart-text {
+          flex: 1;
+          min-width: 0;
+          word-break: break-word;
+          overflow-wrap: break-word;
         }
+                /* =========================
+                   Button feedback
+                   ========================= */
+                .btn-primary:hover {
+                    box-shadow: 0 4px 10px rgba(0,123,255,.35);
+                }
 
-        .select2-container--bootstrap4
-        .select2-selection__rendered {
-            line-height: 38px;
-            padding-left: 0;
-            font-weight: 500;
-        }
+                .btn-primary:active,
+                .btn-primary.active {
+                    transform: translateY(1px);
+                    box-shadow: inset 0 3px 5px rgba(0,0,0,.2);
+                }
 
-        /* Dropdown arrow */
-        .select2-container--bootstrap4
-        .select2-selection__arrow {
-            height: 38px;
-        }
+                /* =========================
+                   One-line flex layout
+                   ========================= */
+                form.d-flex {
+                    flex-wrap: nowrap;
+                }
 
-        .select2-container--bootstrap4
-        .select2-selection__arrow b {
-            border-color: #495057 transparent transparent transparent;
-            border-width: 6px 5px 0 5px;
-        }
+                form.d-flex > * {
+                    flex-shrink: 0;
+                }
 
-        .select2-container--bootstrap4
-        .select2-selection--single:hover
-        .select2-selection__arrow b {
-            border-color: #007bff transparent transparent transparent;
-        }
+                /* =========================
+                   Unified control height
+                   ========================= */
+                .select2-container--bootstrap4 .select2-selection--single,
+                .custom-file,
+                .custom-file-input,
+                .custom-file-label,
+                .btn {
+                    height: 38px !important;
+                }
 
-        /* Dropdown menu */
-        .select2-dropdown {
-            border-radius: 6px;
-            box-shadow: 0 8px 20px rgba(0,0,0,.12);
-        }
+                /* =========================
+                   Select2 styling & alignment
+                   ========================= */
+                .select2-container--bootstrap4 .select2-selection--single {
+                    display: flex;
+                    align-items: center;
+                    padding: 0 10px;
+                    border-radius: 6px;
+                    border: 1px solid #ced4da;
+                    transition: border-color .2s ease, box-shadow .2s ease;
+                }
 
-        .custom-file-input:focus ~ .custom-file-label {
-            border-color: #80bdff;
-            box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
-        }
+                .select2-container--bootstrap4
+                .select2-selection--single:hover {
+                    border-color: #80bdff;
+                }
 
-        /* Unified height */
-        .select2-container--bootstrap4 .select2-selection--single,
-        .custom-file-label,
-        .custom-file-label::after,
-        .btn {
-            height: 38px;
-            line-height: 38px;
-        }
+                .select2-container--bootstrap4
+                .select2-selection--single.select2-selection--focus {
+                    border-color: #007bff;
+                    box-shadow: 0 0 0 .15rem rgba(0,123,255,.25);
+                }
 
-        /* Fix Browse alignment */
-        .custom-file-label::after {
-            line-height: 38px;
-            padding: 0 12px;
-        }
+                .select2-container--bootstrap4
+                .select2-selection__rendered {
+                    line-height: 38px;
+                    padding-left: 0;
+                    font-weight: 500;
+                }
 
-        .select2-container--bootstrap4
-        .select2-selection--single
-        .select2-selection__rendered {
-            line-height: 38px;
-        }
+                /* Dropdown arrow */
+                .select2-container--bootstrap4
+                .select2-selection__arrow {
+                    height: 38px;
+                }
 
-        /* Fix upload button vertical alignment */
-        .btn {
-            height: 38px;
-            line-height: 38px;
-            padding: 0 16px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
+                .select2-container--bootstrap4
+                .select2-selection__arrow b {
+                    border-color: #495057 transparent transparent transparent;
+                    border-width: 6px 5px 0 5px;
+                }
 
-        .btn i {
-            line-height: 1;
-        }
-        form label {
-            line-height: 38px;
-        }
+                .select2-container--bootstrap4
+                .select2-selection--single:hover
+                .select2-selection__arrow b {
+                    border-color: #007bff transparent transparent transparent;
+                }
 
-        .custom-file-label {
-            height: 38px;
-            display: flex;
-            align-items: center;
-            line-height: normal;
-            padding-right: 90px; /* space for Browse button */
-        }
+                /* Dropdown menu */
+                .select2-dropdown {
+                    border-radius: 6px;
+                    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+                }
 
-        /* Keep Browse perfectly aligned */
-        .custom-file-label::after {
-            height: 38px;
-            line-height: 38px;
-            display: flex;
-            align-items: center;
-        }
+                .custom-file-input:focus ~ .custom-file-label {
+                    border-color: #80bdff;
+                    box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+                }
 
-        /* Make selection relative so arrow can anchor */
-        .select2-container--bootstrap4 .select2-selection--single {
-            position: relative;
-        }
+                /* Unified height */
+                .select2-container--bootstrap4 .select2-selection--single,
+                .custom-file-label,
+                .custom-file-label::after,
+                .btn {
+                    height: 38px;
+                    line-height: 38px;
+                }
 
-        /* Force arrow inside the box */
-        .select2-container--bootstrap4 .select2-selection__arrow {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            height: auto;
-            width: auto;
-        }
+                /* Fix Browse alignment */
+                .custom-file-label::after {
+                    line-height: 38px;
+                    padding: 0 12px;
+                }
 
-        /* Remove flex interference */
-        .select2-container--bootstrap4
-        .select2-selection--single {
-            display: block; /* NOT flex */
-        }
+                .select2-container--bootstrap4
+                .select2-selection--single
+                .select2-selection__rendered {
+                    line-height: 38px;
+                }
 
-        /* Ensure text stays vertically centered */
-        .select2-container--bootstrap4
-        .select2-selection__rendered {
-            line-height: 38px;
-            padding-right: 30px; /* space for arrow */
-        }
+                /* Fix upload button vertical alignment */
+                .btn {
+                    height: 38px;
+                    line-height: 38px;
+                    padding: 0 16px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .btn i {
+                    line-height: 1;
+                }
+                form label {
+                    line-height: 38px;
+                }
+
+                .custom-file-label {
+                    height: 38px;
+                    display: flex;
+                    align-items: center;
+                    line-height: normal;
+                    padding-right: 90px; /* space for Browse button */
+                }
+
+                /* Keep Browse perfectly aligned */
+                .custom-file-label::after {
+                    height: 38px;
+                    line-height: 38px;
+                    display: flex;
+                    align-items: center;
+                }
+
+                /* Make selection relative so arrow can anchor */
+                .select2-container--bootstrap4 .select2-selection--single {
+                    position: relative;
+                }
+
+                /* Force arrow inside the box */
+                .select2-container--bootstrap4 .select2-selection__arrow {
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-50%);
+                    height: auto;
+                    width: auto;
+                }
+
+                /* Remove flex interference */
+                .select2-container--bootstrap4
+                .select2-selection--single {
+                    display: block; /* NOT flex */
+                }
+
+                /* Ensure text stays vertically centered */
+                .select2-container--bootstrap4
+                .select2-selection__rendered {
+                    line-height: 38px;
+                    padding-right: 30px; /* space for arrow */
+                }
 
 
     </style>
@@ -252,6 +289,30 @@
         <ul class="navbar-nav ml-auto">
 
             <!-- Notifications Dropdown Menu -->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge badge-warning navbar-badge" id="cartCount">0</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-header">API Cart</span>
+                    <div class="dropdown-divider"></div>
+
+                    <div id="cartItems">
+            <span class="dropdown-item text-muted text-center">
+								Cart is empty
+							</span>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item dropdown-footer bg-primary text-white text-center" onclick="setCartReferrer()"
+                       th:href="@{apicart}">
+                        Go to API cart
+                    </a>
+                </div>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
