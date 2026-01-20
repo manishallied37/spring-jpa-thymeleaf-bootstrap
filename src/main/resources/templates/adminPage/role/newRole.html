@@ -9,21 +9,24 @@
 <div id="admin-section">
     <div class="admin-inner">
         <div class="container">
-            <div class="d-flex flex-row" >
+            <div class="d-flex flex-row">
                 <div th:replace="fragments/adminSidebar :: admin-sidebar"></div>
-                <div id="admin-content" >
-                    <form class="admin-form" th:action="@{/adminPage/roles/newRole}"  th:object="${newRole}" th:method="post" method="post">
+                <div id="admin-content">
+                    <form class="admin-form" method="post" th:action="@{/adminPage/roles/newRole}"
+                          th:method="post" th:object="${newRole}">
                         <ul class="global-errors" th:if="${#fields.hasErrors('global')}">
                             <li class="text-danger" th:each="err : ${#fields.errors('global')}"
-                                th:text="${err}">Input is incorrect</li>
+                                th:text="${err}">Input is incorrect
+                            </li>
                         </ul>
                         <div class="form-group">
                             <label for="newRolename">Name</label>
-                            <input type="text" class="form-control" th:field="*{name}" id="newRolename" placeholder="Enter name">
-                            <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                            <input class="form-control" id="newRolename" placeholder="Enter name" th:field="*{name}"
+                                   type="text">
+                            <p class="text-danger" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></p>
                         </div>
                         <a class="btn btn-dark" th:href="@{/adminPage/roles}">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
                 </div>
             </div>

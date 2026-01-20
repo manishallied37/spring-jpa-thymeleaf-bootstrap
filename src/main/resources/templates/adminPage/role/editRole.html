@@ -9,20 +9,20 @@
 <div id="admin-section">
     <div class="admin-inner">
         <div class="container">
-            <div class="d-flex flex-row" >
+            <div class="d-flex flex-row">
                 <div th:replace="fragments/adminSidebar :: admin-sidebar"></div>
 
-                <div id="admin-content" >
-                    <form class="admin-form" th:action="@{/adminPage/roles/{id}(id=${role.id})}"
-                          th:object="${role}" th:method="post" method="post">
+                <div id="admin-content">
+                    <form class="admin-form" method="post"
+                          th:action="@{/adminPage/roles/{id}(id=${role.id})}" th:method="post" th:object="${role}">
                         <div class="form-group">
                             <label for="editRoleName">Name</label>
-                            <input id="editRoleName" type="text" class="form-control" th:field="*{name}" >
-                            <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                            <input class="form-control" id="editRoleName" th:field="*{name}" type="text">
+                            <p class="text-danger" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></p>
 
                         </div>
                         <a class="btn btn-dark" th:href="@{/adminPage/roles}">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
                 </div>
             </div>

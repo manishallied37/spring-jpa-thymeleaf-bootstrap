@@ -2,195 +2,181 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title></title>
 
-	<!-- Google Font: Source Sans Pro -->
-	<link rel="stylesheet"
-		th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
-	<!-- Font Awesome Icons -->
-	<link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}">
-	<!-- Theme style -->
-	<link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}">
-	<!-- IonIcons -->
-	<link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
-	<!-- Bootstrap4 -->
-	<link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
-	<!-- Bootstrap4 Duallistbox -->
-	<link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
-	<!-- Toastr -->
-	<link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" th:href="@{plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{dist/css/adminlte.min.css}">
+    <!-- IonIcons -->
+    <link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}">
+    <!-- Bootstrap4 -->
+    <link rel="stylesheet" th:href="@{plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" th:href="@{plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
+    <!-- Toastr -->
+    <link rel="stylesheet" th:href="@{plugins/toastr/toastr.min.css}">
 
 
+    <style>
+        #load {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(images/loader.gif) center no-repeat #fff;
+            opacity: 1;
 
-	<style>
-		#load {
-			position: fixed;
-			left: 0px;
-			top: 0px;
-			width: 100%;
-			height: 100%;
-			z-index: 9999;
-			background: url(images/loader.gif) center no-repeat #fff;
-			opacity: 1;
-
-		}
-		.topbar {
-			display: none;
-		}
-	</style>
+        }
+        .topbar {
+            display: none;
+        }
+    </style>
 
 </head>
 
 <body class="hold-transition layout-top-nav  layout-footer-fixed">
 
-	<div id="load"></div>
+<div id="load"></div>
 
 
-	<!-- HOME SECTION -->
-	<div class="wrapper">
+<!-- HOME SECTION -->
+<div class="wrapper">
 
-		<!-- Navbar -->
-		<nav class=" navbar  navbar-light" style="background:rgb(255, 255, 255);">
-			<!-- Left navbar links -->
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" data-widget="pushmenu" href="#" role="button"></a>
-					<img th:src="@{images/2.jpg}" id="navbar-logo" alt="" class="brand-image  " style="width: 210px;">
-				</li>
-			</ul>
-			<!-- Right navbar links -->
-			<ul class="navbar-nav ">
+    <!-- Navbar -->
+    <nav class=" navbar  navbar-light" style="background:rgb(255, 255, 255);">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"></a>
+                <img alt="" class="brand-image  " id="navbar-logo" style="width: 210px;" th:src="@{images/2.jpg}">
+            </li>
+        </ul>
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ">
 
-				<!-- Notifications Dropdown Menu -->
-				<li class="nav-item">
-					<a class="nav-link" data-widget="fullscreen" href="#" role="button">
-						<i class="fas fa-expand-arrows-alt"></i>
-					</a>
-				</li>
-			</ul>
-		</nav>
-		<!-- /.navbar -->
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
 
-		<section class="content" style="padding: 125px; ">
-			<div class="container-fluid">
-				<div class="row ">
-					<div class="col-12">
+    <section class="content" style="padding: 125px; ">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-12">
 
-						<div class="row">
-							<div class="col-lg-6 col-6">
-								<!-- small box -->
-								<div class="small-box bg-info">
-									<div class="inner">
-										<h3>User Management</h3>
+                    <div class="row">
+                        <div class="col-lg-6 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>User Management</h3>
 
-										<p>Create New User</p>
-									</div>
-									<div class="icon">
-										<i class="ion ion-person-add"></i>
-									</div>
-									<a th:href="@{UserManagement}" class="small-box-footer">More info <i
-											class="fas fa-arrow-circle-right"></i></a>
-								</div>
-							</div>
-							<!-- ./col -->
-							<div class="col-lg-6 col-6">
-								<!-- small box -->
-								<div class="small-box bg-success">
-									<div class="inner">
-										<h3>Admin</h3>
+                                    <p>Create New User</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a class="small-box-footer" th:href="@{UserManagement}">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-6 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>Admin</h3>
 
-										<p>Create New </p>
-									</div>
-									<div class="icon">
-										<i class="fa fa-user-secret"></i>
-									</div>
-									<a href="#" class="small-box-footer">More info <i
-											class="fas fa-arrow-circle-right"></i></a>
-								</div>
-							</div>
-							<!-- ./col -->
-						</div>
+                                    <p>Create New </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user-secret"></i>
+                                </div>
+                                <a class="small-box-footer" href="#">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
 
-						<div class="row">
-							
-							<div class="col-lg-6 col-6">
-								<!-- small box -->
-								<div class="small-box bg-teal">
-									<div class="inner">
-										<h3>API Management</h3>
+                    <div class="row">
 
-										<p>Create New API</p>
-									</div>
-									<div class="icon">
-										<i class="ion ion-ios-shuffle-strong"></i>
-									
-									</div>
-									<a th:href="@{FormForNewAPI}" class="small-box-footer">More info <i
-											class="fas fa-arrow-circle-right"></i></a>
-								</div>
-							</div>
-							
-							<!-- ./col -->
-							<div class="col-lg-6 col-6">
-								<!-- small box -->
-								<div class="small-box bg-danger">
-									<div class="inner">
-										<h3>Audits</h3>
+                        <div class="col-lg-6 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-teal">
+                                <div class="inner">
+                                    <h3>API Management</h3>
 
-										<p>Enter Details</p>
-									</div>
-									<div class="icon">
-										<i class="ion ion-clipboard"></i>
-										<i class="fa-duotone fa-block-quote"></i>
-									</div>
-									<a href="#" class="small-box-footer">More info <i
-											class="fas fa-arrow-circle-right"></i></a>
-								</div>
-							</div>
-							<!-- ./col -->
-						</div>
+                                    <p>Create New API</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-ios-shuffle-strong"></i>
 
-					</div>
-				</div>
-			</div>
-		</section>
+                                </div>
+                                <a class="small-box-footer" th:href="@{FormForNewAPI}">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
 
+                        <!-- ./col -->
+                        <div class="col-lg-6 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>Audits</h3>
 
+                                    <p>Enter Details</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-clipboard"></i>
+                                    <i class="fa-duotone fa-block-quote"></i>
+                                </div>
+                                <a class="small-box-footer" href="#">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
 
-		<!-- Main Footer -->
-		<footer class="main-footer">
-			<div class="col-md-4" style="float:left;"> © 2021-2022 All rights reserved.</div>
-			<div class="col-md-4" style="float:left;text-align:center;"> <img class="img-fluid"
-					th:src="@{/images/flag.png}" alt="Proudly Made In India" width="50" height="40">
-				&nbsp; Proudly Made In India</div>
-			<div class="float-right d-none d-sm-inline">
-				<!--<img class="img-fluid" th:src="@{/images/alliedlogo.jpeg}"  alt="Photo" width="60" height="60"> -->Designed
-				& Developed by <img class="img-fluid" width="100" height="100" th:src="@{/images/2.jpg}"
-					alt="Allied GlobeTech">
-			</div>
-		</footer>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-
-	</div>
-
-
-
-	<!-- REQUIRED SCRIPTS -->
-	<!-- jQuery -->
-	<script th:src="@{plugins/jquery/jquery.min.js}"></script>
-	<!-- Bootstrap -->
-	<script th:src="@{plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
-	<!-- AdminLTE App -->
-	<script th:src="@{dist/js/adminlte.min.js}"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script th:src="@{dist/js/demo.js}"></script>
+    <!-- Main Footer -->
+    <div th:replace="fragments/footer :: footer"></div>
 
 
-	<!-- Developer Script -->
-	<script th:src="@{dist/js/Common.js}"></script>
+</div>
+
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script th:src="@{plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{dist/js/demo.js}"></script>
+
+
+<!-- Developer Script -->
+<script th:src="@{dist/js/Common.js}"></script>
 
 </body>
 

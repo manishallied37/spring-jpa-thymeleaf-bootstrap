@@ -16,43 +16,53 @@
             <div class="card-body">
                 <h4 class="card-title">Registration form:</h4>
                 <!--Form-->
-                <form th:action="@{/submit-registration}" th:object="${userDto}"  th:method="post" method="post" action="register">
+                <form action="register" method="post" th:action="@{/submit-registration}" th:method="post"
+                      th:object="${userDto}">
                     <ul class="global-errors" th:if="${#fields.hasErrors('global')}">
-                        <li class="text-danger" th:each="err : ${#fields.errors('global')}" th:text="${err}">Input is incorrect</li>
+                        <li class="text-danger" th:each="err : ${#fields.errors('global')}" th:text="${err}">Input is
+                            incorrect
+                        </li>
                     </ul>
                     <div class="form-group">
                         <label for="Name">Name</label>
-                        <input type="text" class="form-control" th:field="*{name}" id="name" placeholder="Enter name">
-                        <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                        <input class="form-control" id="name" placeholder="Enter name" th:field="*{name}" type="text">
+                        <p class="text-danger" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></p>
                     </div>
                     <div class="form-group">
                         <label for="Surname">Surname</label>
-                        <input type="text" class="form-control" th:field="*{surname}" id="surname" placeholder="Enter surname">
-                        <p class="text-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></p>
+                        <input class="form-control" id="surname" placeholder="Enter surname" th:field="*{surname}"
+                               type="text">
+                        <p class="text-danger" th:errors="*{surname}" th:if="${#fields.hasErrors('surname')}"></p>
                     </div>
                     <div class="form-group">
                         <label for="Username">Username</label>
-                        <input type="text" class="form-control" th:field="*{username}" id="username" placeholder="Enter username">
-                        <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                        <input class="form-control" id="username" placeholder="Enter username" th:field="*{username}"
+                               type="text">
+                        <p class="text-danger" th:errors="*{username}" th:if="${#fields.hasErrors('username')}"></p>
                     </div>
                     <div class="form-group">
                         <label for="Email">Email address</label>
-                        <input th:type="email" type="email" class="form-control" th:field="*{email}" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <input aria-describedby="emailHelp" class="form-control" id="email" placeholder="Enter email" th:field="*{email}"
+                               th:type="email" type="email">
+                        <small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone
+                            else.</small>
                         <!--<span class="text-danger"  th:text="${alreadyRegisteredMessage}"></span>-->
-                        <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                        <span class="text-danger" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></span>
                     </div>
                     <div class="form-group">
-                        <label th:for="password" for="Password">Password</label>
-                        <input type="password" class="form-control" th:field="*{password}" id="password" placeholder="Password">
-                        <p class="text-danger"th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                        <label for="Password" th:for="password">Password</label>
+                        <input class="form-control" id="password" placeholder="Password" th:field="*{password}"
+                               type="password">
+                        <p class="text-danger" th:errors="*{password}" th:if="${#fields.hasErrors('password')}"></p>
                     </div>
                     <div class="form-group">
-                        <label th:for="matchingPassword" for="matchingPassword">Confirm Password</label>
-                        <input type="password" class="form-control" th:field="*{matchingPassword}" id="matchingPassword" placeholder="Password">
-                        <p class="text-danger"th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}"></p>
+                        <label for="matchingPassword" th:for="matchingPassword">Confirm Password</label>
+                        <input class="form-control" id="matchingPassword" placeholder="Password" th:field="*{matchingPassword}"
+                               type="password">
+                        <p class="text-danger" th:errors="*{matchingPassword}"
+                           th:if="${#fields.hasErrors('matchingPassword')}"></p>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary" type="submit">Submit</button>
                 </form>
                 <p>Already have an account?<a href="/login.html">Click here to login</a></p>
             </div>

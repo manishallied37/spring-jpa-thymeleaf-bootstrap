@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+>
 
-<th:block xmlns:th="http://www.thymeleaf.org"
-          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-          th:fragment="authNav">
+<th:block th:fragment="authNav"
+          xmlns:th="http://www.thymeleaf.org">
 
     <!-- NOT LOGGED IN -->
     <ul class="navbar-nav ml-auto"
@@ -25,32 +24,32 @@
     <!-- LOGGED IN -->
     <ul class="navbar-nav ml-auto"
         th:if="${#authorization.expression('isAuthenticated()')}">
-        
-         <li class="nav-item d-flex">
+
+        <li class="nav-item d-flex">
 		    <span class="shopping-cart align-self-center mx-2">
 		
-		        <a th:href="@{apicart}"
-		           style="background-color: transparent !important;"
-		           title="Go to API Cart">
+		        <a style="background-color: transparent !important;"
+                   th:href="@{apicart}"
+                   title="Go to API Cart">
 		
-		            <i class="fa fa-shopping-cart"
-		               id="shopping-cart-icon"
-		               aria-hidden="true"
-		               style="background-color: transparent !important"></i>
+		            <i aria-hidden="true"
+                       class="fa fa-shopping-cart"
+                       id="shopping-cart-icon"
+                       style="background-color: transparent !important"></i>
 		        </a>
 		
 		    </span>
-		</li>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link" href="javascript:document.logoutForm.submit()">
                 Logout
             </a>
 
-            <form name="logoutForm"
-                  th:action="@{/logout}"
+            <form hidden
                   method="post"
-                  hidden>
+                  name="logoutForm"
+                  th:action="@{/logout}">
                 <input type="submit"/>
             </form>
         </li>

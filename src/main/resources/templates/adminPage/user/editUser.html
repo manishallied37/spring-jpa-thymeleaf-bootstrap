@@ -12,8 +12,8 @@
             <div class="d-flex flex-row">
                 <div th:replace="fragments/adminSidebar :: admin-sidebar"></div>
                 <div id="admin-content">
-                    <form class="admin-form" th:action="@{/adminPage/users/{id}(id=${userUpdateDto.id})}"
-                          th:object="${userUpdateDto}" th th:method="post" method="post">
+                    <form class="admin-form" method="post"
+                          th th:action="@{/adminPage/users/{id}(id=${userUpdateDto.id})}" th:method="post" th:object="${userUpdateDto}">
                         <ul class="global-errors" th:if="${#fields.hasErrors('global')}">
                             <li class="text-danger" th:each="err : ${#fields.errors('global')}" th:text="${err}">
                                 Input is incorrect
@@ -21,31 +21,31 @@
                         </ul>
                         <div class="form-group">
                             <label for="editedUserName">Name</label>
-                            <input id="editedUserName" type="text" class="form-control" th:field="*{name}">
-                            <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                            <input class="form-control" id="editedUserName" th:field="*{name}" type="text">
+                            <p class="text-danger" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></p>
                         </div>
                         <div class="form-group">
                             <label for="editedUserSurname">Surname</label>
-                            <input id="editedUserSurname" type="text" class="form-control" th:field="*{surname}">
-                            <p class="text-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></p>
+                            <input class="form-control" id="editedUserSurname" th:field="*{surname}" type="text">
+                            <p class="text-danger" th:errors="*{surname}" th:if="${#fields.hasErrors('surname')}"></p>
                         </div>
                         <div class="form-group">
                             <label for="editedUserUsername">Username</label>
-                            <input id="editedUserUsername" type="text" class="form-control" th:field="*{username}">
-                            <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                            <input class="form-control" id="editedUserUsername" th:field="*{username}" type="text">
+                            <p class="text-danger" th:errors="*{username}" th:if="${#fields.hasErrors('username')}"></p>
                         </div>
                         <div class="form-group">
                             <label for="editedUserEmail">Email</label>
-                            <input id="editedUserEmail" type="text" class="form-control" th:field="*{email}">
-                            <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                            <input class="form-control" id="editedUserEmail" th:field="*{email}" type="text">
+                            <span class="text-danger" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="editedUserRoles">Roles</label>
                             <div>
                                 <p th:each="role,rowStat : ${allRoles}">
-                                    <input id="editedUserRoles" type="checkbox"
-                                           th:field="*{roles[__${rowStat.index}__].id}" th:value="${role.id}"/>
+                                    <input id="editedUserRoles" th:field="*{roles[__${rowStat.index}__].id}"
+                                           th:value="${role.id}" type="checkbox"/>
                                     <label th:text="${role.name}">Role</label>
                                 </p>
                             </div>
@@ -53,13 +53,13 @@
                         <div class="form-group">
                             <label for="editUserEnabled">Enabled</label>
                             <div>
-                                <input id="editUserEnabled" type="checkbox" th:field="*{enabled}" th:value="*{enabled}">
+                                <input id="editUserEnabled" th:field="*{enabled}" th:value="*{enabled}" type="checkbox">
                                 Enabled
                                 </input>
                             </div>
                         </div>
                         <a class="btn btn-dark" th:href="@{/adminPage/users}">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
                 </div>
             </div>

@@ -14,16 +14,16 @@
                 <div th:replace="fragments/adminSidebar :: admin-sidebar"></div>
 
                 <div id="admin-content">
-                    <div th:if="${roleHasBeenSaved}" class="alert alert-success alert-dismissible fade show"
-                         role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"
+                         th:if="${roleHasBeenSaved}">
+                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <strong>Well done!</strong> Role has been saved!!!
                     </div>
-                    <div th:if="${roleHasBeenUpdated}" class="alert alert-success alert-dismissible fade show"
-                         role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"
+                         th:if="${roleHasBeenUpdated}">
+                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <strong>Well done!</strong> Role has been updated!!!
@@ -40,9 +40,9 @@
                         <tr th:each="role : ${roles}">
                             <td th:text="${role.id}"> >1</td>
                             <td th:text="${role.name}">Role Name</td>
-                            <td><a style="text-decoration: none; color: blue;"
-                                   th:href="@{/adminPage/roles/{id}(id=${role.id})}" class="edit-btn"
-                                   data-toggle="tooltip" data-placement="right" title="Edit role">
+                            <td><a class="edit-btn"
+                                   data-placement="right" data-toggle="tooltip"
+                                   style="text-decoration: none; color: blue;" th:href="@{/adminPage/roles/{id}(id=${role.id})}" title="Edit role">
                                 <i class="fa fa-edit"></i>
                             </a>
                             </td>
@@ -50,7 +50,7 @@
                         </tbody>
                     </table>
                     <a href="#" th:href="@{/adminPage/roles/newRole}">
-                        <button type="button" class="btn btn-primary">New Role</button>
+                        <button class="btn btn-primary" type="button">New Role</button>
                     </a>
                 </div>
             </div>

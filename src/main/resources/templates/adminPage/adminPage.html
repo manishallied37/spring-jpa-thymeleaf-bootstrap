@@ -6,19 +6,19 @@
 </head>
 
 <body>
-    <nav th:replace="fragments/header :: nav"></nav>
-    <div id="admin-section">
-        <div class="admin-inner">
-            <div class="container">
-                <div class="d-flex flex-row" >
-                    <div th:replace="fragments/adminSidebar :: admin-sidebar">
-                    </div>
-                    <div id="admin-content"></div>
+<nav th:replace="fragments/header :: nav"></nav>
+<div id="admin-section">
+    <div class="admin-inner">
+        <div class="container">
+            <div class="d-flex flex-row">
+                <div th:replace="fragments/adminSidebar :: admin-sidebar">
                 </div>
+                <div id="admin-content"></div>
             </div>
         </div>
     </div>
-    <footer th:replace="fragments/footer :: footer"></footer>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
 <div th:replace="fragments/jsScripts :: scripts"></div>
 </body>
 </html>

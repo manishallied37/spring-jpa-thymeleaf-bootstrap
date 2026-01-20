@@ -1,15 +1,15 @@
 <th:block th:fragment="childMenu(children)">
     <li class="nav-item"
-        th:each="child : ${children}"
-        th:classappend="${child.children.size() > 0} ? 'has-treeview' : ''">
+        th:classappend="${child.children.size() > 0} ? 'has-treeview' : ''"
+        th:each="child : ${children}">
 
         <a class="nav-link"
-           th:href="${child.children.size() > 0} ? '#' : @{${child.route}}"
            th:classappend="
              ${child.children.size() == 0
                and #httpServletRequest.requestURI == child.route}
              ? ' active' : ''
-           ">
+           "
+           th:href="${child.children.size() > 0} ? '#' : @{${child.route}}">
 
             <i class="nav-icon text-danger"
                th:classappend="${child.icon}"></i>

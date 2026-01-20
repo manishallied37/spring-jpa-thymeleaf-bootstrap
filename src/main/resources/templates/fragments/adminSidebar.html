@@ -3,15 +3,15 @@
 <head th:replace="fragments/head :: head">
 </head>
 <body>
-<div th:fragment="admin-sidebar" id="admin-sidebar" >
+<div id="admin-sidebar" th:fragment="admin-sidebar">
     <aside id="admin-nav">
         <nav class="navbar navbar-dark bg-dark">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/adminPage/users}" href="/adminPage/users">Users</a>
+                    <a class="nav-link" href="/adminPage/users" th:href="@{/adminPage/users}">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/adminPage/roles}" href="/adminPage/roles">Roles</a>
+                    <a class="nav-link" href="/adminPage/roles" th:href="@{/adminPage/roles}">Roles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#!">Topics</a>
