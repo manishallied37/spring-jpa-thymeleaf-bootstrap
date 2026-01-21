@@ -183,7 +183,8 @@
                     </div>
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item dropdown-footer bg-primary text-white text-center" onclick="setCartReferrer()"
+                    <a class="dropdown-item dropdown-footer bg-primary text-white text-center"
+                       onclick="setCartReferrer()"
                        th:href="@{apicart}">
                         Go to API cart
                     </a>
@@ -893,7 +894,10 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">
+                                <a th:href="@{mainPage}">
+                                    <i class="fas fa-arrow-left mr-1"></i>Back to Main Page</a>
+                            </li>
                             <li class="breadcrumb-item active">Add New API Description</li>
                         </ol>
                     </div>

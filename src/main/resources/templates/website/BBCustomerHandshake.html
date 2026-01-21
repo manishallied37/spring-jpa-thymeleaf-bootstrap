@@ -109,36 +109,13 @@
                     <span class="dropdown-header">API Cart</span>
                     <div class="dropdown-divider"></div>
                     <div id="cartItems">
-<span class="dropdown-item text-muted text-center">
+                    <span class="dropdown-item text-muted text-center">
                 Cart is empty
             </span>
                     </div>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item dropdown-footer bg-primary text-white text-center"
                        onclick="setCartReferrer()" th:href="@{apicart}">
-                        Go to API cart
-                    </a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="badge badge-warning navbar-badge" id="cartCount">0</span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">API Cart</span>
-                    <div class="dropdown-divider"></div>
-
-                    <div id="cartItems">
-            <span class="dropdown-item text-muted text-center">
-								Cart is empty
-							</span>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item dropdown-footer bg-primary text-white text-center" onclick="setCartReferrer()"
-                       th:href="@{apicart}">
                         Go to API cart
                     </a>
                 </div>
@@ -199,8 +176,9 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Building Blocks</a></li>
-                            <li class="breadcrumb-item"><a href="#">CustomerAuthentication</a></li>
+                            <li class="breadcrumb-item"><a th:href="@{BuildingBlocks}">Building Blocks</a></li>
+                            <li class="breadcrumb-item"><a
+                                    th:href="@{BBCustomerAuthentication}">CustomerAuthentication</a></li>
                             <li class="breadcrumb-item active">Customer Handshake</li>
                         </ol>
                     </div><!-- /.col -->
@@ -1813,22 +1791,26 @@
     }
 
     function updateSubscribeButton() {
-        const btn = document.getElementById("subscribeBtn");
-        if (!btn) return;
+    const btn = document.getElementById("subscribeBtn");
+    if (!btn) return;
 
-        const apiId = btn.dataset.apiId;
-        const cart = getCart();
+    const apiId = btn.dataset.apiId;
+    const cart = getCart();
 
-        const exists = cart.some(api => api.id === apiId);
+    const exists = cart.some(api => api.id === apiId);
 
-        if (exists) {
-            btn.innerText = "Added to Cart";
-            btn.disabled = true;
-        } else {
-            btn.innerText = "Subscribe";
-            btn.disabled = false;
-        }
+    if (exists) {
+        btn.innerText = "Remove from Cart";
+        btn.classList.remove("btn-danger");
+        btn.classList.add("btn-warning");
+    } else {
+        btn.innerText = "Add to Cart";
+        btn.classList.remove("btn-warning");
+        btn.classList.add("btn-danger");
     }
+
+    btn.disabled = false;
+}
 
     document.addEventListener("click", function (e) {
         const btn = e.target.closest(".remove-api");
@@ -1845,24 +1827,30 @@
         updateSubscribeButton();
     });
 
-    document.getElementById("subscribeBtn")?.addEventListener("click", function () {
-        const api = {
-            id: this.dataset.apiId,
-            name: this.dataset.apiName,
-            category: this.dataset.apiCategory
-        };
+    document.getElementById("subscribeBtn")?.addEventListener("click", function() {
 
-        let cart = getCart();
+    const api = {
+        id: this.dataset.apiId,
+        name: this.dataset.apiName,
+        category: this.dataset.apiCategory
+    };
 
-        if (!cart.some(item => item.id === api.id)) {
-            cart.push(api);
-            saveCart(cart);
-        }
+    let cart = getCart();
+    const exists = cart.some(item => item.id === api.id);
 
-        updateCartCount();
-        renderCartDropdown();
-        updateSubscribeButton();
-    });
+    if (exists) {
+        // REMOVE FROM CART
+        cart = cart.filter(item => item.id !== api.id);
+    } else {
+        // ADD TO CART
+        cart.push(api);
+    }
+
+    saveCart(cart);
+    updateCartCount();
+    renderCartDropdown();
+    updateSubscribeButton();
+});
 
     updateCartCount();
     renderCartDropdown();
