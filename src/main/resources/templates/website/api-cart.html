@@ -117,31 +117,6 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
 
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="badge badge-warning navbar-badge" id="cartCount">0</span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">API Cart</span>
-                    <div class="dropdown-divider"></div>
-
-                    <div id="cartItems">
-            <span class="dropdown-item text-muted text-center">
-								Cart is empty
-							</span>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item dropdown-footer bg-primary text-white text-center"
-                       onclick="setCartReferrer()"
-                       th:href="@{apicart}">
-                        Go to API cart
-                    </a>
-                </div>
-            </li>
-
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -412,11 +387,15 @@
             return;
         }
 
-        alert("Proceeding to subscription approval flow");
+        //alert("Proceeding to subscription approval flow");
     });
 
     renderCartTable();
     renderBreadcrumb();
+    
+    document.getElementById("checkoutBtn").addEventListener("click", function () {
+       window.location.href = "/api-cart-billing"; // target page
+	});
 </script>
 
 

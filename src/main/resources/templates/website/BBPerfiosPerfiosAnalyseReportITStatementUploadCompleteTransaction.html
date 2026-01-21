@@ -1243,19 +1243,21 @@
         }
 
         cart.forEach(api => {
-            container.innerHTML += `
-              <div class="dropdown-item d-flex justify-content-between align-items-center">
-                  <div>
-                      <i class="fas fa-plug mr-2"></i>
-                      ${api.name}
-                      <small class="text-muted ml-2">(${api.category})</small>
-                  </div>
-                  <button class="btn btn-xs btn-danger remove-api"
-                          data-id="${api.id}">
-                      <i class="fas fa-trash"></i>
-                  </button>
-              </div>`;
-        });
+    container.innerHTML += `
+				  <div class="dropdown-item cart-row">
+				      <div class="cart-text">
+				          <i class="fas fa-plug mr-2"></i>
+				          <strong>${api.name}</strong><br>
+				          <small class="text-muted">(${api.category})</small>
+				      </div>
+
+				      <button class="btn btn-xs btn-danger remove-api"
+				              data-id="${api.id}">
+				          <i class="fas fa-trash"></i>
+				      </button>
+				  </div>
+				`;
+});
     }
 
     function updateSubscribeButton() {
