@@ -109,49 +109,19 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fas fa-shopping-cart"></i>
                     <span class="badge badge-warning navbar-badge" id="cartCount">0</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span class="dropdown-header">API Cart</span>
                     <div class="dropdown-divider"></div>
                     <div id="cartItems">
-<span class="dropdown-item text-muted text-center">
+                    <span class="dropdown-item text-muted text-center">
                 Cart is empty
             </span>
                     </div>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item dropdown-footer bg-primary text-white text-center"
                        onclick="setCartReferrer()" th:href="@{apicart}">
-                        Go to API cart
-                    </a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="badge badge-warning navbar-badge" id="cartCount">0</span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">API Cart</span>
-                    <div class="dropdown-divider"></div>
-
-                    <div id="cartItems">
-            <span class="dropdown-item text-muted text-center">
-								Cart is empty
-							</span>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item dropdown-footer bg-primary text-white text-center"
-                       onclick="setCartReferrer()"
-                       th:href="@{apicart}">
                         Go to API cart
                     </a>
                 </div>
@@ -211,7 +181,6 @@
                                                                               data-api-name="ALBankStatementUpload"
                                                                               id="subscribeBtn"
                                                                               type="button">Subscribe</button></span>
-                        <span><button class="btn btn-block btn-danger col-sm-3" type="button">Subscribe</button></span>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">

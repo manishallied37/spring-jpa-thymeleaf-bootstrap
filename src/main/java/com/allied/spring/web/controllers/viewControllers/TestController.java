@@ -1354,6 +1354,11 @@ public class TestController {
     public String BBPerfiosAnalyseReportSalarySlipUploadv3ReportGeneration() {
         return "website/BBPerfiosAnalyseReportSalarySlipUploadv3ReportGeneration";
     }
+    
+    @GetMapping(value = {"/", "/BBPerfiosPerfiosAnalyseReportITStatementUploadUploadGST"})
+    public String BBPerfiosPerfiosAnalyseReportITStatementUploadUploadGST() {
+        return "website/BBPerfiosPerfiosAnalyseReportITStatementUploadUploadGST";
+    }
 
     @GetMapping(value = {"/", "/SwaggerMainPage"})
     public String SwaggerMainPage() {
