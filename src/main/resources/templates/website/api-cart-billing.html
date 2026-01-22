@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title></title>
+    
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -210,29 +213,7 @@
 
 
     <!-- Main Footer -->
-    <footer class="main-footer">
-        <div>
-            <div>
-                <footer class="main-footer">
-                    <div class="col-md-4" style="float:left;"> © 2021-2026 All rights reserved.</div>
-                    <div class="col-md-4" style="float:left;text-align:center;"><img alt="Proudly Made In India"
-                                                                                     class="img-fluid"
-                                                                                     height="40"
-                                                                                     th:src="@{/images/flag.png}"
-                                                                                     width="50">
-                        &nbsp; Proudly Made In India
-                    </div>
-                    <div class="float-right d-none d-sm-inline-block">
-                        <!--<img class="img-fluid" th:src="@{/images/alliedlogo.jpeg}"  alt="Photo" width="60" height="60"> -->
-                        Designed
-                        & Developed by <img alt="Allied GlobeTech" class="img-fluid" height="100"
-                                            th:src="@{/images/AlliedGlobetech.png}" width="100">
-                    </div>
-                </footer>
-            </div>
-        </div>
-
-    </footer>
+    <div th:replace="fragments/footer :: footer"></div>
 </div>
 
 <!--REQUIRED SCRIPTS-->
@@ -324,7 +305,6 @@
             return;
         }
 
-        // 🔥 ONLY place pricing is applied
        const query = apiNames
         .map(name => `apiNames=${encodeURIComponent(name)}`)
         .join("&");
@@ -362,6 +342,39 @@
 
     renderBillingPage();
     renderBreadcrumb();
+</script>
+
+
+<script>
+    document.getElementById("checkoutBtn").addEventListener("click", function () {
+	
+	 	const token = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+        const header = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
+
+        fetch("/consumer", {
+		    method: "POST",
+		    headers: {
+		        "Content-Type": "application/json",
+		        [header]: token
+		    }
+		})
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to generate API key");
+            }
+            return response.text();
+        })
+        .then(apiKey => {
+            console.log("Generated API Key:", apiKey);
+
+            alert("API Key generated successfully!\n\n" + apiKey);
+
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Something went wrong while generating API key");
+        });
+    });
 </script>
 
 

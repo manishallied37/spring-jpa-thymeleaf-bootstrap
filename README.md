@@ -43,6 +43,8 @@ Configure database according to [application.properties](https://github.com/Kvar
 
   
 ## Running the project
+The `toolchains.xml` file should be present in the Maven wrapper folder: `C:\Users\<USERNAME>\.m2`, and it should reference the installed Java version.
+
 The application uses [Spring Boot](http://projects.spring.io/spring-boot/), so it is easy to run. You can start it any of a few ways:
 * Run the `main` method from `SpringThymleafJpaApplication `
 * Use the Maven Spring Boot plugin: `mvn spring-boot:run`

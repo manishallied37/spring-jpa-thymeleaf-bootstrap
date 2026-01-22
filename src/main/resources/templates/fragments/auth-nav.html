@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
->
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 
-<th:block th:fragment="authNav"
-          xmlns:th="http://www.thymeleaf.org">
+<th:block xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security" th:fragment="authNav">
 
     <!-- NOT LOGGED IN -->
     <ul class="navbar-nav ml-auto"
