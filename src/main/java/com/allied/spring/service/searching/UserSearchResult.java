@@ -1,38 +1,44 @@
 package com.allied.spring.service.searching;
 
 import com.allied.spring.web.dto.UserDto;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+import java.util.Collections;
+
 public class UserSearchResult {
+
     private Page<UserDto> userPage;
     private boolean numberFormatException;
 
-    public UserSearchResult(Page<UserDto> findAllPageable, boolean b) {
-        // TODO Auto-generated constructor stub
+    public UserSearchResult() {
+        this.userPage = new PageImpl<>(Collections.emptyList());
+        this.numberFormatException = false;
     }
 
-    public UserSearchResult() {
-        // TODO Auto-generated constructor stub
+    public UserSearchResult(Page<UserDto> userPage) {
+        this.userPage = userPage;
+        this.numberFormatException = false;
+    }
+
+    public UserSearchResult(Page<UserDto> userPage, boolean numberFormatException) {
+        this.userPage = userPage;
+        this.numberFormatException = numberFormatException;
     }
 
     public Page<UserDto> getUserPage() {
-        // TODO Auto-generated method stub
-        return null;
+        return userPage;
     }
 
-    public void setUserPage(Page<UserDto> findAllPageable) {
-        // TODO Auto-generated method stub
-
+    public void setUserPage(Page<UserDto> userPage) {
+        this.userPage = userPage;
     }
 
     public boolean isNumberFormatException() {
-        // TODO Auto-generated method stub
-        return false;
+        return numberFormatException;
+    }
+
+    public void setNumberFormatException(boolean numberFormatException) {
+        this.numberFormatException = numberFormatException;
     }
 }
