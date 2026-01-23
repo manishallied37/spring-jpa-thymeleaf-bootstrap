@@ -70,6 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .key("uniqueAndSecretKey")
                 .rememberMeParameter("remember-me")
                 .tokenValiditySeconds(1209600)
+                .userDetailsService(userDetailsServiceImpl)
                 .and()
                 .logout()
                 .logoutUrl("/logout")
